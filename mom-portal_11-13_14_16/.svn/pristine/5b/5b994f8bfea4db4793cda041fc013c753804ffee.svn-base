@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仪表计量</title>
+    <script type="text/javascript" src="../../../js/meta.js"></script>
+</head>
+<body id="instrumentMeasurement" class="wrapper-gray theme-tight">
+<div class="ibox">
+    <!--上边的ibox-title是进出厂计量页面的仪表计量..仪表计量按钮..弹窗页面-->
+    <!--下边的ibox-title是单独的仪表计量页面..导航仪表计量页面-->
+    <div class="ibox-title  openlayer">
+        <div class="toolbar-form  clearfix">
+            <label>
+                <div class="form-inline">
+                    <span>日期：</span>
+                    <input type="text" onclick="WdatePicker();" id="opentankDate" class="time-input Wdate form-control" placeholder="">
+                </div>
+            </label>
+            <div class="form-inline">
+                <span>班次 ：</span>
+                <select class="openShift" name="shift" class="form-control">
+                </select>
+            </div>
+            <div class="form-inline">
+                <button class="btn btn-search" id="searchLoad" type="button"><i class="fa fa-search"></i>查询</button>
+            </div>
+            <div class="form-inline pull-right">
+                <div class="pull-right">
+                    <button class="btn btn-delete delete-btn"  type="button"><i class="fa fa-trash"></i>删除班次记录</button>
+                    <button class="btn btn-save collect-btn"  type="button"><i class="fa fa-search"></i>自动采集</button>
+                    <button class="btn btn-save save-btn"  type="button"><i class="fa fa-search"></i>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-title gray-line newPage">
+        <div class="titName clearfix">
+            <span>进出厂计量单</span>
+            <div class="pull-right toolbar-btns">
+                <a class="btn col-f98080" id="delete-btn"><i class="fa fa-trash col-f98080"></i> 删除班次记录</a>
+                <a class="btn col-1ab394" id="collect-btn"><i class="fa fa-plus-square col-1ab394"></i> 自动采集</a>
+                <a class="btn col-1ab394" id="save-btn"><i class="fa fa-save col-1ab394"></i> 保存</a>
+            </div>
+        </div>
+        <div class="toolbar-form clearfix">
+            <div class="form-inline">
+                <span>日期：</span>
+                <input id="tankDate" name="tankDate" autocomplete="off" class="Wdate form-control" onclick="WdatePicker();"  type="text" value="" >
+            </div>
+            <div class="form-inline">
+                <span>班次 ：</span>
+                <select id="shift" name="shift" class="form-control">
+                </select>
+            </div>
+            <div class="form-inline">
+                <span>状态 ：</span>
+                <select id="status" name="status" class="form-control">
+                    <option value="0">制单中</option>
+                    <option value="1">关闭中</option>
+                </select>
+            </div>
+            <div class="form-inline">
+                <span>类型 ：</span>
+                <select id="transTypes" name="transType" class="form-control">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <div class="form-inline">
+                <input type="radio" class="i-checks radios" name="outIn" value="0" checked/>进厂
+                <input type="radio" class="i-checks radios" name="outIn" value="1"/>出厂
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-search" id="search-btn" type="button"><i class="fa fa-search"></i>查询</button>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <table id="SmtinoutInstrMeas">
+
+        </table>
+    </div>
+</div>
+<script data-main="/js/module/material/materialMove/instrumentMeasurement" src="/js/zlib/require.js"></script>
+</body>
+</html>
