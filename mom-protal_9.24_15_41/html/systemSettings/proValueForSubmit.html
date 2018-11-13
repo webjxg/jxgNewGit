@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>属性管理</title>
+</head>
+
+<body id="proValueForSubmit" class="wrapper-inner hideScroll">
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysAuthPropertyValue/ajaxSave" method="post" novalidate="novalidate">
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15 active" ><label class="pull-right"><font color="red">*</font>名称:</label></td>
+            <td class="width-35">
+                <input id="valueNameId" name="valueNameId" class="form-control" type="hidden" value="1" >
+                <input id="valueName" name="name" type="text" value=""  require="true" class="form-control" >
+
+                <label id="valueName-error" class="error" for="valueName" style="display:none"></label>
+            </td>
+            <td class="width-15 active" ><label class="pull-right"><font color="red">*</font>属性值:</label></td>
+            <td class="width-35">
+                <input id="valueId" name="valueId" class="form-control" type="hidden" value="1" >
+                <input id="value" name="value" type="text" value=""  require="true" class=" form-control "  >
+                <label id="value-error" class="error" for="value" style="display:none"></label>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">
+                <label class="pull-right">
+                    是否可用:
+                </label>
+            </td>
+            <td>
+                <select id="enable" name="enable" class="form-control">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </td>
+            <td class="active">
+                <label class="pull-right">
+                    所属属性:
+                </label>
+            </td>
+            <td>
+                <input id="sysAuthPropertyId" name="sysAuthProperty.id" class="form-control" type="hidden" value="">
+                <input id="sysAuthPropertyName" readonly name="sysAuthProperty.name" class="form-control" value="">
+                <label id="sysAuthPropertyName-error" class="error" for="sysAuthPropertyName" style="display:none"></label>
+            </td>
+        </tr>
+        <tr class="hiddenView" >
+            <td class="active">
+                <label class="pull-right">
+                    上级节点:
+                </label>
+            </td>
+            <td>
+
+                <input id="parentId" name="parent.id" class="form-control" type="hidden" value="" >
+                <span id="parentName" name="parentName" type="text" value=""  class="form-control" style="" ></span>
+                <label id="parentName-error" class="error" for="parentName" style="display:none"></label>
+            </td>
+
+            <td class="active">
+                <label class="pull-right"><font color="red">*</font>
+                    源ID:
+                </label>
+            </td>
+            <td>
+                <input id="source" name="source" class="form-control" type="hidden" value="1" >
+                <input id="sourceId" require="true" name="sourceId" class="form-control " >
+                <label id="sourceId-error" class="error" for="sourceId" style="display:none"></label>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">
+                <label class="pull-right">备注信息:</label>
+            </td>
+            <td>
+                <input id="remarkId" name="remarkId" class="form-control" type="hidden" value="1" >
+                <textarea id="remark" name="remark" class="form-control" rows="3">
+
+                </textarea>
+            </td>
+            <td class="active">
+                <label class="pull-right"><font color="red">*</font>排序:</label>
+            </td>
+            <td>
+                <input id="sortId" name="sortId" class="form-control" type="hidden" value="1" >
+                <input id="sort" require="true" maxlength="10" onkeyup="value=value.replace(/[^\d]/g,'')" name="sort" class="form-control " placeholder="仅支持数字" digits="true" >
+                <label id="sort-error" class="error" for="sort" style="display:none"></label>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/systemSettings/preserveValue" src="/js/zlib/require.js"></script>
+</body>
+</html>

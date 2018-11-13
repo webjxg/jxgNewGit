@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width,initial-scale=1.0">
+    <title>年计划查看</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/aps.css">
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/datagrid.css">
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../../css/customDatagrid.css">
+</head>
+<body id="yearPLCheck" class="wrapper-gray">
+<div  class="wrapper-white">
+    <div class="ibox">
+        <div class="ibox-content">
+            <div class="row" style="margin-bottom: 15px">
+                <div class="col-lg-12 clearfix">
+                    <div class="pull-left">
+                        <h1 class="titName">复晟铝业<span class="Planyears"></span>年生产经营计划</h1>
+                    </div>
+                    <div class="btn btn-export pull-right btn-white"><i class="fa fa-file-word-o" aria-hidden="true"></i> 导出</div>
+                </div>
+            </div>
+            <div class="datagridsContent"></div>
+        </div>
+    </div>
+</div>
+<script data-main="/js/module/producePlan/yearPlan" src="/js/zlib/require.js"></script>
+</body>
+</html>

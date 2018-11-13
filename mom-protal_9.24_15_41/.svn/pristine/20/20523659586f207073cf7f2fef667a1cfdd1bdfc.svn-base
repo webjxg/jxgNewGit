@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>第三方用户管理</title>
+    <style>
+        .form-control{width: 100%;}
+        .thirdbtn{
+            padding: 3px 5px;
+            background-color: #ffa82d;
+            color: white;
+            border: none;
+            margin-left: 60px;
+        }
+        .input-group-btn{
+            display: inline-block !important;
+            margin-left: -8px;
+            margin-top: -2px;
+            width: 38px;
+        }
+        #companyButton{
+            width: 100% !important;
+            border-radius: 5px;
+            border: none;
+            height: 34px;
+        }
+        .thirtitle{
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .userNmae{
+            padding-left: 50px;
+        }
+        .loginNames{
+            padding-left: 40px;
+        }
+    </style>
+</head>
+
+<body id="thirdPartyInner" class="wrapper-content hideScroll">
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysUserRel/save" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>Mom用户名:</label></td>
+            <td class="width-35">
+                <input type="text" class="form-control required valid" id="sysLoginName" readonly="readonly"/>
+                <input type="hidden" name="userId" id="momId" value="" />
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>Mom登录名:</label></td>
+            <td class="width-35">
+                <label>
+                    <input type="text" class="form-control" require="true" id="sysUserName" readonly="readonly"/>
+                </label>
+                <span class="input-group-btn">
+              <button type="button" id="companyButton" class=" btn-sm btn-sousuo">
+                  <i class="fa fa-search"></i>
+               </button>
+        </span></td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>用户名:</label></td>
+            <td class="width-35">
+                <input id="name" name="name" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>登录名:</label></td>
+            <td class="width-35">
+                <input id="loginName" name="loginName" class="form-control" require="true" type="text" value="" maxlength="50"></td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>部门编码:</label>
+            </td>
+            <td class="width-35">
+                <input id="deptCode" name="deptCode" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>部门名称:</label>
+            </td>
+            <td class="width-35">
+                <input id="deptLabel" name="deptLabel" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>岗位编码</label></td>
+            <td class="width-35">
+                <input id="jobCode" name="jobCode" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>岗位名称:</label></td>
+            <td class="width-35">
+                <input id="jobLabel" name="jobLabel" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>手机号码</label></td>
+            <td class="width-35">
+                <input id="mobile" name="mobile" class="form-control" require="true" dataType="Mobile" type="text" value="" maxlength="50">
+            </td>
+            <td class="width-15 active"><label class="pull-right">电话</label></td>
+            <td class="width-35">
+                <input id="tel" name="tel" class="form-control" dataType="Tel" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>邮箱</label></td>
+            <td class="width-35">
+                <input id="email" name="email" class="form-control" require="true" dataType="Email" type="text" value="" maxlength="50">
+            </td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>专业</label></td>
+            <td class="width-35">
+                <input id="professional" name="professional" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>应用</label></td>
+            <td class="width-35">
+                <select id="sys" name="sys" maxlength="1" type="text" value=""  class="form-control" style="" require="true">
+                    <option value="">--请选择--</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/systemSettings/thirdParty" src="/js/zlib/require.js"></script>
+</body>
+</html>

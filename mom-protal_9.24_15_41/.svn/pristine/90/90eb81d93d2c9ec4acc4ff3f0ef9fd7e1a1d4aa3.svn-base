@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width,initial-scale=1.0">
+    <title>安全、环保、设备管理总体指标计划</title>
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/datagrid.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/customDatagrid.css">
+    <link rel="stylesheet" href="../../css/aps.css">
+    <style>
+        html,body,#wrapper{height:auto;}
+        .btn-save{display: none;}
+    </style>
+</head>
+
+<body id="proSafeEnviPlanEdit">
+<div  class="wrapper ">
+    <div class="ibox">
+        <div class="ibox-content pag0">
+            <div class="clearfix btn-box mgb-20 hidden">
+                <button class="btn  btn-bgf29 btn-save pull-right " type="button" data-status="0"><i class="fa fa-save"></i>保存</button>
+            </div>
+            <div class="datagridsContent"></div>
+        </div>
+    </div>
+</div>
+<script data-main="/js/module/producePlan/proSafeEnviPlan" src="/js/zlib/require.js"></script>
+</body>
+</html>

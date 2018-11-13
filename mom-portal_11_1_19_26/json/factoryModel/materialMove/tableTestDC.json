@@ -1,0 +1,45 @@
+{
+  "success": "true",
+  "rows": [
+    {
+      "id": "1000001",
+      "F": "F",
+      "materialName": "乙烯1",
+      "material": "乙醇",
+      "qualityGrade":""
+    },
+    {
+      "id": "1000002",
+      "F": "M",
+      "materialName": "乙烯2",
+      "material": "乙醇",
+      "qualityGrade": ""
+    }
+  ],
+  "labels": [
+    {
+      "label": "未指定",
+      "id": "0"
+    },
+    {
+      "label": "优级品",
+      "id": "1"
+    },
+    {
+      "label": "一级品",
+      "id": "2"
+    },
+    {
+      "label": "合格品",
+      "id": "3"
+    },
+    {
+      "label": "等外品",
+      "id": "4"
+    },
+    {
+      "label": "无等级",
+      "id": "5"
+    }
+  ]
+}

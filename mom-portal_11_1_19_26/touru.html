@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>进出场班量</title>
+    <style>
+        #btn-search{
+            top: -5px;
+            position: relative;
+        }
+        tr{
+            height: 50px;
+        }
+        .fa-check-circle{
+            color:#47B523;
+        }
+        .ibox-content-table{
+            overflow-x: scroll !important;
+        }
+        .table-content{
+            width: 2000px;
+        }
+        .ibox-content-title{
+            font-size: 16px;
+            font-weight: 700 !important;
+            color: #000;
+            padding-bottom: 10px;
+            /*padding-left: 10px;*/
+            position: relative;
+            border-bottom: 1px solid rgb(234, 234, 234);
+        }
+        .ibox-tableSon{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body id="touru" class="theme-tight wrapper-gray">
+<div class="ibox">
+    <div class="ibox-title gray-line">
+        <div class="titName clearfix">
+            <span>投入产出</span>
+        </div>
+        <div class="toolbar-form clearfix">
+            <div class="pull-right">
+                <button class="btn btn-save" id="btn-tiqu" ><i class="fa fa-th-large"></i> 重新计算
+                </button>
+                <button class="btn btn-save" id="save-btn" ><i class="fa fa-floppy-o  "></i> 保存
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="ibox-content ibox-content-table">
+        <!--表格区-->
+        <div class="ibox-content table-content">
+            <table id="treeTable">
+
+            </table>
+            <div class="mgt-10 treeTable-count">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span class="treeTable-taps">封账提交记录查询成功,共 <i class="treeTable-num"></i> 条记录</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="ibox-content">
+        <div class="ibox-content-title ">
+            <span>计量信息</span>
+        </div>
+        <div class="ibox-tableSon">
+            <table id="tableSon"></table>
+        </div>
+    </div>
+</div>
+<script data-main="/js/module/material/materialMove/touru" src="/js/zlib/require.js"></script>
+
+</body>
+</html>

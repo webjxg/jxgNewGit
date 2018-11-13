@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>用户管理</title>
+    <style>
+        #companyButton,#primaryPersonButton{
+            position: absolute;
+            top:0;
+            right: 0;
+            height: 30px;
+        }
+        input[type="file"]{
+            display: block;
+            width: 127px;
+            height: 22px;
+            position: absolute;
+            top: 50px;
+        }
+        .select2-container{width:100% !important;}
+        .deptList span{
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-top: 5px;
+            padding: 0 5px;
+        }
+    </style>
+</head>
+
+<body id="userIndexInner" class="wrapper-inner hideScroll">
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysUser/save" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden"/>
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <!--上传头像-->
+            <td class="width-15" rowspan="2"><label class="pull-right">头像：</label></td>
+            <td class="width-35 " rowspan="2">
+                <input id="nameImage" name="photo" maxlength="255" class="input-xlarge" type="hidden" value="0"/>
+                <ol id="nameImagePreview"></ol>
+                <a href="javascript:;" id="filePicker" class="btn btn-primary">选择</a>&nbsp;
+            </td>
+
+            <!--归属公司-->
+            <td class="width-15 active" class="active"><label class="pull-right"><font color="red">*</font>归属公司:</label></td>
+            <td class="width-35" >
+                <input id="companyId" name="companyId" class="form-control" type="hidden" value=""
+                       aria-required="true">
+                <div class="input-group changeCompany">
+                    <input id="companyName" name="companyName" readonly="readonly" type="text" value=""
+                            class="form-control" style="" require="true">
+                    <span class="input-group-btn">
+                        <button type="button" id="companyButton" class="btn   btn-primary  "><i
+                                class="fa fa-search color"></i></button>
+                    </span>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <!--归属岗位-->
+            <td class="width-15 active" class="active"><label class="pull-right">所属岗位:</label></td>
+            <td class="width-35" >
+                <input type="hidden" name="jobTypeList" id="jobTypeListId">
+                <select name="job" id="jobTypeList" class="select2">
+                    <option value="">--请选择--</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <!--归属部门-->
+            <td class="active">
+                <label class="pull-right">
+                    归属部门:
+                </label>
+            </td>
+            <td>
+                <input id="officeId" name="office.id" class="form-control" type="hidden" value="4" >
+                <div class="input-group deptList"></div>
+            </td>
+            <!--工号-->
+            <td class="active">
+                <label class="pull-right">
+                    <font color="red">*</font>工号:
+                </label>
+            </td>
+            <td>
+                <input id="no" name="no" class="form-control" require="true" type="text" value="" maxlength="50"/>
+            </td>
+        </tr>
+        <tr>
+            <!--姓名-->
+            <td class="active">
+                <label class="pull-right">
+                    <font color="red">*</font>姓名:
+                </label>
+            </td>
+            <td>
+                <input id="name" name="name" class="form-control" require="true" type="text" value="" maxlength="50"/>
+            </td>
+            <!--登录名-->
+            <td class="active">
+                <label class="pull-right">
+                    <font color="red">*</font>登录名:
+                </label>
+            </td>
+            <td>
+                <input id="oldLoginName" name="oldLoginName" type="hidden" value="">
+                <input id="loginName" name="loginName" class="form-control userName" require="true" type="text" value="" maxlength="50"/>
+            </td>
+        </tr>
+        <tr class="passwordTr">
+            <!--密码-->
+            <td class="active">
+                <label class="pull-right">密码:</label>
+            </td>
+            <td>
+                <input id="newPassword" name="newPassword" type="password" value=""  maxlength="50" minlength="3"
+                       class="form-control "/>
+            </td>
+            <!--确认密码-->
+            <td class="active">
+                <label class="pull-right">确认密码:</label>
+            </td>
+            <td>
+                <input id="confirmNewPassword" name="confirmNewPassword" type="password"  class="form-control " value=""
+                       maxlength="50" minlength="3" dataType="ConfirmPwd"  to="newPassword"/>
+            </td>
+        </tr>
+        <tr>
+            <!--邮箱-->
+            <td class="active">
+                <label class="pull-right">邮箱:</label>
+            </td>
+            <td>
+                <input id="email" name="email" class="form-control" dataType="Email" type="text" value="" maxlength="100"/>
+            </td>
+            <!--电话-->
+            <td class="active">
+                <label class="pull-right">电话:</label>
+            </td>
+            <td>
+                <input id="phone" name="phone" class="form-control" dataType="Tel" type="text" value="" maxlength="100"/>
+            </td>
+        </tr>
+        <tr>
+            <!--手机-->
+            <td class="active">
+                <label class="pull-right">手机:</label>
+            </td>
+            <td>
+                <input id="mobile" name="mobile" class="form-control" dataType="Mobile" type="text" value="" maxlength="100"/>
+            </td>
+            <!--用户状态-->
+            <td class="active">
+                <label class="pull-right">用户状态:</label>
+            </td>
+            <td>
+                <select id="loginFlag" name="enable" class="form-control">
+                    <option value="1">可用</option>
+                    <option value="0">禁用</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <!--用户角色-->
+            <td class="active">
+                <input type="text" name="roleName" hidden="hidden" value="">
+                <label class="pull-right">用户角色:</label>
+            </td>
+            <td colspan="3">
+                <input id="rolenrrameId" name="roleNameId" class="form-control" type="hidden" value="">
+                <div class="input-group" id="ppalert">
+                    <select  id="roleName" name="roleIdList" readonly="readonly"  class="select2 multiple" ></select>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <!--备注-->
+            <td class="active">
+                <label class="pull-right">备注:</label>
+            </td>
+            <td colspan="3">
+                <textarea id="remarks" name="remark" maxlength="200" class="form-control" rows="2"></textarea>
+            </td>
+        </tr>
+        <tr class="tableFoot" >
+            <td class="w-15">
+                <span class="pull-left">创建时间:</span>
+            </td>
+            <td class="w-35">
+                <input type="text" id="createDate" readonly="readonly" name="createDate" class="form-control">
+            </td>
+            <td class="w-15">
+                <span class="pull-left">修改时间:</span>
+            </td>
+            <td class="w-35">
+                <input type="text" readonly="readonly" name="updateDate" class="form-control">
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/systemSettings/userIndex" src="/js/zlib/require.js"></script>
+</body>
+</html>

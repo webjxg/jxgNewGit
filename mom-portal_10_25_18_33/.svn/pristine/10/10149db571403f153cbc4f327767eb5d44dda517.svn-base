@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>MOM车间编辑</title>
+</head>
+
+<body id="momWorkshopView" class="wrapper-white">
+<form id="inputForm" class="input-form" action="$Api.mtrl$/api/fm/Workshop/save" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="form-table table">
+        <tbody>
+        <tr>
+            <td class="width-15 active require">
+                车间编号:
+            </td>
+            <td class="width-35">
+                <input id="wspNo" name="wspNo" class="form-control " require="true"  type="number" value="" maxlength="50">
+            </td>
+            <td class="width-15 active require">
+               车间编码:
+            </td>
+            <td class="width-35">
+                <input id="wspCode" name="wspCode" class="form-control " require="true"  type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active require">
+                车间名称:
+            </td>
+            <td class="width-35">
+                <input id="wspName" name="wspName" class="form-control " require="true"  type="text" value="" maxlength="50">
+            <td class="width-15 active require">
+                车间别名:
+            </td>
+            <td class="width-35">
+                <input id="wspAlias" name="wspAlias" class="form-control " require="true"  type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label class="pull-right">MOM工厂:</label>
+            </td>
+            <td class="width-35">
+                <select name="fctr.id" id="fctr" class="form-control">
+                </select>
+            </td>
+            <td class="width-15 active">
+                <label class="pull-right">显示顺序:</label>
+            </td>
+            <td class="width-35">
+                <input id="displayOrder" name="displayOrder" class="form-control" placeholder="1000以下" dataType="Range" min="0" max="1000" type="number"  value="" maxlength="4" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label class="pull-right">启用标识:</label>
+            </td>
+            <td class="width-35">
+                <input type="checkbox" name="enable" class="i-checks" value="1" checked>
+                <!--<select name="useFlag" id="useFlag" class="form-control">-->
+                    <!--<option value="1">启用</option>-->
+                    <!--<option value="0">禁用</option>-->
+                <!--</select>-->
+            </td>
+            <td class="width-15 active">
+                <label class="pull-right">说明:</label>
+            </td>
+            <td class="width-35">
+                <input id="remark" name="remark" class="form-control" type="text" value="">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/material/factoryModels/momWorkshop" src="/js/zlib/require.js"></script>
+</body>
+</html>

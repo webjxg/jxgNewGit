@@ -1,0 +1,259 @@
+require(['/js/zlib/app.js'], function (App) {
+    var PageModule = {
+        //字典树
+        planDicInit: function () {
+            $('#officeContent').attr('src', 'planDicInner.html');
+            Api.ajaxForm(Api.aps + '/api/aps/Dict/tree', {}, function (da) {
+                zTree(da)
+            });
+            page(0);
+            function zTree(da) {
+                var data = da.rows;
+                var zTreeObj;
+                // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+                var setting = {
+                    data: {
+                        simpleData: {
+                            enable: true,   //设置是否使用简单数据模式(Array)
+                            idKey: "id",    //设置节点唯一标识属性名称
+                            pIdKey: "pId"      //设置父节点唯一标识属性名称
+                        },
+                        key: {
+                            name: "name",//zTree 节点数据保存节点名称的属性名称
+                            title: "name"//zTree 节点数据保存节点提示信息的属性名称
+                        }
+                    },
+                    callback: {
+                        onClick: function (e, treeId, node) {
+                            if (node.id) {
+                                rendersun(node.id)
+                            }
+                        }
+                    }
+
+                };
+                // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+                var zNodes = data;
+                require(['/js/plugins/ztree/js/jquery.ztree.core.js'],function () {
+                    var treeObj = $.fn.zTree.init($("#tree"), setting, zNodes);
+                })
+                //执行ztree
+
+            }
+
+            function rendersun(data) {
+                page(data);
+            }
+
+            function page(node) {
+                Api.ajaxJson(Api.aps + "/api/aps/Dict/ajaxTreeJson/" + node, {}, function (tableData) {
+                    if (tableData.success) {
+                        PageModule.renderTableData(tableData.rows);
+                        clickButton();
+                    } else {
+                        Mom.layMsg(tableData.message)
+                    }
+
+                })
+            }
+
+            function clickButton() {
+                $('.btn-check').click(function () {
+                    var id = $(this).parents("tr").find('.i-Checks').attr('id');
+                    Bus.openDialog('查看指标信息', './producePlan/planDicCheckView.html?id=' + id, '800px', '300px')
+                });
+                $('.btn-change').click(function () {
+                    var id = $(this).parents("tr").find('.i-Checks').attr('id');
+                    Bus.openEditDialog('修改指标信息', './producePlan/planDicCheckView.html?id=' + id, '800px', '300px')
+                });
+                $('.btn-delete').click(function () {
+                    var id = $(this).parents("tr").find('.i-Checks').attr('id');
+                    Bus.deleteItem('确定要删除该指标吗', Api.aps+'/api/aps/Dict/delete/', id)
+                });
+                $('.btn-addson').click(function () {
+                    var id = $(this).parents("tr").find('.i-Checks').attr('id');
+                    Bus.openEditDialog('添加下级菜单', './producePlan/planDicCheckView.html?pid=' + id, '800px', '300px')
+                });
+                //test start Qiyh
+                var data_ =[{ id: "025797c5df3b4d6dbfd24352323d36ff1",itemCode: "zljh",itemMonthValue: "1255",itemName: "质量计划",itemUnit: "kg",itemValue: "4444",remark: null,_parentId:"f5a91bf3d12149318d02f60032436ae5"},{ id: "025797c5df3b4d6dbfd24352323d36ff33",itemCode: "zljh",itemMonthValue: "1255",itemName: "质量计划11",itemUnit: "kg",itemValue: "4444",remark: null,_parentId:"025797c5df3b4d6dbfd24352323d36ff11"}];
+                var ii =-1;
+                $('#treeTable').unbind('click').on('click','.btn-addrow',function(){
+                   ii++;
+                    var trId = $(this).parents("tr").attr('data-tt-id'); //获取父级tr中自定义data-tt-id的值
+                    var trIdEle  = $('tr[data-tt-id='+trId+']');  //找到自定义属性data-tt-id且属性值为trId的tr
+
+                    var data=[];
+                    var tableStr = "";
+                    data.push( data_[ii]);
+                    for (var i = 0; i < data.length; i++) {
+                        var count = 'data-tt-id=' + data[i].id+(i+1);
+                        if (data[i]._parentId && data[i]._parentId != '') {
+                            count += '  data-tt-parent-id=' + data[i]._parentId;
+                        }
+                        var ab= '',classAA='';
+                        if(ii == 0){
+                            ab+= '<span class="indenter" style="padding-left: 0px;"><a href="#" title="Collapse">&nbsp;</a></span>';
+                            classAA = "branch collapsed";
+                        }else{
+                            classAA = "leaf collapsed";
+                        }
+                        tableStr += "<tr class='alignCenter autoWidth "+classAA+" '" + count + " >"
+                            + "<td class='i-Checks alignLeft autoWidth' id='" + data[i].id+(i+1)+ "'>"+ab + data[i].itemName+i + "</td>"
+                            + "<td class='alignLeft autoWidth'>" + data[i].itemCode + "</td>"
+                            + "<td>" + data[i].itemValue + "</td>"
+                            + "<td>" + data[i].itemMonthValue + "</td>"
+                            + "<td>" + data[i].itemUnit + "</td>"
+                            + "<td class='autoWidth' >" +
+                            "<a class='btn  btn-info btn-check'><i class='fa fa-search-plus'></i>查看</a>" +
+                            " <a class='btn btn-success btn-change'><i class='fa icon-change'></i>修改</a>" +
+                            " <a class='btn bg-f75c5c btn-delete'><i class='fa fa-trash'></i> 删除</a>" +
+                            " <a class='btn  btn-addson btn-target'><i class='fa fa-plus'></i>添加下级指标</a>" +
+                            " <button type='button' class='btn btn-editrow'>修改行test</button>" +
+                            " <button type='button' class='btn btn-addrow'>添加行test</button>" +
+                            "</td>"
+
+                            + "</tr>";
+                        ii++;
+                    }
+                    $(tableStr).insertAfter(trIdEle);//新行插入到自己后面
+
+
+                  /*  var addNewTr = $('tr.initTr[data-tt-parent-id='+trId+']');  //找到新增的类名为initTr且ata-tt-parent-id属性值为trId的tr
+                    if($('#treeTable tr.initTr[data-tt-parent-id='+trId+']').hasClass('expanded')){
+                        $(addNewTr).css({'display':'table-row'});
+                    }else{
+
+                        $(addNewTr).css({'display':'none'});
+                    }
+
+                    $('#treeTable tr[data-tt-id='+trId+']').on('click','span.indenter a',function(){
+                        console.log($(this).parents('tr').html());
+                        if(($(this).parents('tr').hasClass('collapsed'))){
+                            $('tr.initTr[data-tt-parent-id='+trId+']').css({'display':'none'})
+                        }else{
+                            console.log('table-row');
+                            $('tr.initTr[data-tt-parent-id='+trId+']').css({'display':'table-row'})
+                        }
+                    });*/
+
+                    require(['/js/plugins/treetable/jquery.treetable.js'],function () {
+                        $("#treeTable").treetable({},true);
+                        clickButton();
+                       /* $('span.indenter').find('a').trigger('click');*/
+
+                    })
+                    /*$(trIdEle).find('span.indenter').find('a').click(function(){
+                        console.log(1)
+                        if(($(this).parents('tr').hasClass('collapsed'))){
+                            console.log('none');
+                            $('tr.initTr[data-tt-parent-id='+trId+']').css({'display':'none'})
+                        }else{
+                            console.log('table-row');
+                            $('tr.initTr[data-tt-parent-id='+trId+']').css({'display':'table-row'})
+                        }
+                    });*/
+
+                });
+                $('.btn-editrow').click(function(){
+                    var _tr = $(this).parent().parent();
+                    var _html = "<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>添加行｜修改行</td>";
+                    $(_tr).html(_html);
+                    console.log(_tr);
+                });
+                //test end
+            }
+
+        },
+        //渲染表
+        renderTableData: function (data) {
+
+            var tableStr = "";
+            for (var i = 0; i < data.length; i++) {
+                var count = 'data-tt-id=' + data[i].id;
+                if (data[i]._parentId && data[i]._parentId != '') {
+                    count += '  data-tt-parent-id=' + data[i]._parentId;
+                }
+                tableStr += "<tr class='alignCenter autoWidth'" + count + " >"
+                    + "<td class='i-Checks alignLeft autoWidth' id='" + data[i].id + "'>" + data[i].itemName + "</td>"
+                    + "<td class='alignLeft autoWidth'>" + data[i].itemCode + "</td>"
+                    + "<td>" + data[i].itemValue + "</td>"
+                    + "<td>" + data[i].itemMonthValue + "</td>"
+                    + "<td>" + data[i].itemUnit + "</td>"
+                    + "<td class='autoWidth' >" +
+                    "<a class='btn  btn-info btn-check'><i class='fa fa-search-plus'></i>查看</a>" +
+                    " <a class='btn btn-success btn-change'><i class='fa icon-change'></i>修改</a>" +
+                    " <a class='btn bg-f75c5c btn-delete'><i class='fa fa-trash'></i> 删除</a>" +
+                    " <a class='btn  btn-addson btn-target'><i class='fa fa-plus'></i>添加下级指标</a>" +
+                    " <button type='button' class='btn btn-editrow'>修改行test</button>" +
+                    " <button type='button' class='btn btn-addrow'>添加行test</button>" +
+                    "</td>"
+
+                    + "</tr>";
+            }
+            if (tableStr.length == 0) {
+                var len = $("#treeTable thead tr").children("th").length;
+                tableStr = "<tr style='text-align: center'><td colspan='" + len + "'><font color='#cd0a0a'>暂无记录，请点击左侧对应指标</font></td></tr>";
+            }
+            $('#treeTableBody').html(tableStr);
+            require(['/js/plugins/treetable/jquery.treetable.js'],function () {
+                $("#treeTable").treetable({
+                    expandable: true,
+                    column: 0
+                }, true);
+            })
+        },
+        /**字典数查看新增编辑*/
+        //字典数查看编辑
+        planDicCVInit:function () {
+            $('#inputForm').attr('action',Api.aps+'/api/aps/Dict/save');
+            var id = Mom.getUrlParam('id');
+            var pId = Mom.getUrlParam('pid');
+            $('#id').val(id);
+            if (id == null && pId == null) {
+                $('#parentIdH').val(0);
+            } else {
+                if (id == null) {
+                    var url = Api.aps+"/api/aps/Dict/view/" + pId;
+                    Api.ajaxJson(url, {}, function (result) {
+                        if (result.success) {
+                            SysOrg = result.apsDict;
+                            var id = SysOrg.id;
+                            $('#parentIdH').val(id);
+                            $('#_parentId').val(result.apsDict.itemName);
+
+                        } else {
+                            Mom.layMsg(result.message);
+                        }
+                    });
+                } else {
+                    var url = Api.aps+"/api/aps/Dict/view/" + id;
+                    Api.ajaxJson(url, {}, function (result) {
+                        if (result.success) {
+                            SysOrg = result.apsDict;
+                            var parentid = SysOrg.parentId;
+                            $('#parentIdH').val(parentid);
+                            Validator.renderData(SysOrg, $('#inputForm'));
+                            /*渲染parentName*/
+                            Validator.renderData(result, $('#inputForm'));
+
+                        } else {
+                            Mom.layMsg(result.message);
+                        }
+                    });
+                }
+            }
+        }
+
+    };
+
+$(function () {
+    //参数配置列表
+    if ($('#planDicIndex').length > 0) {
+        PageModule.planDicInit()
+    }else if($('#planDicCheckView').length > 0){
+        PageModule.planDicCVInit()
+    }
+});
+
+})
+;

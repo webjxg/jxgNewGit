@@ -1,0 +1,150 @@
+/**
+ * Created by admin on 2018/9/24.
+ */
+require(['/js/zlib/app.js'], function (App) {
+    var PageModel = {
+        init:function () {
+            require(["Page"],function () {
+
+                // Bus.createSelect(Api.admin + "/api/sys/SysDict/Type/TANK_TYPE", "#slineMtrlType", 'type', 'type');
+
+                //加载罐类型下拉
+                Api.ajaxForm(Api.admin + "/api/sys/SysDict/type/TANK_TYPE",{},function(result){
+                    Bus.appendOptionsValue('#tankType',result.rows,'value','label');
+                });
+                //加载界区下拉
+                Api.ajaxJson(Api.mtrl+"/api/fm/NodeArea/list",JSON.stringify({}),function(result){
+                    Bus.appendOptionsValue('#nodeAreaId',result.rows,'id','areaName');
+                });
+                var page = new Page();
+                window.pageLoad = function () {
+                    var data = {
+                        nodeCode:$("#nodecode").val(),
+                        nodename:$("#nodename").val(),
+                        tankType:$("#slineMtrlType option:selected").val(),     //罐类型
+                        nodeAreaId:$("#nodeAreaId option:selected").val()           //罐区
+                    };
+                    page.init(Api.mtrl+"/api/fm/NodeTank/page",data,true,function (result) {
+                        PageModel.createTable(result);
+                        //编辑按钮
+                        $(".tableEdit").click(function () {
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('修改罐','../material/factoryModels/potTinInner.html?id='+id,'770px','666px');
+                        });
+                        //新增
+                        $("#btn-add").unbind("click").on("click",function () {
+                            Bus.openEditDialog('新增罐','../material/factoryModels/potTinInner.html','770px', '666px')
+                        });
+                        //编辑
+                        $("#btn-edit").unbind("click").on("click",function () {
+                            Bus.editCheckedTable('修改罐','../material/factoryModels/potTinInner.html','770px','666px','#treeTable')
+                        });
+                        //删除
+                        $(".btn-delete").click(function () {
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.deleteItem('确定要删除该罐', Api.mtrl + '/api/fm/NodeTank/delete',{ids:id});
+                        });
+                        //点击重置按钮
+                        $('#reset-btn').unbind('click').on("click",function () {
+                            $("#nodecode").val('');
+                            $("#nodename").val('');
+                            $("#tankType option:first").prop("selected", 'selected');
+                            $("#nodeAreaId option:first").prop("selected", 'selected');
+                            page.reset(["nodecode", "nodename","tankType","nodeAreaId"]);
+                        });
+                    })
+                };
+                window.pageLoad();
+            })
+        },
+        checkInit:function () {
+            var id = Mom.getUrlParam("id");
+            Api.ajaxForm(Api.mtrl+"/api/fm/NodeTank/form/"+id,{},function (result) {
+                if(result.success){
+                    Bus.appendOptionsValue('#tankType',result.tankTypeList,'value','label');
+                    Bus.appendOptionsValue('#nodeAreaId',result.nodeAreaList,'id','areaName');
+                   if(id){
+                       $("#tankType option").each(function () {
+                           if(result.row.tankType == $(this).attr('value')){
+                               $(this).attr("selected",true);
+                           }
+                       });
+                       Validator.renderData(result.row, $('#inputForm'));
+                       $('#nodeNo').attr('readonly', 'readonly');
+                   }
+                }else{
+                    Mom.layMsg(result.message);
+                }
+            })
+
+        },
+        createTable:function (dataTable) {
+            console.log(dataTable)
+            $('#treeTable').dataTable({
+                "bSort": true,
+                "aoColumnDefs": [
+                    {"bSortable": false, "aTargets": [0, 2, 4, 6]}
+                ],
+                "data": dataTable,
+                "aoColumns": [
+                    {"data": null, "defaultContent":"", 'sClass': "autoWidth alignCenter",
+                        "render":function(data, type, row, meta) {
+                            return data = "<input type='checkbox' id=" + row.id + " class='i-checks'>"
+                        }
+                    },
+                    {"data": "nodeNo", 'sClass': "alignCenter "},
+                    {"data": "nodeCode", 'sClass': "alignCenter"},
+                    {"data": "nodename", 'sClass': "alignCenter "},
+                    {"data": "nodeAlias", 'sClass': "alignCenter "},
+                    {"data": "tankTypeLabel", 'sClass': "alignCenter "},
+                    {"data": "area.areaName", 'sClass': "alignCenter "},
+                    {"data": "tankHgt", 'sClass': "alignCenter "},
+                    {"data": "pres", 'sClass': "alignCenter "},
+                    {"data": "id", "orderable": false, "defaultContent": "", 'sClass': " alignCenter autoWidth",
+                        "render": function (data, type, row, meta) {
+                            return "<i class='fa gray-check-"+row.enable+"'></i>";
+                        }
+                    },
+                    {"data": "stkhsFlag", 'sClass': "alignCenter ",
+                        "render": function (data, type, row, meta) {
+                            return "<i class='fa gray-check-"+row.stkhsFlag+"'></i>";
+                        }
+                    },
+                    {"data": "fltPlatWgt", 'sClass': "alignCenter " },
+                    {"data": "tankHtPret", 'sClass': "alignCenter ",
+                        "render": function (data, type, row, meta) {
+                            return "<i class='fa gray-check-"+row.tankHtPret+"'></i>";
+                        }
+                    },
+                    {"data": "fltPlatPerhgt", 'sClass': "alignCenter "},
+                    {"data": "tankTotlCuba", 'sClass': "alignCenter "},
+                    {"data": "fltTipLst", 'sClass': "alignCenter "},
+                    {"data": "tankMaxHgt", 'sClass': "alignCenter "},
+                    {"data": "tankMinHgt", 'sClass': "alignCenter "},
+                    {"data": "displayOrder", 'sClass': "alignCenter "},
+                    {"data": "remark", 'sClass': "alignCenter "},
+                    {
+                        "data": null, "orderable": false, "defaultContent": "", 'sClass': "alignCenter autoWidth",
+                        "render": function (data, type, row, meta) {
+                            var html = "<a class='btn-edit' title='编辑'>" +
+                                "<i class='fa tableEdit fa-edit'></i>"+
+                                "</a>"+
+                                "<a class='btn-delete' title='删除'>" +
+                                "<i class='fa fa-trash'></i>"+
+                                "</a>";
+                            return  html;
+                        }
+                    }
+                ]
+            });
+            renderIChecks();
+        }
+    }
+    $(function () {
+        if($("#potTin").length>0){
+            PageModel.init();
+        }else if($("#potTinInner").length>0){
+            PageModel.checkInit();
+        }
+    })
+});

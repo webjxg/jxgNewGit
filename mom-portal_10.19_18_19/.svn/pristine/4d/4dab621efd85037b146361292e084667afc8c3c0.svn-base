@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参数管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--插件样式-->
+    <link rel="stylesheet" href="../../js/plugins/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../css/comInnerTable.css">
+
+</head>
+
+<body id="planTempCheckView">
+<form id="inputForm" class="form-horizontal" method="post">
+    <input id="id" name="id" type="hidden" />
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15" ><label class="pull-right"><font color="red">*</font>模版名称:</label></td>
+            <td class="width-35">
+                    <input id="opeName" name="name"  require="true" type="text" value=""  class="form-control valid">
+
+                <label id="proName-error" class="error" for="opeName" style="display:none"></label>
+            </td>
+            <td class="width-15" ><label class="pull-right"><font color="red">*</font>模版类型:</label></td>
+            <td class="width-35">
+                <select id="opeCode" name="type" require="true"   class="form-control valid select2" style="" ></select>
+                <label id="proCode-error" class="error" for="opeCode" style="display:none"></label>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15">
+                <label class="pull-right">
+                    是否启用：
+                </label>
+            </td>
+            <td>
+                <select id="enable" name="enable"  class="form-control">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/producePlan/planTemple" src="/js/zlib/require.js"></script>
+</body>
+</html>

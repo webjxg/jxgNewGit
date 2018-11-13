@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>参数管理</title>
+</head>
+
+<body id="paramConfigCheckView" class="wrapper-content hideScroll">
+<i id="btnMenu" class="icon-th-list" style="cursor:pointer;float:right;margin:10px;"></i>
+<form id="inputForm" class="form-horizontal" action="$Api.aps$/api/aps/Configure/save" method="post">
+    <input id="id" name="id" type="hidden" />
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15" ><label class="pull-right"><font color="red">*</font>参数:</label></td>
+
+            <td class="width-35">
+                <input id="opeName" maxlength="100" require="true" name="paramCode" type="text" value=""  class="form-control" style="">
+                <label id="proName-error" class="error" for="opeName" style="display:none"></label>
+            </td>
+
+
+        </tr>
+        <tr>
+            <td class="width-15" ><label class="pull-right"><font color="red">*</font>数值:</label></td>
+
+            <td class="width-35">
+                <input id="opeCode" maxlength="100" require="true" dataType="Double" name="value" type="text" value=""  class="form-control" style="">
+                <label id="proCode-error" class="error" for="opeCode" style="display:none"></label>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="width-15" >
+                <label class="pull-right"><font color="red">*</font>参数说明:
+                </label>
+            </td>
+            <td class="width-60">
+                <textarea id="remarks" name="remark" maxlength="100" class="form-control" rows="6 "></textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script data-main="/js/module/producePlan/paramConfig" src="/js/zlib/require.js"></script>
+</body>
+</html>

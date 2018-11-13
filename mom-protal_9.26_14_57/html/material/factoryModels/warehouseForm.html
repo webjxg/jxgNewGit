@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>仓库弹出页</title>
+</head>
+<body id="warehouseForm" class="wrapper-white">
+<form id="inputForm" class="input-form" action="$Api.admin$/api/unit/update" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="" >
+    <table class="form-table table">
+        <tbody>
+        <tr>
+            <td class="width-15 active require">仓库编号:</td>
+            <td class="width-35">
+                <input id="areaNo" name="areaNo" class="form-control " require="true" type="number" value=""  placeholder="200000-299999" dataType="Range" min="200000" max="299999" ></td>
+            <td class="width-15 active require">仓库编码:</td>
+            <td class="width-35">
+                <input id="areaCode" name="areaCode" class="form-control "  require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="active require">仓库名称:</td>
+            <td >
+                <input id="areaName" name="areaName" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+            <td class="active require">料线别名:</td>
+            <td>
+                <input id="areaAlias" name="areaAlias" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="active">仓库类型:</td>
+            <td >
+                <select name="stockType" id="stockType" class="form-control">
+                    <option value="0">请选择</option>
+                </select>
+            </td>
+            <td class="active">MOM车间:</label></td>
+            <td>
+                <select name="wspId" id="wspId" class="form-control">
+                    <option value="0">请选择</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">启动标识:</td>
+            <td>
+                <input type="checkbox" name="useFlag" class="i-checks" value="1" checked>
+            </td>
+            <td class="active">说明:</td>
+            <td>
+                <input name="des" id="des" class="form-control"  />
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/material/factoryModels/warehouse" src="/js/zlib/require.js"></script>
+
+
+</body>
+</html>

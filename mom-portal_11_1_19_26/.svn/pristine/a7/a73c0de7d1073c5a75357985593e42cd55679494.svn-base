@@ -1,0 +1,35 @@
+var url, data, defaultVals, setting;
+window.setConfig=function(url_, data_, defaultVals_, setting_) {
+    url=url_, data=data_, defaultVals=defaultVals_, setting=setting_;
+}
+require(['/js/zlib/app.js'], function(App) {
+    //获取参数
+    var multiple = Mom.getUrlParam('multiple')||'false';//是否多选
+    var noRoot = Mom.getUrlParam('noRoot')||'false';//是否不能选择根节点
+    var onlyLeaf = Mom.getUrlParam('onlyLeaf')||'false';//是否只能选择叶子节点
+    var showSearch = Mom.getUrlParam('showSearch')||'true';//是否显示搜索框
+    if(!showSearch){
+        $('.searchGroup').hide();
+    }
+    //加载ztree插件
+    require(['ztree_my'], function(ZTree) {
+        var ztree = new ZTree();
+        window.loadDataFn = function (url, data, defaultVals,setting) {
+            Api.ajaxJson(url, data, function (result) {
+                if (result.success) {
+                    var treeObj = ztree.loadData($('#tree'), result.rows, multiple, setting);
+                    ztree.checkDefaultVal(treeObj, defaultVals);
+                } else {
+                    Mom.layMsg(result.message);
+                }
+            });
+        };
+        window.getCheckValues = function() {
+            var treeObj = ztree.treeObj;
+            return ztree.getCheckValues(noRoot, onlyLeaf);
+        }
+        //立即调用
+        loadDataFn(url, data, defaultVals, setting);
+    });
+
+});

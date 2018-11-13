@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>XX弹出页</title>
+</head>
+<body id="form" class="wrapper-white">
+    <form id="inputForm" class="input-form" action="$Api.admin$/api/sys/SysDict/save" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="" >
+    <table class="form-table table">
+        <tbody>
+        <tr>
+            <td class="width-15 active">
+                <label>
+                    <font color="red">*</font> 物料编号:
+                </label>
+            </td>
+            <td class="width-35">
+                <input id="value" name="mtrlNumber" class="form-control " require="true" type="number" value=""  placeholder="3000以上" dataType="Range" min="3000" ></td>
+            <td class="width-15 ">
+                <label >
+                    <font color="red">*</font>物料编码:
+                </label>
+            </td>
+            <td class="width-35">
+                <input id="label" name="mtrlCode" class="form-control "  require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 ">
+                <label >
+                    <font color="red">*</font>物料名称:
+                </label>
+            </td>
+            <td class="width-35">
+                <input id="type" name="mtrlName" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+            <td class="width-15 active">
+                <label >
+                    <font color="red">*</font>
+                    物料别名:</label>
+            </td>
+            <td class="width-35">
+                <input id="description" name="mtrlDes" class="form-control" require="true" type="text" value="" maxlength="50">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label >物料类型:</label>
+            </td>
+            <td class="width-35">
+                <select name="mtrlType" id="mtrl-type" class="form-control">
+                    <option value="1">
+                        adf
+                    </option>
+                </select>
+            </td>
+            <td class="width-15 active">
+                <label >量纲:</label>
+            </td>
+            <td class="width-35">
+                <select name="mtrlDim" id="dimension" class="form-control">
+                    <option value="1">
+                        adf11
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label  >启动标识:</label>
+            </td>
+            <td class="width-35">
+                <div class="form-checked">
+                    <input id="mtrl-enable"  type="checkbox" name="mtrlEnable" value="1" checked>
+                    <label for="mtrl-enable"> <i class='fa fa-check-square-o isChecked '></i> <i class='fa fa-square-o unCheck'></i> </label>
+                </div>
+            </td>
+            <td class="width-15 active">
+                <label >说明1:</label>
+            </td>
+            <td class="width-35">
+                <input name="mtrlRemark1" id="remark1" class="form-control"  />
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label >说明2:</label>
+            </td>
+            <td class="width-35" colspan="3">
+                <textarea name="mtrlRemark2" id="remark2" class="form-control"  rows="3"></textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/html/0_0/js/list" src="/js/zlib/require.js"></script>
+
+
+</body>
+</html>

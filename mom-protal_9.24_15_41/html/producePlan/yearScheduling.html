@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>月排产页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/datagrid.css">
+    <link rel="stylesheet" href="../../css/customDatagrid.css">
+    <link rel="stylesheet" href="../../css/aps.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <style>
+        .panel-body{
+            border-top: none;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .datagrid-header-inner,.datagrid-header-row{
+            background: #1ab394 !important;
+        }
+        .datagrid-header-row td{
+            color:#fff;
+        }
+        .schOp-item input{
+            width: 120px;
+            height: 30px;
+            border: 1px solid gainsboro;
+            border-radius: 3px;
+            outline: none;
+            padding:0 5px;
+        }
+        .schOp-item input:focus{
+            border-color:#1ab394 !important;
+        }
+
+        .customTable tbody tr td {
+            width: 100px;
+            white-space: nowrap;
+        }
+        .customTable tbody input{border:1px solid #1ab394;}
+        .customTable tbody input.edited{color: #1ab394;}
+        table thead th {position: relative;}
+        table thead th i.fa {
+            font-size: 20px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        table thead th i.fa-edit{
+            display: none;
+        }
+    </style>
+</head>
+<body id="yearScheduling" class="wrapper-gray">
+    <div class="ibox">
+        <div class="ibox-content">
+            <h1 class="titName ">装置运转计划</h1>
+            <div class="scheduling-option clearfix mgv-10">
+                <div class="pull-right">
+                    <button class="btn btn-back btn-white" id="back-btn">
+                        <i class="fa fa-reply"></i> 返回
+                    </button>
+                    <button class="btn  btn-submit hidden " id="btn-submit" type="button" data-status="1">
+                        <i class="fa fa-upload"></i>
+                        提交
+                    </button>
+                </div>
+                <div class="schOp-item schOp-sc">
+                    <!--<cite><i></i></cite>-->
+                    <!--<span>-->
+                    实产:<input type="number" id="scValue" value="" placeholder="">
+
+                    <!--</span>-->
+                </div>
+                <div class="schOp-item schOp-ps">
+                    <!--<cite><i></i></cite>-->
+                    <!--<span>-->
+                    焙烧:<input type="number" id="psValue" value="" placeholder="">
+
+                    <!--</span>-->
+                </div>
+            </div>
+            <div class="dataGridList">
+                <div class="tableItemBox">
+                    <div style="border: 1px solid #dddddd; border-radius: 4px;  overflow: hidden;">
+                        <table id="td0" class="customTable" >
+                            <thead></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tableItemBox">
+                    <div class="titName">原料计划</div>
+                    <table id="td1" class="tableItem" >
+                    </table>
+                </div>
+                <div class="tableItemBox">
+                    <div class="titName">消耗计划</div>
+                    <table id="td2" class="tableItem" >
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script data-main="/js/module/producePlan/yearScheduling" src="/js/zlib/require.js"></script>
+</body>
+</html>

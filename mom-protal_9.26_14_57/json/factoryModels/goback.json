@@ -1,0 +1,85 @@
+{
+  "message": "操作成功",
+  "item": {
+    "id": "0000001",
+    "nodeNo": "1",
+    "nodeCode": "2",
+    "nodename": "1",
+    "nodeAlias": "1",
+    "unitCode": "1",
+    "unitName": "1",
+    "slineMtrlType": "1",
+    "slineInoutType": "1",
+    "refSidelineId": "1",
+    "pres": "1",
+    "isRvs": "1",
+    "displayOrder": "1",
+    "useFlag": "0",
+    "des": "1",
+    "areaNo":"123",
+    "areaCode":"123",
+    "areaName":"123",
+    "areaAlias":"123",
+    "wspId":"2",
+    "stockType":"3",
+    "remake":"123"
+  },
+  "rows": [
+    {
+      "id": "1",
+      "label": "参数1",
+      "remark": "123",
+      "sort": "1",
+      "type": "12",
+      "value": "1"
+    },
+    {
+      "id": "2",
+      "label": "参数2",
+      "remark": "321",
+      "sort": "2",
+      "type": "12",
+      "value": "2"
+    },
+    {
+      "id": "3",
+      "label": "参数3",
+      "remark": "",
+      "sort": "3",
+      "type": "12",
+      "value": "3",
+      "children":[
+        {
+          "id": "1",
+          "label": "子参数1",
+          "remark": "123",
+          "sort": "1",
+          "type": "12",
+          "value": "1"
+        },
+        {
+          "id": "2",
+          "label": "子参数1",
+          "remark": "321",
+          "sort": "2",
+          "type": "12",
+          "value": "2"
+        },
+        {
+          "id": "3",
+          "label": "子参数1",
+          "remark": "",
+          "sort": "3",
+          "type": "12",
+          "value": "3"
+        }
+      ]
+
+
+    }
+  ],
+  "retCode": "1",
+  "success": "true"
+}
+
+

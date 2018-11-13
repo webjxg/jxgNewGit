@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>操作交接班日志</title>
+    <style>
+        .ibox-content {
+            clear: both;
+            background-color: #ffffff;
+            color: inherit;
+            padding: 8px 15px;
+        }
+        .bg-1ab394 {
+            background: #1ab394;
+            color: #fff;
+        }
+        /*页面布局*/
+        .wrapper {
+            height: 1999px;
+        }
+        .ibox {
+            background-color: #f3f3f4;
+            position: relative;
+        }
+        .ibox > .ibox-content:nth-of-type(1) {
+            margin-bottom: 20px;
+        }
+        .ibox > .ibox-content:nth-of-type(2) {
+            height:100%;
+            width: 100%;
+            float: left;
+            margin-right: 20px;
+        }
+        .ibox > .ibox-content > .ibox-content {
+            width: 100%;
+            height: 98%;
+        }
+        .content-head {
+            border-bottom: 1px solid #fff;
+        }
+        /*时间轴 整体样式设置*/
+        .outerbox {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .outerbox:after {
+            position: absolute;
+            left: 31px;
+            content: "";
+            width: 0;
+            height: 0;
+            display: block;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #1ab394 transparent transparent transparent;
+        }
+        .ibox-content > .pull-left {
+            position: relative;
+        }
+        .linebox {
+            width: 100%;
+            margin-left: 41px;
+            margin-bottom: 30px;
+            position: relative;
+            border-left: 1px solid #ddd;
+        }
+        .clearBoth {
+            clear: both;
+        }
+        /*头部*/
+        div.safe, div.production, div.else {
+            position: relative;
+            height: 10px;
+        }
+        div.safe > span, div.production > span, div.else > span {
+            position: absolute;
+            top: -12px;
+            left: 30px;
+        }
+        i.smallimg {
+            display: block;
+            width: 11px;
+            height: 11px;
+            background-image: url(../../images/shift-smallbtn.jpg);
+        }
+        i.headbigimg {
+            position: absolute;
+            left: -8px;
+            top: -8px;
+            width: 15px;
+            height: 15px;
+            background-image: url(../../images/shift-bigbtn.jpg);
+        }
+        .safebox, .probox, .elsebox {
+            margin-bottom: 45px;
+        }
+        /*内容区*/
+        .newbox {
+            position: relative;
+            width: 80%;
+            height: 75px;
+            margin-top: 20px;
+        }
+        .newbox > textarea {
+            padding: 5px;
+            margin-left: 34px;
+            width: 70%;
+            height: 100%;
+            border: 1px solid #cacaca;
+            border-radius: 3px;
+            resize: none;
+        }
+        .newbox > textarea:focus {
+            outline: none;
+        }
+        .newbox .smallimg {
+            position: absolute;
+            left: -6px;
+            top: 34px;
+        }
+        .newbox > .btn {
+            font-size: 25px;
+            width: 33px;
+            height: 33px;
+        }
+        .newbox > .btnaddr {
+            position: absolute;
+            top: 21px;
+            left: 78%;
+            text-align: center;
+        }
+        .newbox > .btnremove {
+            position: absolute;
+            top: 21px;
+            left: 88%;
+        }
+        /*输入框三角重叠*/
+        .newbox:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 29px;
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0);
+            margin-bottom: -15px;
+            border-right-width: 10px;
+            border-right-color: currentColor;
+            color: rgb(202, 202, 202);
+        }
+        .newbox:after {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 29px;
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent;
+            margin-bottom: -15px;
+            border-right-width: 10px;
+            border-right-color: currentColor;
+            color: #fff;
+        }
+        /*table*/
+        .wrapper>.ibox>.ibox-content>.tablecontent{
+            width: 50%;
+            clear: none;
+            margin-top: 80px;
+            display: none;
+            float:left;
+        }
+        thead th input[type=button]{
+            position: relative;
+            font-weight: 200;
+            border:none;
+            background-color: transparent;
+            color: blue;
+        }
+    </style>
+</head>
+<body id="opeShiftLogIndex">
+<div class="wrapper wrapper-content bg-gray">
+    <div class="ibox">
+        <!--标题 按钮-->
+        <div class="ibox-content">
+            <div>
+                <h1 class="titName">操作交接班日志</h1>
+            </div>
+            <!--班信息-->
+            <div>
+                <span> 日期 : </span><span style="margin-right: 15px" class="date"></span>
+                <span> 班次 : </span><span style="margin-right: 15px" class="shiftName"></span>
+                <span> 班组 : </span><span class="groupName"></span>
+            </div>
+            <!--按钮-->
+            <div class="clearfix">
+                <div class="apsType-box pull-right mgb-10">
+
+
+                </div>
+            </div>
+        </div>
+        <!--内容区-->
+        <div class="ibox-content content">
+            <div class="content-head">
+                <h1 class="titName pull-left">本班日志</h1>
+                <a href="#" class="pull-right checkupclass">查看上一班 <i class="fa fa-angle-double-right"></i></a>
+            </div>
+            <!--左侧里程碑-->
+            <div class="ibox-content pull-left lefttimeline ">
+                <form id="inputForm" class="" action="" method="post">
+                    <div class="btn bg-1ab394 outerbox">岗位记事
+                    </div>
+                    <div class="clearBoth linebox">
+                        <div class="safebox parentbox" id="AQ">
+                            <div class="col-1ab394 safe">
+                                <i class="headbigimg"></i>
+                                <span>安全</span>
+                            </div>
+
+                        </div>
+                        <div class="probox parentbox" id="SC">
+                            <div class="col-1ab394 production">
+                                <i class="headbigimg"></i>
+                                <span>生产</span>
+                            </div>
+
+                        </div>
+                        <div class="elsebox parentbox" id="QT">
+                            <div class="col-1ab394 else">
+                                <i class="headbigimg"></i>
+                                <span>其他</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="btn bg-1ab394 outerbox">交班记事</div>
+                    <div class="clearBoth linebox">
+                        <div class="safebox parentbox giveworktext" id="JBJS">
+
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    <span> 交班人 : </span><span style="margin-right: 15px" class="giveworker"></span>
+                    <span> 接班人 : </span><span style="margin-right: 15px" class="shiftworker"></span>
+                </div>
+            </div>
+            <!--隐藏表格区-->
+            <div class="ibox-content pull-right tablecontent">
+                <table id="treeTable1" title="岗位记事"
+                       class="table table-striped table-bordered table-hover table-condensed dataTables-example dataTable">
+                    <thead>
+                    <tr>
+                        <th colspan="2"
+                            style="text-align: left;font-weight:300; background-color: #F5F5F5 !important;color: #000000">
+                            岗位记事
+                            <input type="button" class="btn hidd"
+                                   style="float:right; font-size: 14px;line-height: 20px;" value="隐藏表格"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="treeTableBody1">
+
+                    </tbody>
+                </table>
+                <table id="treeTable2" title="岗位记事"
+                       class="table table-striped table-bordered table-hover table-condensed dataTables-example dataTable">
+                    <thead>
+                    <tr>
+                        <th colspan="2"
+                            style="text-align: left;font-weight:300; background-color: #F5F5F5 !important;color: #000000">
+                            交班记事
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="treeTableBody2">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script data-main="/js/module/proDis/opeShiftLogIndex" src="/js/zlib/require.js"></script>
+</body>
+</html>

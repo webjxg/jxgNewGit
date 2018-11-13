@@ -1,0 +1,19 @@
+<!--选择树并带有回调函数，有orgSelect可供选择-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>选择树</title>
+</head>
+<!--内容-->
+<body id="selectTree">
+<div id="tree" class="ztree leftBox-content">
+
+</div>
+<script data-main="/js/module/systemSettings/selectTree" src="/js/zlib/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>新增物料弹出页</title>
+</head>
+<body id="addMove" class="theme-tight wrapper-white">
+<form id="inputForm" class="input-form" action="$Api.mtrl$/api/fm/NodeSideline/save" method="post"
+      novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="form-table table">
+        <tbody>
+        <tr>
+            <td class="width-15 active">操作类型:</td>
+            <td class="width-35">
+                <select name="operationType" id="operationType"  class="form-control">
+                </select>
+            </td>
+            <td class="active">使用拓扑结构:</td>
+            <td>
+                <input type="checkbox" name="isTopology" class="i-checks" value="1" checked>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">开始时间:</td>
+            <td>
+                <input type="text" id="startTime" name="begMvDate" class="dateTimePicker form-control">
+            </td>
+            <td class="active">结束时间:</td>
+            <td>
+                <input type="text" id="endTime" name="endMvDate" class="dateTimePicker form-control">
+            </td>
+        </tr>
+        <tr>
+            <td class="active">本方节点:</td>
+            <td>
+                <!--<select name="ownNode" id="divNode.nodename"  class="form-control">-->
+                    <!--<option value>请选择</option>-->
+                <!--</select>-->
+                <input type="text" id="ownNode" name="divNode.nodename" class=" form-control">
+            </td>
+            <td class="active">对方节点:</td>
+            <td>
+                <select name="rcvNode" id="oppositeNode" class="form-control">
+                    <option value>请选择</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">本方物料:</td>
+            <td>
+                <input type="text" id="ownMaterial" name="divMtrl.mtrlName" class="form-control">
+
+            </td>
+            <td class="active">对方物料:</td>
+            <td>
+                <input type="text" id="oppositeMaterial" name="oppositeMaterial" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td class="active">本方别名:</td>
+            <td>
+                <input type="text" id="ownalias" name="divMtrl.mtrlAlias" class="form-control">
+
+            </td>
+            <td class="active">对方别名:</td>
+            <td>
+                <input type="text" id="oppositealias" name="oppositealias" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <td class="active">创建时间:</td>
+            <td>
+                <input type="text" id="createTime" name="createDate" class="dateTimePicker form-control">
+            </td>
+            <td class="active">关闭时间:</td>
+            <td>
+                <input type="text" id="closeTime" name="clsDate" class="dateTimePicker form-control">
+            </td>
+
+        </tr>
+        <tr>
+            <td class="active">创建人:</td>
+            <td>
+                <input type="text" id="createBy" name="createBy" class=" form-control">
+            </td>
+            <td class="active">关闭人:</td>
+            <td>
+                <input type="text" id="closeBy" name="clsBy" class=" form-control">
+            </td>
+
+        </tr>
+        <tr>
+            <td class="active">本方量:</td>
+            <td>
+                <div class="input-group">
+                    <input type="text" id="ownQuantity" name="ownQuantity" class=" form-control" readonly>
+                    <span class="input-group-btn">
+                        <button type="button" id="ownQuantitybtn" class="btn-search-input btn-primary"><i
+                                class="fa fa-search color"></i></button>
+                </span>
+                </div>
+            </td>
+            <td class="active">对方量:</td>
+            <td>
+                <div class="input-group">
+                    <input type="text" id="oppositeQuantity" name="oppositeQuantity" class=" form-control" readonly>
+                    <span class="input-group-btn">
+                        <button type="button" id="oppositeQuantitybtn" class="btn-search-input btn-primary"><i
+                                class="fa fa-search color"></i></button>
+                </span>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/material/materialMove/tankManage" src="/js/zlib/require.js"></script>
+<!--结束-->
+</body>
+</html>

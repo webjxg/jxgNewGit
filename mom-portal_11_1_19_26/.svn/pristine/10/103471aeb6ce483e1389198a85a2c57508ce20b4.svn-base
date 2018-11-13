@@ -1,0 +1,122 @@
+.ibox-content{
+    min-height: 500px;
+}
+
+.content-left{
+    width: 74%;
+    height: 100%;
+    /*background-color:red;*/
+    border: 1px dashed #ccc;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+.content-table{
+    margin-top: 10px;
+}
+.content-right{
+    width: 25%;
+    background: rgb(243, 243, 243);
+    /*background-color: yellow;*/
+    padding: 10px;
+}
+.content-wrap{
+    background-color: #fff;
+}
+.content-right-table{
+    margin: 10px 0;
+    max-height: 300px;
+    overflow: auto;
+}
+.btnFn{
+    width: 100%;
+    /*height: 210px;*/
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+fieldset{
+    font-size: 14px;
+    width: 100%;
+    height: 140px;
+    border: 1px solid #cacaca !important;
+    border-radius: 3px;
+    margin-bottom: 16px !important;
+}
+fieldset button{
+    width: 30px;
+    height: 30px;
+    margin: 0 0 12px 30px !important;
+}
+legend{
+    border: 0 !important;
+    width: 17% !important;
+    margin-left: 10px;
+    font-size: 14px !important;
+    padding: 0 5px !important;
+    margin-bottom: 15px !important;
+}
+.content-formula{
+    padding: 0 5px;
+}
+.valbox{
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    padding: 10px;
+    height: 100px;
+    padding: 0 5px;
+}
+.content-right-btn{
+    padding: 10px 23%;
+    height: 50px;
+}
+
+.selected{
+    background-color: yellow !important;
+}
+label{
+    margin-left: 20px !important;
+    margin-bottom: 10px !important;
+    padding-top: 10px !important;
+}
+label input{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+.btns{
+    outline: none;
+    height:auto;
+    min-width:10px;
+    margin:0;
+    border:0;
+    font-size:14px;
+    font-weight: normal ;
+    line-height: 20px !important;
+    padding:0 10px !important;
+    border-right:1px solid #eaeaea !important;
+    background: transparent !important;
+}
+#btn-delete{
+    border-right:none !important;
+
+}
+
+#btn-add i{
+/*color:#ffa82d*/
+    color:#1ab394
+}
+#save-btn i{
+color:#1ab394
+}
+#btn-delete i{color:#F75C5C;}
+
+#btn-export i{color:#ff7836;}
+
+#btn-help i{color:#f76161;}
+.btn-sure{
+    color:#1AB394 !important;
+    border: 1px solid #1AB394 !important;
+}
+.titName{
+    border-bottom: none !important;
+}

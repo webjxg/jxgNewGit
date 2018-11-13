@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>磁铁管理</title>
+    <link rel="stylesheet" href="../../css/aps.css">
+    <link rel="stylesheet" href="../../css/privatelyOwned.css">
+    <style>
+    </style>
+</head>
+<!--内容-->
+<body id="magnetManagement" class="wrapper-gray">
+    <div class="ibox">
+        <!--标题 按钮-->
+        <div class="ibox-title">
+            <div class="titName gray-line">
+                <span>磁贴管理</span>
+                <div class="pull-right ">
+                    <button class="btn btn-levels" id="btn-add" type="button" onclick="window.location.href='./registerMmIndex.html'">注册磁贴</button>
+                </div>
+            </div>
+            <!--按钮-->
+            <div class="clearfix tile-nav" >
+                <div class="apsType-box pull-left ">
+                    <ul class="apsType-linkage titleName" id="titleName">
+                    </ul>
+                </div>
+                <div id="refresh-btn" class="btn pull-right"><i class="fa fa-refresh"></i>刷新</div>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row" style="border:10px solid #f3f3f3;"></div>
+            <div id="iframeCon">
+                <iframe id="ifr" src="../privatelyOwned/mMInit.html"  frameborder="0"></iframe>
+            </div>
+        </div>
+
+    </div>
+    <script data-main="/js/module/privatelyOwned/magnetManagement" src="/js/zlib/require.js"></script>
+</body>
+</html>

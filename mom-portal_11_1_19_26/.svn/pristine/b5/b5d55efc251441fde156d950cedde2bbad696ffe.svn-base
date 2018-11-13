@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>参数管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../css/customDataTable.css">
+</head>
+<body id="planTempPreserveCV" class="wrapper-white">
+    <form id="inputForm" method="post" >
+        <input id="id" name="id" type="hidden" />
+        <table id="treeTable"
+               class="table table-striped table-bordered table-hover table-condensed dataTables-example dataTable">
+            <thead>
+            <tr class="center">
+                <th><input type="checkbox" class="i-checks"></th>
+                <th>指标	</th>
+            </tr>
+            </thead>
+            <tbody id="tBodyId" >
+
+            </tbody>
+        </table>
+    </form>
+    <script data-main="/js/module/inventoryTaking/planTemple" src="/js/zlib/require.js"></script>
+</body>
+</html>

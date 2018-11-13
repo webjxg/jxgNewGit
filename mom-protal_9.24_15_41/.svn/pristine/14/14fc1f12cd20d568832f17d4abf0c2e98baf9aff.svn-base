@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>许可管理内页之授权数据</title>
+    <link rel="stylesheet" href="../../css/comInnerTable.css">
+    <style>
+        .permitAuthTit{margin:10px;}
+        .permitAuthTit span{margin:0 8px;font-size:16px;}
+        #tree{margin-left:30px;}
+        .permitAuth{width:100%;padding:0 15px;}
+        .permitAuth-l{width:30%;float:left;}
+        .permitAuth-r{width:65%;float:right;}
+        .form-control{width: 100%;}
+    </style>
+</head>
+<body id="permitAuthData">
+<div class="permitAuthTit text-center"></div>
+<div class="clearfix permitAuth">
+    <div class="permitAuth-l">
+        <form id="inputForm"  method="post" action="$Api.admin$/api/sys/SysPermission/ajaxSaveAuthData" novalidate="novalidate">
+            <input id="permissionId" type="hidden" value="" name="permissionId"  >
+            <input id="objectId" type="hidden" value="" name="objectId" >
+            <!--<input id="propId" type="text" value="" name="propId">-->
+            <input id="propvals" type="hidden" value="" name="propvals" >
+            <select name="propId" id="permitAuthZtree" required class="form-control">
+                <option value = ''>请选择</option>
+            </select>
+        </form>
+        <ul id="tree" class="ztree"></ul>
+    </div>
+    <div class="permitAuth-r">
+        <table id = "permitAuthTab" class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+            <tbody>
+            <tr>
+                <td class="width-15 active">
+                    <label class="pull-right">操作:</label>
+                </td>
+                <td class="width-35">
+                    <select id="operationId" name="sysOperation.id" disabled  class="form-control" required></select>
+                </td>
+                <td class="width-15 active">
+                    <label class="pull-right">鉴权类:</label>
+                </td>
+                <td class="width-35">
+                    <select name="sysAuthClass.id" id="authClass" disabled  class="form-control "  required></select>
+                </td>
+            </tr>
+            <tr>
+                <td class="width-15 active">
+                    <label class="pull-right">许可名称:</label>
+                </td>
+                <td class="width-35">
+                    <input id="name" name="name" class="form-control " disabled  required  type="text" value="" maxlength="50" aria-required="true"></td>
+                <td class="width-15 active">
+                    <label class="pull-right">许可编码:</label>
+                </td>
+                <td class="width-35">
+                    <input id="code" name="code" class="form-control " disabled  required  type="text" value="" maxlength="50" aria-required="true">
+                </td>
+            </tr>
+            <tr>
+                <td class="width-15 active">
+                    <label class="pull-right">描述:</label>
+                </td>
+                <td class="width-35">
+                    <input id="des" name="des" class="form-control required abc" type="text" disabled value="" maxlength="50" aria-required="true">
+                </td>
+                <td class="width-15 active">
+                    <label class="pull-right">排序:</label>
+                </td>
+                <td class="width-35">
+                    <input id="sort" name="sort" class="form-control required digits" disabled type="text" value="" maxlength="11" aria-required="true">
+                </td>
+            </tr>
+            <tr>
+                <td class="width-15 active">
+                    <label class="pull-right">是否可用:</label>
+                </td>
+                <td class="width-35">
+                    <select name="enable" id="enable" class="form-control required " disabled aria-invalid="false">
+                        <option value="">请选择</option>
+                        <option value="1">启用</option>
+                        <option value="0">禁用</option>
+                    </select>
+                </td>
+                <td class="width-15 active">
+                    <label class="pull-right">备注:</label>
+                </td>
+                <td class="width-35">
+                    <input id="remark" name="remark" class="form-control" disabled type="text" value="" aria-required="true">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script data-main="/js/module/systemSettings/permit" src="/js/zlib/require.js"></script>
+</body>
+</html>

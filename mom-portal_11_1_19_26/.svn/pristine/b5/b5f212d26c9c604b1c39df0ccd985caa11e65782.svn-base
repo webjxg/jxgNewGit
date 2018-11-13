@@ -1,0 +1,290 @@
+require(['/js/zlib/app.js'], function(App) {
+    //引入用户登录校验
+    require(['checkUser']);
+
+    var PageModule = {
+        listInit: function(){
+            //引入Page插件
+            require(['Page'],function(){
+                var page = new Page();
+                window.pageLoad = function (){
+                    var data = {
+                        nameParam: $("#permitName").val(),
+                        codeParam: $("#permitCode").val(),
+                        enable:$("#permitEnable").val()
+                    };
+                    //修改默认每页显示条数
+                    page.init(Api.admin+"/api/sys/SysPermission/page",data,true,function(tableData, result){
+                        renderTableData(tableData);
+                        $('.btn-check').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openDialog('查看许可','systemSettings/permitInner.html?id='+id+'&api=view','658px','312px')
+                        });
+                        $('.btn-change').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('修改许可','systemSettings/permitInner.html?id='+id+'&api=form','658px','312px');
+                        });
+                        $('.btn-delete').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.deleteItem('确定要删除该许可吗',Api.admin+'/api/sys/SysPermission/delete',id)
+                        });
+                        $('.btn-empower').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('授权数据','systemSettings/permitAuthData.html?id='+id,'900px','500px',permitAuthDataCallback);
+                        });
+                    });
+                };
+                //点击重置按钮
+                $('#reset-btn').click(function(){
+                    $("#permitEnable option:first").prop("selected", 'selected');
+                    $("#permitName").val("");
+                    $("#permitCode").val("");
+                    page.reset(["nameParam","codeParam","enable"]);
+                });
+                $("#search-btn").click(function(){
+                    pageLoad();
+                });
+                pageLoad();
+            });
+
+            function renderTableData(tableData){
+                $('#treeTable').dataTable({
+                    "bSort": true,
+                    "aoColumnDefs": [
+                        {"bSortable": false, "aTargets": [0, 2, 6]}
+                    ],
+                    "data":tableData,
+                    "aoColumns": [
+                        {"data": null, "defaultContent":"", 'sClass': "autoWidth alignCenter",
+                            "render":function(data, type, row, meta) {
+                                return data = "<input type='checkbox' id=" + row.id + " class='i-checks'>"
+                            }
+                        },
+                        {"data": "name",'sClass':" alignCenter"},
+                        {"data": "code",'sClass':"alignCenter ","width":"15%"},
+                        {"data": "des",'sClass':"alignCenter","width":"15%"},
+                        {"data": "sort",'sClass':"alignCenter","width":"8%"},
+                        {"data": "enable",'sClass':"alignCenter","width":"8%", "defaultContent": "","render":function (data, type, row, meta){
+                                var chahgeType;
+                                return chahgeType = row.enable==0?"否":"是";
+                            }},
+                        {
+                            "data": "id", "orderable": false, "defaultContent": "",'sClass':" alignCenter autoWidth",
+                            "render": function (data, type, row, meta) {
+                                return "<a class='btn btn-info btn-xs btn-check' ><i class='fa fa-search-plus'></i>查看</a >" +
+                                    "<a class='btn btn-success btn-xs btn-change' ><i class='fa icon-change'></i>修改</a >" +
+                                    "<a class='btn btn-danger btn-xs btn-delete' ><i class='fa fa-trash-o' ></i>删除</a >" +
+                                    "<a class='btn  btn-xs btn-empower'><i class='fa icon-accredit'></i>授权数据</a >";
+                            }
+                        }]
+                });
+                renderIChecks();
+            }
+
+            function permitAuthDataCallback(layerIdx, layero){
+                var iframeWin = layero.find('iframe')[0].contentWindow;
+                var formData = iframeWin.getFormData();
+                if(formData){
+                    //调用接口，保存内页数据
+                    var data = formData.data;
+                    Api.ajaxJson(formData.url,JSON.stringify(data),function(result){
+                        if(result.success == true){
+                            Mom.layMsg('操作成功');
+                            setTimeout(function(){
+                                top.layer.close(layerIdx);
+                            },500)
+                        }else{
+                            Mom.layAlert(result.message);
+                        }
+                    });
+                }
+            }
+        },
+
+        formInit: function(){
+            var id =Mom.getUrlParam('id'),
+                api = Mom.getUrlParam('api') || 'form';
+            var url = Api.admin+"/api/sys/SysPermission/"+api+"/"+id;
+            Api.ajaxJson(url,{},function(result){
+                if(result.success){
+                    var data = result.SysPermission;
+                    var operId ="",
+                        operName = "",
+                        authClassId = "",
+                        authClassName = "";
+                    if(api == 'view'){
+                        operId = data.sysOperation.id;
+                        operName = data.sysOperation.name;
+                        authClassId = data.sysAuthClass.id;
+                        authClassName =data.sysAuthClass.name;
+                        var html = "<option value='"+operId+"'>"+(operName||'无')+"</option>";
+                        $("#operationId").empty().append(html).val(operId);
+                        var html1 = "<option value='"+authClassId+"'>"+(authClassName||"无")+"</option>";
+                        $("#authClass").empty().append(html1).val(authClassId);
+                    }
+                    else if(api == 'form'){
+                        if(id) {
+                            operId = data.sysOperation.id;
+                            authClassId = data.sysAuthObject.sysAuthClass.id ;
+                        }
+                        var operIdArr =  result.OperationList,
+                            authClassIdArr = result.AuthClassList;
+                        Bus.appendOptionsValue('#operationId', operIdArr, 'id', 'name');
+                        $("#operationId").val(operId||'');
+                        Bus.appendOptionsValue('#authClass', authClassIdArr, 'id', 'name');
+                        $("#authClass").val(authClassId||'');
+                    }
+                    Validator.renderData(data,$('#inputForm'));
+                }else{
+                    Mom.layMsg(result.message);
+                }
+            });
+        },
+
+        formInitData: function(){
+            var ztree;
+            var id =Mom.getUrlParam('id'),
+                api = Mom.getUrlParam('api') || 'form',
+                html = html1 = "";
+            $('#objectId').val();
+            $("#permissionId").val(id);
+            var url = Api.admin+"/api/sys/SysPermission/"+api+"/"+id;
+            Api.ajaxJson(url,{},function(result){
+                if(result.success){
+                    if(api == 'view'){
+                        var data = result.SysPermission;
+                        var operId =data.id,
+                            operName = data.name,
+                            authClassId = data.id,
+                            authClassName =data.name;
+                        html += "<option value='"+operId+"'>"+operName+"</option>";
+                        html1 += "<option value='"+authClassId+"'>"+(authClassName == null?"无":authClassName)+"</option>";
+                        $("#operationId").empty().append(html).val(operId);
+                        $("#authClass").empty().append(html1).val(authClassId);
+                    }else if(api == 'form'){
+                        if(id){
+                            var  data = result.SysPermission;
+                            var  operIdArr =  result.OperationList,
+                                authClassIdArr = result.AuthClassList,
+                                operId =data.sysOperation.id,
+                                authClassId = data.sysAuthObject.sysAuthClass.id;
+                            authClassName = data.sysAuthObject.sysAuthClass.name;
+                            authClassId = authClassName == null ?"":authClassId;
+                            renderSelect(operId,authClassId);
+                        }else{
+                            var operIdArr = result.OperationList,
+                                authClassIdArr =result.AuthClassList;
+                            renderSelect("请选择","");
+                        }
+                        function renderSelect(operId,authClassId){
+                            for(var i=0;i<operIdArr.length;i++) {
+                                operIdFor = operIdArr[i].id;
+                                operNameFor = operIdArr[i].name;
+                                html += "<option value='" + operIdFor + "'>" + operNameFor + "</option>";
+                            }
+                            for(var i=0;i<authClassIdArr.length;i++) {
+                                authClassIdFor = authClassIdArr[i].id;
+                                authClassNameFor = authClassIdArr[i].name;
+                                html1 += "<option value='" + authClassIdFor + "'>" + authClassNameFor + "</option>";
+                            }
+                            $("#operationId").empty().append(html).val(operId);
+                            $("#authClass").empty().append(html1).val(authClassId);
+                        }
+                    }
+                    Validator.renderData(data,$('#inputForm'));
+                }else{
+                    Mom.layMsg(result.message);
+                }
+            });
+
+            //获取下拉列表集合
+            Api.ajaxJson(Api.admin+'/api/sys/SysPermission/authData/'+id,{},function(result){
+                if(result.success){
+                    var selHtml='';
+                    var data = result.SysPermission,
+                        sysOperation = data.sysOperation;
+                    var  selList = data.sysAuthClass.sysAuthProperties;
+                    var html = "<span>许可:["+data.name+"]</span><span>鉴权类:["+data.sysAuthClass.name+"]</span><span>操作:["+(sysOperation?sysOperation.name:'无')+"]</span>";
+                    $('.permitAuthTit').empty().html(html);
+                    $('#objectId').val(data.sysAuthObject.id);
+                    for(var i=0;i<selList.length;i++){
+                        selHtml += "<option value='"+selList[i].id+"'>" +selList[i].name+"</option>";
+                    }
+
+                    require(['ztree_my'],function(ZTree){
+                        ztree = new ZTree();
+                        $('#permitAuthZtree').change(function(){
+                            var val = $(this).val(),
+                                objectId = $('#objectId').val();
+                            url = Api.admin+"/api/sys/SysPermission/listPropVal/"+objectId+"/"+val;
+                            Api.ajaxJson(url,{},function(result){
+                                if(result.success==true) {
+                                    var ztreeSetting={
+                                        check:{
+                                            chkboxType:{ "Y":"p", "Y":"s" }
+                                        },
+                                        callback:{
+                                            onDblClick: onDblClick
+                                        }
+                                    };
+                                    var treeObj = ztree.loadData($("#tree"),result.zTree,true,ztreeSetting);
+                                    ztree.checkDefaultVal(treeObj,result.checkIds);
+                                    $("#propvals").val(result.checkIds);
+                                }
+                            });
+
+                        });
+                        function onDblClick(event, treeId, treeNode){
+                            var id = treeNode.id;
+                            var url = Api.admin+"/api/sys/SysAuthPropertyValue/perimissionview/"+id;
+                            Api.ajaxJson(url,{},function(result){
+                                if(result.success){
+                                    var data = result.SysAuthPropertyValue;
+                                    Validator.renderData(data,$('#permitAuthTab'));
+                                    $("#permitPro").empty().text(data.sysAuthProperty.code);
+                                    $("#enable").text((data.enable==1?"是":"否"));
+                                }
+                            });
+                        }
+                        $("#permitAuthZtree").empty().append(selHtml).trigger("change");
+
+                    });
+
+                }
+            });
+
+            window.getFormData = function(){
+                if(!Validator.valid(document.forms[0],1.3)){
+                    return;
+                }
+                if(ztree){
+                    var getCheckVal = ztree.getCheckValues(false, false);
+                    $("#propvals").val(getCheckVal.id);
+                    var formObj = $('#inputForm');
+                    return {
+                        url: formObj.attr('action'),
+                        data: formObj.serializeJSON()
+                    };
+                }
+
+            }
+        },
+
+    };
+
+    $(function(){
+        //许可维护列表
+        if($('#permit').length > 0){
+            PageModule.listInit();
+        }
+        else if($('#permitInner').length > 0){
+            PageModule.formInit();
+        }
+        //授权数据
+        else if($('#permitAuthData').length > 0){
+            PageModule.formInitData();
+        }
+
+    });
+
+});

@@ -1,0 +1,69 @@
+{
+  "message": "操作成功",
+  "page": {
+    "count": "0",
+    "endRowNum": "1",
+    "isFirstPage": "1",
+    "isLastPage": "1",
+    "orderBy": "1",
+    "pageCount": "1",
+    "pageNo": "1",
+    "pageSize": "20",
+    "rows": [
+      {
+        "id": "0000001",
+        "nodeNo": "0",
+        "nodeCode": "0",
+        "nodeName": "0",
+        "nodeAlias": "0",
+        "unitGroupId": "0",
+        "unitId": "0",
+        "slineMtrlType": "0",
+        "slineInoutType": "0",
+        "refSidelineId": "0",
+        "isRvs": "0",
+        "areaForm": "0",
+        "slineForm": "0",
+        "remake":"xxx",
+        "type": "0"
+      },
+      {
+        "id": "0000002",
+        "nodeNo": "0",
+        "nodeCode": "0",
+        "nodeName": "0",
+        "nodeAlias": "0",
+        "unitGroupId": "0",
+        "unitId": "0",
+        "slineMtrlType": "0",
+        "slineInoutType": "0",
+        "refSidelineId": "0",
+        "isRvs": "0",
+        "areaForm": "0",
+        "slineForm": "0",
+        "remake":"xxx",
+        "type": "0"
+      },
+      {
+        "id": "0000003",
+        "nodeNo": "0",
+        "nodeCode": "0",
+        "nodeName": "0",
+        "nodeAlias": "0",
+        "unitGroupId": "0",
+        "unitId": "0",
+        "slineMtrlType": "0",
+        "slineInoutType": "0",
+        "refSidelineId": "0",
+        "isRvs": "0",
+        "areaForm": "0",
+        "slineForm": "0",
+        "remake":"xxx",
+        "type": "0"
+      }
+    ],
+    "startRowNum": "1"
+  },
+  "retCode": "1",
+  "success": "true"
+}

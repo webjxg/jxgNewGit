@@ -1,0 +1,113 @@
+{
+  "parents": {
+    "colNames": [
+      "id",
+      "F",
+      "仪表名称",
+      "采集时间",
+      "前读数",
+      "C",
+      "RTDB读数",
+      "C",
+      "后读数",
+      "净读数",
+      "回零/开工前值",
+      "回零/开工后值",
+      "工位号",
+      "提交人",
+      "提交时间"
+    ],
+    "colModel": [
+      {
+        "name": "id",
+        "label": "id",
+        "align": "center",
+        "hidden": true
+      },
+      {
+        "name": "liaoxianname",
+        "label": "liaoxianname",
+        "align": "center"
+      },
+      {
+        "name": "wuliao",
+        "label": "wuliao",
+        "align": "center"
+      },
+      {
+        "name": "jinchu",
+        "label": "jinchu",
+        "align": "center"
+      },
+      {
+        "name": "zhiliang",
+        "label": "zhiliang",
+        "align": "center"
+      },
+      {
+        "name": "liaoxianstart",
+        "label": "liaoxianstart",
+        "align": "center"
+      },
+      {
+        "name": "qianliang",
+        "label": "qianliang",
+        "align": "center"
+      },
+      {
+        "name": "houliang",
+        "label": "houliang",
+        "align": "center"
+      },
+      {
+        "name": "chacunliang",
+        "label": "chacunliang",
+        "align": "center"
+      },
+      {
+        "name": "chaquery",
+        "label": "chaquery",
+        "align": "center",
+        "editable": true
+      },
+      {
+        "name": "jiequliang",
+        "label": "jiequliang",
+        "align": "center"
+      },
+      {
+        "name": "jieququery",
+        "label": "jieququery",
+        "align": "center",
+        "editable": true
+      },
+      {
+        "name": "pingguling",
+        "label": "pingguling",
+        "align": "center"
+      },
+      {
+        "name": "shift",
+        "label": "shift",
+        "align": "center"
+      },
+      {
+        "name": "save",
+        "label": "save",
+        "align": "center"
+      }
+    ]
+  },
+  "childs": {
+    "colNames": [
+      "id",
+      "F",
+      "料线名称",
+      "物料",
+      "质量等级"
+    ],
+    "colModel": [
+
+    ]
+  }
+}

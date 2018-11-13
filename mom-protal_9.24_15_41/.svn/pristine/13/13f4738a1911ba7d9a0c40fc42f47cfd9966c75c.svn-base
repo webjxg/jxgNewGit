@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配矿添加查看</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../css/comInnerTable.css">
+    <style>
+        #val{
+            width:85%;
+        }
+        #computerBtn{
+            /*position: absolute;*/
+            /*top: 9px;*/
+            /*right: 0;*/
+            width: 15%;
+            height: 54px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 54px;
+        }
+        select{
+            width: 100%;
+            border-radius: 0;
+        }
+        #names{
+            display: none;
+        }
+         #types{
+             /*display: none;*/
+         }
+    </style>
+</head>
+<body id="planDicCheckView">
+<form id="inputForm" class="form-horizontal" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15"><label class="pull-right">上级指标:</label></td>
+            <td class="width-35">
+                <input id="formula" name="formula" class="formula" type="hidden" value="">
+                <input id="parentIdH" name="parentId" class="form-control" type="hidden" value="">
+                <input id="_parentId" readonly="readonly" name="parentName" type="text" value=""
+                       data-msg-required="" class="form-control " style="">
+            </td>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>指标名称:</label></td>
+            <td class="width-35">
+                <input id="name" name="name" type="text" value="" data-msg-required=""
+                       class="form-control required" style="" aria-required="true">
+                <select name="name" id="names">
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>指标代码:</label></td>
+            <td class="width-35">
+                <input id="code" name="code" type="text" value=""
+                       data-msg-required="" class="form-control required" style="">
+            </td>
+            <td class="width-15"><label class="pull-right">单位:</label></td>
+            <td class="width-35">
+                <input id="unit" name="unit" type="text" value="" data-msg-required=""
+                       class="form-control " style="" >
+            </td>
+        </tr>
+
+        <tr>
+            <td class="width-15"><label class="pull-right">指标值:</label></td>
+            <td colspan="3">
+                <textarea id="val" name="val" type="text" value="" rows="2" class="form-control pull-left"></textarea>
+                <div id="computerBtn" class="pull-left">公式</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">指标类型</label></td>
+            <td class="width-35">
+
+                <select id="types" name="types" required class="form-control select2">
+                    <option value="">请选择</option>
+                    <option value="row">行</option>
+                    <option value="column">列</option>
+                </select>
+            </td>
+            <td class="width-15"><label class="pull-right">是否启用:</label></td>
+            <td class="width-35">
+                <select id="enable" name="enable" required class="form-control">
+                    <option value="1">启用</option>
+                    <option value="2">禁用</option>
+                </select>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/inventoryTaking/dicTree.js" src="/js/zlib/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" conten   t="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>组织机构</title>
+</head>
+
+<body id="orgCheckView">
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysOrg/save" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" >
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>机构名称:</label></td>
+            <td class="width-35">
+                <input id="orgName" name="name" type="text" value=""
+                        class="form-control" require="true" style="">
+            </td>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>机构简称:</label></td>
+            <td class="width-35">
+                <input id="sName" name="sname" type="text" value=""
+                       class="form-control" require="true" style="">
+
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">上级机构:</label></td>
+            <td class="width-35">
+                <input id="parentId" name="parent.id" class="form-control" type="hidden" value="">
+                <div class="input-group" id="parentalert">
+                    <input id="parentName" name="parent.name" type="text" readonly="readonly"
+                           value=""  class="form-control" style="" placeholder="双击选择">
+                    <span class="input-group-btn">
+	       		        <button type="button" id="parentNameButton" class="btn   btn-primary  ">
+                            <i class="fa fa-search color"></i>
+                        </button>
+       		        </span>
+                </div>
+                <label id="parentName-error" class="error" for="parentName" style="display:none"></label>
+            </td>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>机构编码:</label></td>
+            <td class="width-35">
+                <input id="code" name="code" type="text" value=""
+                       class="form-control" require="true" style="">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>机构类型:</label></td>
+            <td class="width-35">
+                <select id="type" name="type" class="form-control" require="true"></select>
+            </td>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>机构等级:</label></td>
+            <td class="width-35">
+                <select id="grade" name="grade" maxlength="1" type="text" value=""  class="form-control" require="true" style=""> </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">负责人:</label></td>
+            <td class="width-35">
+                <input id="masterId" name="masterId.id" class="form-control" type="hidden" value="">
+                <input id="master" name="master"  type="text" value=""
+                       class="form-control" style="">
+            </td>
+            <td class="width-15"><label class="pull-right">联系电话:</label></td>
+            <td class="width-35">
+                <input id="phone" name="phone" type="text" value=""
+                       class="form-control" dataType="Tel" style="">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">传真:</label></td>
+            <td class="width-35">
+                <input id="fax" name="fax"  type="text" value=""
+                       class="form-control" style="">
+            </td>
+            <td class="width-15"><label class="pull-right">邮箱:</label></td>
+            <td class="width-35">
+                <input id="email" name="email" type="text" value=""
+                       class="form-control" style="" dataType="Email">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">主负责人:</label></td>
+            <td class="width-35">
+                <input id="pnameId" name="primaryPerson.id" class="form-control" type="hidden" value=""><!--这里传给后台的是 弹出框反选的id-->
+                <div class="input-group" id="ppalert">
+                    <input id="pname" name="primaryPerson.name" type="text"
+                           value=""  readonly="readonly" class="form-control" style="" placeholder="双击选择"><!--这里传给后台的是 弹出框反选的名字-->
+                    <span class="input-group-btn">
+	       		        <button type="button" id="primaryPersonButton" class="btn   btn-primary  ">
+                            <i class="fa fa-search color"></i>
+                        </button>
+       		        </span>
+                </div>
+            </td>
+            <td class="width-15"><label class="pull-right">副负责人:</label></td>
+            <td class="width-35">
+                <input id="dnameId" name="deputyPerson.id" class="form-control" type="hidden" value=""><!--这里传给后台的是 弹出框反选的id-->
+                <div class="input-group" id="dpalert">
+                    <input id="dname" name="deputyPerson.name" type="text"
+                           value=""   readonly="readonly" class="form-control" style="" placeholder="双击选择"><!--这里传给后台的是 弹出框反选的名字-->
+                    <span class="input-group-btn">
+	       		        <button type="button" id="deputyPersonButton" class="btn   btn-primary  ">
+                            <i class="fa fa-search color"></i>
+                        </button>
+       		        </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 "><label class="pull-right"><font color="red">*</font>是否启用:</label></td>
+            <td class="width-35">
+                <select id="enable" name="enable" class="form-control"  >
+                    <option value="1">启用</option>
+                    <option value="2">禁用</option>
+                </select>
+            </td>
+            <td class="width-15"><label class="pull-right">排序:</label></td>
+            <td class="width-35">
+                <input id="sort" name="sort" type="number" value="10"
+                       class="form-control" dataType="Number" style="">
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">备注:</label></td>
+            <td class="width-35">
+                <textarea id="remark" name="remark" maxlength="200"
+                          class="form-control" rows="3">
+                </textarea>
+            </td>
+            <td class="width-15"><label class="pull-right"></label></td>
+            <td class="width-35">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/systemSettings/orgIndex" src="/js/zlib/require.js"></script>
+</body>
+</html>

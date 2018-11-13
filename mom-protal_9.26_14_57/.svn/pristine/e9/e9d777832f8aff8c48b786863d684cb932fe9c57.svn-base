@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>菜单子页</title>
+</head>
+
+<body id="menuInner" class="wrapper-content hideScroll">
+<div id="menuContent"></div>
+<div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+        <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+</div>
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysMenu/ajaxSave" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <!-- 0:隐藏tip, 1隐藏box,不设置显示全部 -->
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15 active"><label class="pull-right">上级菜单:</label></td>
+            <td class="width-35">
+                <input id="menuId" name="parent.id" class="form-control required" type="hidden" value=""
+                       aria-required="true">
+                <div class="input-group">
+                    <input id="menuName" name="parent.name" readonly="readonly" type="text" value=""
+                            class="form-control  valid" style="">
+                    <span class="input-group-btn">
+                         <button type="button" class="btn btn-primary" id="menuButton"><i class="fa fa-search color"></i>
+                         </button>
+       		        </span>
+                </div>
+                <label id="menuName-error" class="error" for="menuName" style="display:none"></label>
+            </td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font> 名称:</label></td>
+            <td class="width-35"><input id="name" name="name" class="form-control " require="true" type="text" value="" maxlength="50"></td>
+        </tr>
+        <tr>
+            <td class="width-15 active"><label class="pull-right">链接:</label></td>
+            <td class="width-35"><input id="href" name="href" class="form-control " type="text" value="" maxlength="2000">
+                <span class="help-inline">点击菜单跳转的页面</span></td>
+            <td class="width-15 active"><label class="pull-right">目标:</label></td>
+            <td class="width-35"><input id="target" name="target" class="form-control " type="text" value="" maxlength="10">
+                <span class="help-inline">链接打开的目标窗口，默认：mainFrame</span></td>
+        </tr>
+        <tr>
+            <td class="width-15 active"><label class="pull-right">图标:</label></td>
+            <td class="width-35">
+                <i id="iconIcon" class="icon-hide"></i>&nbsp;<span id="iconIconLabel">无</span>&nbsp;
+                <input id="icon" name="icon" type="hidden" value=""><a id="iconButton" href="javascript:" class="btn btn-primary color">选择</a>&nbsp;&nbsp;
+                <input id="iconclear" class="btn btn-default" type="button" value="清除">
+            </td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>排序:</label></td>
+            <td class="width-35">
+                <input id="sort" name="sort" class="digits form-control" require="true" dataType="Number" type="text" value="" maxlength="50">
+                <span class="help-inline">排列顺序，升序。</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active"><label class="pull-right">可见:</label></td>
+            <td class="width-35">
+                <label >
+                    <input id="isShow1" name="isShow" class="required i-checks " type="radio" value="1" checked="checked" aria-required="true" >显示
+                </label>
+
+                <label >
+                    <input id="isShow2" name="isShow" class="required i-checks " type="radio" value="0" aria-required="true" >隐藏
+                </label>
+                <span class="help-inline">该菜单或操作是否显示到系统菜单中</span>
+            </td>
+            <td class="width-15 active"><label class="pull-right">所属模块:</label></td>
+            <td class="width-85">
+                <select name="module" class="form-control">
+                    <option value="">-- 请选择 --</option>
+                    <option value="MOM">MOM</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active"><label class="pull-right">备注:</label></td>
+            <td class="width-85"><textarea id="remarks" name="remark" maxlength="560" class="form-control " rows="3"  cols="4"></textarea>
+            </td>
+            <td class="width-15 active"><label class="pull-right"></label></td>
+            <td class="width-85">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/systemSettings/menu" src="/js/zlib/require.js"></script>
+</body>
+</html>

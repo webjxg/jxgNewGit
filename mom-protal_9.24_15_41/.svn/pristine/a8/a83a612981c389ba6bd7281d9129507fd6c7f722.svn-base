@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目信息维护</title>
+    <!--插件-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../js/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/customDataTable.css">
+    <style>
+        .search{
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid #ddd;
+            width: 50%;
+        }
+    </style>
+</head>
+<body id="planTempPreserveSon">
+
+<div id="left" style="height: 100%;" class="leftBox pull-left">
+    <p>搜索：<input type="text" class="search"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="javascript:;" class="revert">清除</a>
+    </p>
+    <div id="tree" class="ztree leftBox-content" style="height: 350px;overflow: scroll"></div>
+</div>
+
+
+<!--<i id="btnMenu" class="icon-th-list" style="cursor:pointer;float:right;margin:10px;"></i>-->
+<!--<div class="wrapper wrapper-content">-->
+    <!--<div class="ibox">-->
+        <!--<div class="ibox-content">-->
+
+            <!--<div id="content" class="row">-->
+                <!--&lt;!&ndash;左侧内容&ndash;&gt;-->
+                <!--<div id="left" style="height: 100%;" class="leftBox pull-left">-->
+                    <!--<p>搜索：<input type="text" class="search"/>-->
+                        <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+                        <!--<a href="javascript:;" class="revert">还原</a>-->
+                    <!--</p>-->
+                    <!--&lt;!&ndash;<div id="tree" class="ztree leftBox-content" style="height: 350px;overflow: scroll"></div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<script data-main="/js/module/inventoryTaking/planTemple" src="/js/zlib/require.js"></script>
+</body>
+</html>

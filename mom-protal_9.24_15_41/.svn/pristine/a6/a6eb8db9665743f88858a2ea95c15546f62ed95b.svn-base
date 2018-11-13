@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>添加应用</title>
+</head>
+
+<body id="orgApp" class="wrapper-white">
+<form id="dateForm" action="$Api.admin$/mom/sys/SysOrg/ajaxAddUser" method="post">
+    <table id="treeTable" class="table table-striped table-bordered table-hover table-condensed dataTables-example dataTable">
+
+        <thead>
+        <tr>
+            <th></th>
+            <th>序号</th>
+            <th>应用名称</th>
+            <th>应用路径</th>
+            <th>应用编码</th>
+            <th>使用范围</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</form>
+
+<script data-main="/js/module/systemSettings/assign" src="/js/zlib/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv='Pragma' content='no-cache'>
+    <title>Title</title>
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+<select id="test" class="test" haha="hei=hei" cc='bb' lihaile="hahahaha">
+    干扰项<a>fsdjfodsjf</a>
+</select>
+</body>
+<script>
+    $(function () {
+        var obj = $('meta');
+        console.log(getAttribute(obj));
+    });
+
+    function getAttribute(element) {
+        var obj = new Object(),
+            ohtml = $(element).prop('outerHTML'),
+            attrArr = ohtml.split(' ');
+        attrArr.shift();
+        for (var i = 0; i < attrArr.length; i++) {
+            var attrStr = $.trim(attrArr[i]);
+            eIndex = attrStr.indexOf('='),
+                cIndex = attrStr.indexOf('"', (eIndex + 2)),
+                attrName = attrStr.substring(0, eIndex),
+                attrValue = attrStr.substring(eIndex + 2, cIndex);
+            if (attrName) obj[attrName] = attrValue;
+        }
+        return obj;
+    }
+</script>
+</html>

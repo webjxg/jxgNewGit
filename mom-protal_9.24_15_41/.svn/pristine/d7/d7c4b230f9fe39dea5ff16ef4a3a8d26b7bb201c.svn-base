@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>角色管理</title>
+    <style>
+        /*Select下拉框样式*/
+        .select2-container .select2-selection--single,.select2-container--default .select2-selection--single .select2-selection__rendered,.select2-container--default .select2-selection--single .select2-selection__arrow{
+            height:34px;
+            line-height: 34px;
+            font-size: 14px;
+            border-radius: 2px;
+            padding-left: 6px;
+        }
+    </style>
+</head>
+<body id="roleInner" class="hideScroll  pace-done">
+<i id="btnMenu" class="icon-th-list" style="cursor:pointer;float:right;margin:10px;"></i>
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysRole/ajaxSave" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15"><label class="pull-right"><font color="red">*</font>角色名称:</label></td>
+            <td class="width-35">
+                <input id="name" name="name" class="form-control valid" require="true"  type="text" value="" maxlength="50"
+                       aria-required="true" aria-invalid="false"></td>
+            <td class="width-15 active"><label class="pull-right"><font color="red">*</font>英文名称:</label></td>
+            <td class="width-35">
+                <input id="enname" name="enname" class="form-control valid" require="true" type="text" value=""
+                       maxlength="50" aria-required="true" aria-invalid="false"></td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">角色类型:</label>
+            </td>
+            <td class="width-35">
+                <select id="roleType" name="roleType" class="form-control select2">
+                </select>
+                <span class="help-inline">
+                 角色类型是对角色进行分类，可以是实际部门,可以是拥有同一类职能的人构成的虚拟组织。
+                </span>
+            </td>
+            <td class="width-15 active"><label class="pull-right">是否系统数据:</label>
+            </td>
+            <td class="width-35">
+                <select id="isSys" name="isSys" class="form-control valid" aria-invalid="false">
+                    <option value="1" selected="selected">是</option>
+                    <option value="0">否</option>
+                </select>
+                <span class="help-inline">“是”代表此数据只有超级管理员能进行修改，“否”则表示拥有角色修改人员的权限都能进行修改</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15"><label class="pull-right">是否可用</label></td>
+            <td class="width-35">
+                <select id="enable" name="enable" class="form-control valid" aria-invalid="false">
+                    <option value="1" selected="selected">是</option>
+                    <option value="0">否</option>
+                </select>
+                <span class="help-inline">“是”代表此数据可用，“否”则表示此数据不可用</span>
+            </td>
+            <td class="width-15 active"><label class="pull-right">备注:</label></td>
+            <td class="width-35">
+                <textarea id="remark" name="remark" maxlength="200" class="form-control " rows="3"></textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</div><script data-main="/js/module/systemSettings/role" src="/js/zlib/require.js"></script>
+</body>
+</html>

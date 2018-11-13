@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>属性管理</title>
+</head>
+
+<body id="proCheckView" class="wrapper-inner hideScroll">
+<form id="inputForm" class="form-horizontal" action="$Api.admin$/api/sys/SysAuthProperty/ajaxSave" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" />
+    <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
+        <tbody>
+        <tr>
+            <td class="width-15 active" ><label class="pull-right"><font color="red">*</font>鉴权属性名称:</label></td>
+            <td class="width-35">
+                <input id="proNameId" name="proNameId" class="form-control" type="hidden" value="1">
+                <input id="proName" name="name" type="text" value=""  class="form-control" require="true" style="">
+
+                <label id="proName-error" class="error" for="proName" style="display:none"></label>
+            </td>
+            <td class="width-15  active" ><label class="pull-right"><font color="red">*</font>鉴权属性编码:</label></td>
+            <td class="width-35">
+                <input id="proCodeId" name="proCodeId" class="form-control" type="hidden" value="1">
+                <input id="proCode" name="code" type="text" value=""  class="form-control" require="true" style="">
+                <label id="proCode-error" class="error" for="proCode" style="display:none"></label>
+            </td>
+        </tr>
+        <tr>
+            <td  class="width-15 active">
+                <label class="pull-right">
+                    描述:
+                </label>
+            </td>
+            <td  class="width-35 ">
+                <input id="prodesId" name="prodesId" class="form-control" type="hidden" value="1" aria-required="true">
+                <input id="prodes" name="des" type="text" value=""  class="form-control valid" style="" aria-required="true" aria-invalid="false">
+                <label id="prodes-error" class="error" for="prodes" style="display:none"></label>
+            </td>
+            <td class="width-15 active">
+                <label class="pull-right">
+                    层级类型:
+                </label>
+            </td>
+            <td class="width-35 ">
+                <input id="tierTypeId" name="tierTypeId" class="form-control" type="hidden" value="1" aria-required="true">
+                <select id="tierType" name="tierType" class="form-control">
+                    <option value="1">层级维度</option>
+                    <option value="0">单一维度</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label class="pull-right">
+                    是否成对显示:
+                </label>
+            </td>
+            <td class="width-35 ">
+                <select id="isTwins" name="isTwins" class="form-control">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </td>
+            <td class="width-15 active">
+                <label class="pull-right">
+                    是否仅叶子节点可选:
+                </label>
+            </td>
+            <td class="width-35 ">
+                <select id="isLeafCheck" name="isLeafCheck" class="form-control">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active">
+                <label class="pull-right">是否显示:</label>
+            </td>
+            <td class="width-35 ">
+                <select id="isVisibility" name="isVisibility" class="form-control">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </td>
+            <td class="width-15 active">
+                <label class="pull-right">是否启用:</label>
+            </td>
+            <td class="width-35">
+                <select id="enable" name="enable" class="form-control">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td  class="width-15 active">
+                <label class="pull-right">备注:</label>
+            </td>
+            <td  class="width-35" colspan="3">
+                <textarea  id="remarks" name="remark" maxlength="200" class="form-control" rows="3"></textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/systemSettings/proIndex" src="/js/zlib/require.js"></script>
+</body>
+</html>

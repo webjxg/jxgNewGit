@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="00e5c61e-c1b4-440b-8a20-66aadd4e8f8d" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="mom-portal" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="tankManage.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/tankManage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2552">
+              <caret line="749" column="147" lean-forward="false" selection-start-line="749" selection-start-column="141" selection-end-line="749" selection-end-column="147" />
+              <folding>
+                <element signature="e#271#15715#0" expanded="false" />
+                <element signature="e#2177#3627#0" expanded="false" />
+                <element signature="e#3702#4887#0" expanded="false" />
+                <element signature="e#5225#9082#0" expanded="false" />
+                <element signature="e#10411#12086#0" expanded="false" />
+                <element signature="e#12156#12614#0" expanded="false" />
+                <element signature="e#12672#15699#0" expanded="false" />
+                <element signature="e#15762#16761#0" expanded="false" />
+                <element signature="e#16811#17770#0" expanded="false" />
+                <element signature="e#17964#19391#0" expanded="false" />
+                <element signature="e#19451#21661#0" expanded="false" />
+                <element signature="e#21698#22498#0" expanded="false" />
+                <element signature="e#22559#26034#0" expanded="false" />
+                <element signature="e#26097#30364#0" expanded="false" />
+                <element signature="e#30429#31402#0" expanded="false" />
+                <element signature="e#31647#33171#0" expanded="false" />
+                <element signature="e#34791#35007#0" expanded="false" />
+                <element signature="e#35048#38306#0" expanded="false" />
+                <element signature="e#38342#38766#0" expanded="false" />
+                <element signature="e#43050#45511#0" expanded="false" />
+                <element signature="e#46099#51312#0" expanded="false" />
+                <element signature="e#47361#51288#0" expanded="false" />
+                <element signature="e#51400#54967#0" expanded="false" />
+                <element signature="e#54092#54376#0" expanded="false" />
+                <element signature="e#54473#54943#0" expanded="false" />
+                <element signature="e#55055#55480#0" expanded="false" />
+                <element signature="e#55594#62779#0" expanded="false" />
+                <element signature="e#62888#64013#0" expanded="false" />
+                <element signature="e#63395#63991#0" expanded="false" />
+                <element signature="e#64091#66788#0" expanded="false" />
+                <element signature="e#66864#71787#0" expanded="false" />
+                <element signature="e#72150#76190#0" expanded="false" />
+                <element signature="e#76282#76415#0" expanded="false" />
+                <element signature="e#76517#77922#0" expanded="false" />
+                <element signature="e#78094#93193#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jqGrid.my.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/plugins/jqGrid/js/jqGrid.my.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="380" column="23" lean-forward="true" selection-start-line="380" selection-start-column="23" selection-end-line="380" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package_json" />
+        <option value="JavaScript File" />
+        <option value="tsconfig.json" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>#startTime</find>
+      <find>id=&quot;id</find>
+      <find>change</find>
+      <find>nodeMtrl</find>
+      <find>保存</find>
+      <find>theme-tight</find>
+      <find>width: 100%</find>
+      <find>append</find>
+      <find>sline</find>
+      <find>SLINE</find>
+      <find>请</find>
+      <find>slineInoutType</find>
+      <find>$.</find>
+      <find>mgt</find>
+      <find>disab</find>
+      <find>tankId</find>
+      <find>sele</find>
+      <find>ids</find>
+      <find>btnChart</find>
+      <find>floatColShow</find>
+      <find>empty</find>
+      <find>zTreeStyle.css</find>
+      <find>// var wuliao = result.AA.wuliao||data.wuliao;</find>
+      <find>Bus.openDialogCfg</find>
+      <find>delete</find>
+      <find>dosub</find>
+      <find>window.getFormData</find>
+      <find>chkType</find>
+      <find>oppositeNode</find>
+      <find>ownMaterial</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>dlv</replace>
+      <replace>'.dlvVal','add'</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/mMovetable.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/subdata.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/tsconfig.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/selectType.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/formInit.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/class2.json" />
+        <option value="E:/mom-portalZB/mom-portalZBBBBBBBBBBBB/html/material/materialMove/informationEntryFrom.html" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/ztree.json" />
+        <option value="$PROJECT_DIR$/js/zlib/app.js" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/formulaTable.json" />
+        <option value="$PROJECT_DIR$/js/module/material/factoryModels/computedCommons.js" />
+        <option value="$PROJECT_DIR$/js/plugins/datatables/js/jquery.dataTable.my.js" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/materialList.html" />
+        <option value="$PROJECT_DIR$/js/bus.js" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/lateraILForm.html" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/measuringNodeForm.html" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/warehouseForm.html" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/materialMoveModelsConf.html" />
+        <option value="$PROJECT_DIR$/js/module/material/factoryModels/measuringNode.js" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/measuringNodeCom.html" />
+        <option value="$PROJECT_DIR$/js/module/material/materialMove/tankFormula.js" />
+        <option value="$PROJECT_DIR$/css/defaultFormula.css" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/tankFormula.html" />
+        <option value="$PROJECT_DIR$/js/module/material/materialMove/materialMove.js" />
+        <option value="E:/mom-portalzb/mom-portal/json/factoryModel/materialMove/tankManage.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/tankManage.json" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/tankManage.html" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/materialMove.html" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/informationEntryFrom.html" />
+        <option value="$PROJECT_DIR$/json/nav.json" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/measurementPointForm.html" />
+        <option value="$PROJECT_DIR$/js/module/material/factoryModels/measurementPoint.js" />
+        <option value="$PROJECT_DIR$/js/module/material/factoryModels/lageralLine.js" />
+        <option value="$PROJECT_DIR$/html/material/factoryModels/lateralLineList.html" />
+        <option value="$PROJECT_DIR$/js/module/material/factoryModels/materialMoveModelsConf.js" />
+        <option value="$PROJECT_DIR$/json/factoryModel/list.json" />
+        <option value="$PROJECT_DIR$/js/api.js" />
+        <option value="$PROJECT_DIR$/js/layout/tabsNav.js" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/tableTestDP.json" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/tableTestDC.json" />
+        <option value="$PROJECT_DIR$/js/plugins/jqGrid/js/jqGrid.my.js" />
+        <option value="$PROJECT_DIR$/json/factoryModel/materialMove/deviceColModel.json" />
+        <option value="$PROJECT_DIR$/text.html" />
+        <option value="$PROJECT_DIR$/test.html" />
+        <option value="$PROJECT_DIR$/js/plugins/ztree/jquery.ztree.my.js" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/deviceIndex.html" />
+        <option value="$PROJECT_DIR$/json/factoryModel/listMaterialMove.json" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/addMove.html" />
+        <option value="$PROJECT_DIR$/html/material/materialMove/deviceMMAddForm.html" />
+        <option value="$PROJECT_DIR$/js/module/material/materialMove/device.js" />
+        <option value="$PROJECT_DIR$/js/module/material/materialMove/tankManage.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="2" />
+    <option name="width" value="1934" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="json" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="json" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factoryModel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jqGrid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jqGrid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mom-portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="E:/tools/node/node" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\mom-portal\json\factoryModel" />
+      <recent name="F:\mom-portal\js\module\material\materialMove" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\mom-portal\json\factoryModel" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.tankManage.js">
+    <configuration default="false" name="tankManage.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="tankManage.js" working-dir="$PROJECT_DIR$/js/module/material/materialMove">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.tankManage.js" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.tankManage.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\jiaxuguang\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00e5c61e-c1b4-440b-8a20-66aadd4e8f8d" name="Default" comment="" />
+      <created>1539138704941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539138704941</updated>
+      <workItem from="1539138707664" duration="7916000" />
+      <workItem from="1539160110974" duration="6478000" />
+      <workItem from="1539167462660" duration="2537000" />
+      <workItem from="1539218960224" duration="24870000" />
+      <workItem from="1539304985310" duration="22212000" />
+      <workItem from="1539391694595" duration="23333000" />
+      <workItem from="1539563288598" duration="619000" />
+      <workItem from="1539564070070" duration="617000" />
+      <workItem from="1539581767709" duration="645000" />
+      <workItem from="1539600652649" duration="599000" />
+      <workItem from="1539654333030" duration="7246000" />
+      <workItem from="1539737081058" duration="22222000" />
+      <workItem from="1539770363805" duration="7882000" />
+      <workItem from="1539823634033" duration="22480000" />
+      <workItem from="1539909245591" duration="14563000" />
+      <workItem from="1539934248774" duration="9457000" />
+      <workItem from="1540003534129" duration="32848000" />
+      <workItem from="1540168591566" duration="30900000" />
+      <workItem from="1540255220867" duration="37556000" />
+      <workItem from="1540300126973" duration="1618000" />
+      <workItem from="1540341578670" duration="28930000" />
+      <workItem from="1540379065866" duration="7666000" />
+      <workItem from="1540426993327" duration="13365000" />
+      <workItem from="1540472650603" duration="81000" />
+      <workItem from="1540514770263" duration="12006000" />
+      <workItem from="1540690673403" duration="3529000" />
+      <workItem from="1540713461442" duration="25807000" />
+      <workItem from="1540747119178" duration="189000" />
+      <workItem from="1540772785065" duration="22216000" />
+      <workItem from="1540809584582" duration="6172000" />
+      <workItem from="1540816168584" duration="1954000" />
+      <workItem from="1540860009786" duration="680000" />
+      <workItem from="1540863337334" duration="22015000" />
+      <workItem from="1540894662590" duration="18000" />
+      <workItem from="1540903927452" duration="577000" />
+      <workItem from="1540904516995" duration="6145000" />
+      <workItem from="1540952411148" duration="9805000" />
+      <workItem from="1540969552612" duration="5836000" />
+      <workItem from="1540975544458" duration="4511000" />
+      <workItem from="1541035422175" duration="27563000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="475663000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="2" width="1934" height="1048" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09394572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39954075" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="62" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/validator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22176">
+          <caret line="780" column="4" lean-forward="false" selection-start-line="780" selection-start-column="4" selection-end-line="780" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/materialMove.html" />
+    <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/materialMove.js" />
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/batchMeasureForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/informationEntryFrom.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="60" column="112" lean-forward="true" selection-start-line="60" selection-start-column="112" selection-end-line="60" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/initializeFrom.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/defaultFormula.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="71" column="29" lean-forward="true" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/tankFormula.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-665">
+          <caret line="29" column="9" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tankManage(2).js" />
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/tankManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1149">
+          <caret line="138" column="44" lean-forward="false" selection-start-line="138" selection-start-column="32" selection-end-line="138" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/factoryModels/measuringNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1568">
+          <caret line="131" column="22" lean-forward="false" selection-start-line="131" selection-start-column="22" selection-end-line="131" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/factoryModels/measurementPoint.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="175" column="0" lean-forward="false" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/nav.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="89" column="51" lean-forward="false" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/factoryModels/measurementPointForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1235">
+          <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/factoryModels/measurementPointList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="74" column="30" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7731">
+          <caret line="520" column="11" lean-forward="false" selection-start-line="520" selection-start-column="2" selection-end-line="520" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/factoryModels/materialList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="65" column="143" lean-forward="true" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/factoryModels/lateraILForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2558">
+          <caret line="89" column="30" lean-forward="false" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/factoryModels/lateralLineList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="39" column="91" lean-forward="false" selection-start-line="39" selection-start-column="91" selection-end-line="39" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/factoryModels/materialMoveModelsConf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1852">
+          <caret line="186" column="42" lean-forward="false" selection-start-line="186" selection-start-column="42" selection-end-line="186" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/list.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/touru.js" />
+    <entry file="file://$PROJECT_DIR$/touru.html" />
+    <entry file="file://$PROJECT_DIR$/js/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="16" column="49" lean-forward="false" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/layout/tabsNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/tankFormula.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/inventoryTaking/invManagement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2310">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/inventoryTaking/invManagement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17174">
+          <caret line="616" column="20" lean-forward="false" selection-start-line="616" selection-start-column="20" selection-end-line="619" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/tankManage.js.mine">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5040">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1664" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/factoryModel/materialMove/tableTestDC.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/factoryModel/materialMove/tableTestDP.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/factoryModel/list.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/factoryModel/materialMove/deviceColModel.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="98" column="5" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="98" selection-end-column="5" />
+          <folding>
+            <element signature="e#267#371#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/factoryModels/material.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/0_0/js/list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="84" column="24" lean-forward="false" selection-start-line="84" selection-start-column="24" selection-end-line="89" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/0_0/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1568">
+          <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/zlib/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/plugins/ztree/jquery.ztree.my.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/factoryModels/lageralLine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="115" column="16" lean-forward="true" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json/factoryModel/listMaterialMove.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="38" column="41" lean-forward="false" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/addMove.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="138" column="13" lean-forward="true" selection-start-line="102" selection-start-column="8" selection-end-line="138" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="436" column="8" lean-forward="false" selection-start-line="436" selection-start-column="8" selection-end-line="457" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/inventoryTaking/invDataCollection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2629">
+          <caret line="120" column="37" lean-forward="false" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/device.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="693" column="57" lean-forward="false" selection-start-line="693" selection-start-column="57" selection-end-line="693" selection-end-column="57" />
+          <folding>
+            <element signature="e#1937#4011#0" expanded="false" />
+            <element signature="e#6060#8120#0" expanded="false" />
+            <element signature="e#6154#6670#0" expanded="false" />
+            <element signature="e#6768#7386#0" expanded="false" />
+            <element signature="e#7486#8104#0" expanded="false" />
+            <element signature="e#8269#9214#0" expanded="false" />
+            <element signature="e#9359#10817#0" expanded="false" />
+            <element signature="e#10955#11516#0" expanded="false" />
+            <element signature="e#11608#12834#0" expanded="false" />
+            <element signature="e#12961#13160#0" expanded="false" />
+            <element signature="e#13261#25341#0" expanded="false" />
+            <element signature="e#13850#14094#0" expanded="false" />
+            <element signature="e#14412#19912#0" expanded="false" />
+            <element signature="e#19961#21104#0" expanded="false" />
+            <element signature="e#21147#21575#0" expanded="false" />
+            <element signature="e#21829#23042#0" expanded="false" />
+            <element signature="e#23249#23513#0" expanded="false" />
+            <element signature="e#23580#24034#0" expanded="false" />
+            <element signature="e#24155#24317#0" expanded="false" />
+            <element signature="e#24442#25219#0" expanded="false" />
+            <element signature="e#26049#27757#0" expanded="false" />
+            <element signature="e#28063#30514#0" expanded="false" />
+            <element signature="e#37386#38535#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/deviceIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1583">
+          <caret line="277" column="57" lean-forward="false" selection-start-line="277" selection-start-column="45" selection-end-line="277" selection-end-column="57" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/inventoryTaking/invDataCollection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="95" column="37" lean-forward="true" selection-start-line="89" selection-start-column="36" selection-end-line="95" selection-end-column="37" />
+          <folding>
+            <element signature="e#8791#12897#0" expanded="false" />
+            <element signature="e#12999#13568#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/material/materialMove/deviceMMAddForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="36" column="54" lean-forward="false" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/plugins/jqGrid/js/jqGrid.my.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="380" column="23" lean-forward="true" selection-start-line="380" selection-start-column="23" selection-end-line="380" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/module/material/materialMove/tankManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2552">
+          <caret line="749" column="147" lean-forward="false" selection-start-line="749" selection-start-column="141" selection-end-line="749" selection-end-column="147" />
+          <folding>
+            <element signature="e#271#15715#0" expanded="false" />
+            <element signature="e#2177#3627#0" expanded="false" />
+            <element signature="e#3702#4887#0" expanded="false" />
+            <element signature="e#5225#9082#0" expanded="false" />
+            <element signature="e#10411#12086#0" expanded="false" />
+            <element signature="e#12156#12614#0" expanded="false" />
+            <element signature="e#12672#15699#0" expanded="false" />
+            <element signature="e#15762#16761#0" expanded="false" />
+            <element signature="e#16811#17770#0" expanded="false" />
+            <element signature="e#17964#19391#0" expanded="false" />
+            <element signature="e#19451#21661#0" expanded="false" />
+            <element signature="e#21698#22498#0" expanded="false" />
+            <element signature="e#22559#26034#0" expanded="false" />
+            <element signature="e#26097#30364#0" expanded="false" />
+            <element signature="e#30429#31402#0" expanded="false" />
+            <element signature="e#31647#33171#0" expanded="false" />
+            <element signature="e#34791#35007#0" expanded="false" />
+            <element signature="e#35048#38306#0" expanded="false" />
+            <element signature="e#38342#38766#0" expanded="false" />
+            <element signature="e#43050#45511#0" expanded="false" />
+            <element signature="e#46099#51312#0" expanded="false" />
+            <element signature="e#47361#51288#0" expanded="false" />
+            <element signature="e#51400#54967#0" expanded="false" />
+            <element signature="e#54092#54376#0" expanded="false" />
+            <element signature="e#54473#54943#0" expanded="false" />
+            <element signature="e#55055#55480#0" expanded="false" />
+            <element signature="e#55594#62779#0" expanded="false" />
+            <element signature="e#62888#64013#0" expanded="false" />
+            <element signature="e#63395#63991#0" expanded="false" />
+            <element signature="e#64091#66788#0" expanded="false" />
+            <element signature="e#66864#71787#0" expanded="false" />
+            <element signature="e#72150#76190#0" expanded="false" />
+            <element signature="e#76282#76415#0" expanded="false" />
+            <element signature="e#76517#77922#0" expanded="false" />
+            <element signature="e#78094#93193#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

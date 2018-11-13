@@ -1,0 +1,231 @@
+require(['/js/zlib/app.js'],function (app) {
+    var PageModule = {
+        init:function () {
+            //初始化加载所有下拉以及列表
+            var itemArr = ["warehouse","advocate"];
+            PageModule.loadData(Api.mtrl+"/api/fm/MtrlInoutput/form/"+0,{},itemArr);
+            //给按钮加载事件
+            PageModule.clickHandler();
+        },
+        //加载下拉以及仓库、物料列表数据，并且创建下拉
+        loadData:function (url,data,itemArr) {
+            Api.ajaxForm(url,data,function (result) {
+                Bus.appendOptionsValue('#fctrList',result.fctrList,'id','fctrName');  //加载工厂下拉
+                Bus.appendOptionsValue('#fctrList2',result.fctrList,'id','fctrName');  //加载工厂下拉
+                Bus.appendOptionsValue('#areaTankList',result.stockTypeList,'value','label');  //加载仓库类型下拉
+                Bus.appendOptionsValue('#mtrlTypeList',result.mtrlTypeList,'value','label');  //加载物料类型下拉
+                for(var i=0;i<itemArr.length;i++){
+                    $("."+itemArr[i]).empty();
+                    if(itemArr[i] == "warehouse"){
+                        PageModule.createInitList(itemArr[i],result.nodeInoutputList);
+                    }else{
+                        PageModule.createInitList(itemArr[i],result.mtrlList);
+                    }
+                }
+            })
+        },
+        //初始化创建仓库、物料列表
+        createInitList:function (item,rows) {
+            if(item == "warehouse"){
+                for(var i=0;i<rows.length;i++){
+                    var li = $("<li data-id='"+rows[i].id+"'>"+rows[i].areaName+"</li>");
+                    $("."+item).append(li);
+                };
+            }else{
+                for(var i=0;i<rows.length;i++){
+                    var li = $("<li data-id='"+rows[i].id+"'>"+rows[i].mtrlName+"</li>");
+                    $("."+item).append(li);
+                };
+            }
+            $("."+item+" li").unbind("click").on("click",function () {
+                if(item == "warehouse"){
+                    PageModule.clickLoad($(this).attr("data-id"))
+                }
+                $(this).addClass("active").siblings("li").removeClass("active");
+            });
+        },
+        //点击仓库加载已分配列表
+        clickLoad:function (ids) {
+            var data = {
+                nodeAreaId:ids
+            };
+            Api.ajaxJson(Api.mtrl+"/api/fm/MtrlInoutput/findList",JSON.stringify(data),function (result) {
+                if(result.success){
+                    var data = result.rows;
+                    PageModule.createAllocated(data,"allocated");
+                    PageModule.clickHandler(data);   //操作按钮通过操作数据进行渲染
+                }
+            })
+        },
+        //创建已分配列表
+        createAllocated:function (data,item) {
+            $("."+item).empty();
+            for(var i=0;i<data.length;i++){
+                var li = $("<li data-id='"+data[i].id+"'>"+data[i].mtrl.mtrlName+"</li>");
+                $("."+item).append(li);
+            };
+            $("."+item+" li").unbind("click").on("click",function () {
+                $(this).addClass("active").siblings("li").removeClass("active");
+            });
+        },
+        //加载点击事件
+        clickHandler:function (dataList) {
+            $("#btn-ingredients").unbind("click").on("click",function () {              //切换为辅料
+                $(".accessory").removeClass("hide");  //辅料显示
+                $(".material").addClass("hide");     //主料隐藏
+                $(".material .advocate li").removeClass("active");   //切换为辅料时，移除主料的class
+            });
+            $("#btn-active").unbind("click").on("click",function () {              //切换为主料
+                $(".accessory").addClass("hide");  //辅料显示
+                $(".material").removeClass("hide");     //主料隐藏
+                $(".accessory .complement li").removeClass("active");   //切换为辅料时，移除主料的class
+            });
+            //右移按钮
+            $(".btn-right").unbind("click").on("click",function () {
+                var len = $(".allocated .active").length;
+                if(len>0){
+                    var ids = $(".allocated .active").attr("data-id");
+                    for(var i=0;i<dataList.length;i++){
+                        if(dataList[i].id == ids){
+                            dataList.splice(i,1);
+                            PageModule.createAllocated(dataList,"allocated")
+                        }
+                    }
+                }else{
+                    alert("请选择已分配的物料");
+                }
+            });
+            //上移按钮
+            $("#btn-up").unbind("click").on("click",function () {
+                if($(".allocated li").length<=0){
+                    alert("请先选择已分配的物料")
+                }else {
+                    $(".allocated li").each(function (index, item) {
+                        if ($(item).attr("class") == "active") {
+                            var arr = PageModule.upRecord(dataList, index);
+                            var $tr = $(this);
+                            $tr.prev().before($tr);
+                        }
+                    })
+                }
+            });
+            //下移按钮
+            $("#btn-down").unbind("click").on("click",function () {
+                if( $(".allocated li").length<=0){
+                    alert("请先选择已分配的物料")
+                }else{
+                    $(".allocated li").each(function (index,item) {
+                        if($(item).attr("class") == "active"){
+                            var arr =  PageModule.downRecord(dataList,index);
+                            var $tr = $(this);
+                            $tr.next().after($tr);
+                        }
+                    })
+                }
+            });
+            //保存按钮
+            $(".btn-save").unbind("click").on("click",function () {
+                if(dataList == undefined){
+                    alert("请选择物料")
+                }else{
+                    var nodeAreaId = $(".warehouse .active").attr("data-id");
+                    for(var i=0;i<dataList.length;i++){
+                        dataList[i].nodeAreaId = nodeAreaId;
+                        dataList[i].mtrlId = dataList[i].mtrlId;
+                    };
+                    var data = {
+                        mtrlInoutput:JSON.stringify(dataList)
+                    }
+                    Api.ajaxForm(Api.mtrl+"/api/fm/MtrlInoutput/save",data,function (result) {
+                        if(result.success){
+                            alert("保存成功")
+                        }else{
+                            alert(result.message)
+                        }
+                    })
+                }
+            })
+            //左移按钮
+            $(".btn-left").unbind("click").on("click",function () {
+                var len = $(".warehouse .active").length;  //仓库是否选中
+                if(len<=0 && dataList == undefined){     //仓库没有选中
+                    alert("请选择仓库")
+                }else{                               //仓库选中
+                    var obj = {};
+                    var mtrl = {};
+                    if($(".advocate .active").length<=0 && $(".complement .active").length<=0){          //主物料或者辅物料物料是否选中
+                        alert("请选择物料")
+                    }else if($(".advocate .active").length<=0){
+                        var id = $(".complement .active").attr("data-id");
+                        var name = $(".complement .active").text();
+                        var exist = PageModule.criteria(dataList,id);
+                        if(exist){
+                            obj.mtrlId = id;
+                            obj.id = id;
+                            mtrl.mtrlName = name;
+                            obj.mtrl = mtrl;
+                            dataList.push(obj)
+                        }else{
+                            alert("该物料已经存在")
+                        }
+                    }else{
+                        var id = $(".advocate .active").attr("data-id");
+                        var name = $(".advocate .active").text();
+                        var exist = PageModule.criteria(dataList,id);
+                        var name = $(".advocate .active").text();
+                        if(exist){
+                            obj.mtrlId = id;
+                            obj.id = id;
+                            mtrl.mtrlName = name;
+                            obj.mtrl = mtrl;
+                            dataList.push(obj)
+                        }else{
+                            alert("该物料已经存在")
+                        }
+                    }
+                    PageModule.createAllocated(dataList,"allocated")
+                }
+            });
+        },
+        //判断向左移的物料再已分配中是否已经存在
+        criteria:function (data,ids) {
+            var bol = true;
+            for(var i=0;i<data.length;i++){
+                if(data[i].id == ids){
+                    bol = !bol;
+                }else {
+                    bol = bol;
+                }
+            };
+            return bol;
+        },
+        //将数组排序
+        swapItems : function(arr, index1, index2) {
+            arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+            return arr;
+        },
+        // 向上按钮将数组排序
+        upRecord:function(arr, $index) {
+            if($index == 0) {
+                return;
+            }
+            var arr = PageModule.swapItems(arr, $index, $index - 1);
+            return arr
+        },
+        //向下按钮将数组排序
+        downRecord:function(arr, $index) {
+            if($index == arr.length -1) {
+                return;
+            }
+            var arr = PageModule.swapItems(arr, $index, $index + 1);
+            return arr
+        }
+    };
+
+    $(function () {
+        if($("#turnoverSpot").length>0){
+            PageModule.init();
+        }
+    })
+});
+

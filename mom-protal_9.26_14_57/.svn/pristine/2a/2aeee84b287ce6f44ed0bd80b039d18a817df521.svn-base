@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width,initial-scale=1.0">
+    <title>重点工作计划查看</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="../../js/plugins/easyui/themes/default/datagrid.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/customDatagrid.css">
+    <link rel="stylesheet" href="../../css/aps.css">
+    <style>
+        #btn-adjust {
+            display: none;
+        }
+        .noData{
+            font-size:20px;
+            text-align: center;
+            line-height: 30px;
+            display: none;
+            padding-top:80px;
+            padding-bottom:42px;
+            color:#cec9c9d4;
+        }
+    </style>
+</head>
+<body id="KeyWorkPlanView">
+<div class="wrapper-con">
+    <div class="ibox">
+        <div class="ibox-content">
+            <div class="noData">暂无数据！</div>
+            <div class="commercePurCon proTargetPlanItem" id="parentDiv">
+            </div>
+        </div>
+    </div>
+</div>
+<script data-main="/js/module/producePlan/keyWorkPlan" src="/js/zlib/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>物料管理</title>
+</head>
+
+<body id="materialInner" class="wrapper-white">
+<form id="inputForm" class="form-horizontal" action="$Api.mtrl$/api/fm/Mtrl/save" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="form-table table">
+    <!--<table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">-->
+        <tbody>
+        <tr>
+            <td class="width-15 require active">
+                 物料编号:
+            </td>
+            <td class="width-35">
+                <input id="mtrlNo" name="mtrlNo" class="form-control " require="true" type="number" dataType="Range" placeholder="150000以上"  min="150000" value="" ></td>
+            <td class="width-15 require active">
+                物料编码:
+            </td>
+            <td class="width-35">
+                <input id="mtrlCode" name="mtrlCode" class="form-control "  require="true" type="text" value="" >
+            </td>
+        </tr>
+        <tr>
+            <td class="require active">
+                    物料名称:
+            </td>
+            <td>
+                <input id="mtrlName" name="mtrlName" class="form-control" require="true" type="text" value="" >
+            </td>
+            <td class="require active">
+                    物料别名:
+            </td>
+            <td>
+                <input id="mtrlAlias" name="mtrlAlias" class="form-control" require="true" type="text" value="" >
+            </td>
+        </tr>
+        <tr>
+            <td class="active">
+                    物料类型:
+            </td>
+            <td>
+                <select id="mtrlType" name="mtrlType"  class="form-control select2">
+                    <option value="">请选择</option>
+                </select>
+            </td>
+            <td class="active">
+                量纲:
+            </td>
+            <td>
+                <select id="dimensionType" name="dimensionType"  class="form-control select2"></select>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">
+                    上级物料:
+            </td>
+            <td>
+                <select id="parentMtrlId" name="parent.id"  class="form-control select2">
+                    <option value="">请选择</option>
+                </select>
+            </td>
+            <td class="active">
+                VCF类别:
+            </td>
+            <td>
+                <select id="vcfType" name="vcfType" class="form-control select2">
+                    <option value="">请选择</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">
+                    数据精度:
+            </td>
+            <td>
+                <input id="pres" name="pres" class="form-control" type="number"  require="true" dataType="Range" min="0" max="100" value="0" >
+            </td>
+            <td class="active">
+                    显示顺序:
+            </td>
+            <td>
+                <input id="displayOrder" name="displayOrder" class="form-control"  dataType="Range" min="0" max="1000" type="number" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td class="active">
+                启用标识:
+            </td>
+            <td>
+                <!--<input type="checkbox" name="checkboxName" class="i-checks" value="1" checked>-->
+                <input type="checkbox" id="enable" name="enable" class="i-checks" value="1" checked>
+            </td>
+            <td class="active">
+                说明:
+            </td>
+            <td>
+                <input id="remark" name="remark" class="form-control" type="text" value="">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script data-main="/js/module/material/factoryModels/material" src="/js/zlib/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>分配应用</title>
+    <style>
+        #assignButton {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body id="orgAllotApp">
+<div class="wrapper wrapper-content">
+    <div class="container-fluid role-info">
+    </div>
+    <!-- 0:隐藏tip, 1隐藏box,不设置显示全部 -->
+    <div class="">
+        <form id="assignRoleForm" action="$Api.admin$/api/sys/SysOrg/addUser" method="post" class="hide">
+            <input type="hidden" name="deptId" id="roleId" value="">
+            <input type="hidden" name="companyId" id="companyList" value="">
+        </form>
+        <button id="assignButton" type="submit" class="btn btn-outline btn-primary btn-sm" title="添加应用"><i
+                class="fa fa-plus"></i> 添加应用
+        </button>
+        <button class="btn btn-danger btn-sm" id="delete-btn" ><i class="fa fa-trash-o"></i>删除
+        </button>
+        <button class="btn btn-white btn-sm hidden" id="refresh-btn" 
+                title="刷新"><i class="glyphicon glyphicon-repeat"></i> 刷新
+        </button>
+    </div>
+    <table id="treeTable"
+           class="table table-striped table-bordered table-hover table-condensed dataTables-example dataTable tree_table">
+        <thead>
+        <tr>
+            <th width="60px"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+            <th>应用名称</th>
+            <th>应用路径</th>
+            <th>应用编码</th>
+            <th>使用范围</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <!--表内容-->
+        <tbody id="datainner">
+        </tbody>
+    </table>
+</div>
+<script data-main="/js/module/systemSettings/assign" src="/js/zlib/require.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+require(['/js/zlib/app.js'], function (App) {
+    //引入用户登录校验
+    require(['checkUser']);
+
+    var PageModule = {
+        listInit: function () {
+            //新增
+            $('#add-btn').on('click', function () {
+                PageModule.openEditDialog('新增字典', 'systemSettings/dictionaryInner.html', '800px', '350px')
+            });
+            //引入Page插件
+            require(['Page'], function () {
+
+                window.pageLoad = function () {
+                    var data = {
+                        type: $("#type option:selected").val(),
+                        descriptionParam: $('#description').val()
+                    };
+                    //修改默认每页显示条数
+                    Page.init(Api.admin + "/api/sys/SysDict/page", data, true, function (tableData) {
+                        renderTableData(tableData);
+                        $('.btn-check').click(function () {
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openDialog('查看字典', 'systemSettings/dictionaryInner.html?id=' + id, '800px', '500px')
+                        });
+                        $('.btn-change').click(function () {
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('修改字典', 'systemSettings/dictionaryInner.html?id=' + id, '800px', '500px');
+                        });
+                        $('.btn-delete').click(function () {
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.deleteItem('确定要删除该字典吗', Api.admin + '/api/sys/SysDict/delete', id)
+                        });
+                        $('.btn-add').click(function () {
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('添加键值', 'systemSettings/dictionaryInner.html?id=' + id + '&api=addKey', '800px', '500px')
+                        });
+                        //点击重置按钮
+                        $('#reset-btn').click(function () {
+                            $("#type option:first").prop("selected", 'selected');
+                            $("#description").val("");
+                            Page.reset(["type", "description"]);
+                        });
+                    });
+                };
+                $("#search-btn").click(function () {
+                    pageLoad();
+                });
+                pageLoad();
+            });
+
+            function renderTableData(tableData) {
+                $('#treeTable').dataTable({
+                    "bPaginate": false,
+                    "bAutoWidth": false,
+                    "bDestroy": true,
+                    "paging": false,
+                    "bProcessing": true,
+                    "searching": false, //禁用aa原生搜索
+                    "info": false,  //底部文字
+                    "order": [],
+                    "aoColumnDefs": [
+                        {"bSortable": false, "aTargets": [0, 2, 6]}
+                    ],
+                    "oLanguage": dataTableLang,
+                    "data": tableData,
+                    //定义列 宽度 以及在json中的列名
+                    "aoColumns": [
+                        {
+                            "data": null, "sWidth": "60px;", "defaultContent": "", 'sClass': "alignCenter",
+                            "render": function (data, type, row, meta) {
+                                return data = "<input type='checkbox' id=" + row.id + " class='i-checks'>"
+                            }
+                        },
+                        {"data": "value", 'sClass': " alignCenter", "width": "12%"},
+                        {"data": "label", 'sClass': "alignCenter ", "width": "12%"},
+                        {"data": "type", 'sClass': "alignCenter", "width": "12%"},
+                        {"data": "description", 'sClass': "alignCenter"},
+                        {"data": "sort", 'sClass': "alignCenter", "width": '8%'},
+                        {
+                            "data": "id", "orderable": false, "defaultContent": "", 'sClass': " alignCenter autoWidth",
+                            "render": function (data, type, row, meta) {
+                                return "<a class='btn btn-info btn-xs btn-check' ><i class='fa fa-search-plus'></i>查看</a >" +
+                                    "<a class='btn btn-success btn-xs btn-change' ><i class='fa icon-change'></i>修改</a >" +
+                                    "<a class='btn btn-danger btn-xs btn-delete' ><i class='fa fa-trash-o' ></i>删除</a >" +
+                                    "<a class='btn btn-primary btn-xs btn-add'><i class='fa fa-plus'></i>添加键值</a >";
+                            }
+                        }]
+                });
+                renderIChecks();
+            }
+
+            Bus.createSelect(Api.admin + "/api/sys/SysDict/allType", "#type", 'type', 'type');  //动态添加Select的option
+        },
+
+        formInit: function () {
+            Mom.include('myCss', '', [
+                '../css/comInnerTable.css',
+            ]);
+            var id = Mom.getUrlParam('id'),
+                api = Mom.getUrlParam('api') || 'form';
+
+            $("#value").focus();
+
+            if (id) {
+                var url = Api.admin + "/api/sys/SysDict/" + api + "/" + id;
+                Api.ajaxJson(url, {}, function (result) {
+                    if (result.success) {
+                        Validator.renderData(result.SysDict, $('#inputForm'));
+                    } else {
+                        Mom.layMsg(result.message);
+                    }
+                });
+            }
+
+
+
+            window.doSubmitNews = function (iframeWin, iframeBody, layerIdx) {
+                if (!Validator.valid(document.forms[0], 1.3)) {
+                    return false;
+                }
+                var formObj = $('#inputForm');
+                var url = formObj.attr('action');
+                var formdata = formObj.serializeJSON();
+                Api.ajaxJson(url, JSON.stringify(formdata), function (result) {
+                    if (result.success == true) {
+                        top.layer.msg('已成功提交', {time: 1000});
+                        $('#value,#label').val('');
+                        var sortval=$('#sort').val();
+                        $('#sort').val(parseInt(sortval)+5);
+                        setTimeout(function () {
+                            //刷新父层
+                            var frameActive = top.TabsNav.getActiveTab().attr("name");
+                            var obj = $('#search-btn', top.window.frames[frameActive].document);
+                            if (obj.length == 0) {
+                                obj = $('#refresh-btn', top.window.frames[frameActive].document);
+                            }
+                            obj.trigger('click');
+                        }, 1000);
+                    } else {
+                        Mom.layAlert(result.message);
+                    }
+                });
+            };
+
+
+        },
+
+
+        /**作者：贾旭光
+         *日期：2018.8.3
+         *描述：增加按钮添加键值 方便新建时不用重复搜索再添加
+         */
+
+        /*递交*/
+        openDialog: function (title, url, width, height, fullScreen, callback) {
+            var p_ = top;//window.parent?window.parent:top;
+            var isMobileAgent_ = Mom.isMobileAgent;
+            if (undefined == width || width == '') {
+                width = fullScreen == true ? 'auto' : '800px';
+            }
+            if (undefined == height || height == '') {
+                height = fullScreen == true ? 'auto' : '500px';
+            }
+            //如果是移动端，就使用自适应大小弹窗
+            if (isMobileAgent_ == true) {
+                width = 'auto';
+                height = 'auto';
+            }
+            var config = {
+                type: 2,
+                area: [width, height],
+                title: title,
+                maxmin: true, //开启最大化最小化开关
+                content: url,
+                success: function (layero, index) {
+                    //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+                    //var iframeWin = p_.window[layero.find('iframe')[0]['name']];//外部窗口
+                    var iframeWin = layero.find('iframe')[0].contentWindow; //内部窗口
+                    iframeWin = iframeWin.contentWindow || iframeWin;
+
+                    //自动高度
+                    if (height == 'auto' && isMobileAgent_ != true) {
+                        p_.layer.iframeAuto(index);
+                    }
+                    //加载完成后设置内部的关闭按钮
+                    $('.closeBtn', iframeWin.document).each(function (i, o) {
+                        var closeBtnStr = $(o).prop("outerHTML");
+                        var _fun = closeBtnStr.match(/\([^\)]*\)/g);
+                        if (_fun == null || _fun == '()') {
+                            $(o).unbind("click").click(function () {
+                                p_.layer.close(index);
+                                return false;
+                            });
+                        }
+                    });
+                }
+            };
+            if (callback) {
+                config.btn = ['添加下一个', '保存并关闭', '关闭'];
+                config.btn1 = function (index, layero) {
+                    var flag = callback(index, layero);
+
+                };
+                config.btn2 = function (index, layero) {
+                    var flag = callback(index, layero);
+                    return flag
+                };
+                config.btn3 = function (index) {
+                };
+            } else {
+                config.btn = ['关闭'];
+                config.cancel = function (index) {
+                };
+            }
+            var layIndex = p_.layer.open(config);
+            if (fullScreen == true) {//全屏
+                p_.layer.full(layIndex);
+            }
+        },
+        openEditDialog: function (title, url, width, height, fullScreen) {
+            if (title == null || title == '') {
+                title = '修改';
+            }
+            PageModule.openDialog(title, url, width, height, fullScreen, function (layerIdx, layero) {
+                var iframeWin = layero.find('iframe')[0].contentWindow; //内部窗口
+                iframeWin = iframeWin.contentWindow || iframeWin;
+                var p_ = top;//window.parent?window.parent:top;
+                var iframeBody = p_.layer.getChildFrame('body', layerIdx);
+                var flag_ = false;
+                try {
+                    flag_ = iframeWin.doSubmitNews(iframeWin, iframeBody, layerIdx);
+                } catch (e) {
+                    window.alert(e.message);
+                }
+                return flag_;
+            });
+
+
+        }
+    };
+    $(function () {
+        //数据字典列表
+        if ($('#dictionary').length > 0) {
+            PageModule.listInit();
+        }
+        else if ($('#dictionaryInner').length > 0) {
+            PageModule.formInit();
+        }
+
+
+    });
+
+});

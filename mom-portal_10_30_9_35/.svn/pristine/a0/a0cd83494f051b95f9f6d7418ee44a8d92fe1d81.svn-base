@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>请选择</title>
+    <style>
+        .searchGroup {top:10px; right:10px; position: absolute; font-size:0;}
+        .searchAll {margin-left:-2px; height:26px; padding: 0 5px; border: 1px solid #ddd; background:transparent;}
+        #ztree_searchText{
+            width:80px; line-height:24px; padding:2px 4px; font-size:12px; vertical-align:top;
+            border:1px solid #ddd; border-radius: 5px; padding: 0 6px; outline: none;
+            border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0;
+        }
+    </style>
+</head>
+
+<body id="treeSelect" class="wrapper-white">
+    <span class="searchGroup pull-right">
+        <input type="text" id="ztree_searchText" placeholder="关键字筛选">
+        <button type="button" class="btn-search-input searchAll">
+            <i class="fa fa-search"></i>
+         </button>
+    </span>
+    <div id="tree" class="ztree"></div>
+    <script data-main="/js/module/common/treeSelect" src="/js/zlib/require.js"></script>
+</body>
+</html>

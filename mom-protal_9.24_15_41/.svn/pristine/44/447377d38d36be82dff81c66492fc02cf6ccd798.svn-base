@@ -1,0 +1,402 @@
+require(['/js/zlib/app.js'], function(App) {
+    //引入用户登录校验
+    require(['checkUser','treeTable']);
+
+    var PageModule = {
+        listInit: function(){
+            //引入zTree样式
+            Mom.include('myCss', '', [
+                '../js/plugins/ztree/css/zTreeStyle/zTreeStyle.css',
+                '../js/plugins/ztree/css/metroStyle/metroStyle.css'
+            ]);
+            require(['ztree_all'],function(){
+                Api.ajaxJson(Api.admin+'/api/sys/SysOrg/leftTree','json',zTree);
+            });
+            function zTree(da) {
+                var data=da.rows;
+                var zTreeObj;
+                // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+                var setting = {
+                    data: {
+                        simpleData: {
+                            enable: true,   //设置是否使用简单数据模式(Array)
+                            idKey: "id",    //设置节点唯一标识属性名称
+                            pIdKey: "pId"      //设置父节点唯一标识属性名称
+                        },
+                        key: {
+                            name: "name",//zTree 节点数据保存节点名称的属性名称
+                            title: "name"//zTree 节点数据保存节点提示信息的属性名称
+                        }
+                    },
+                    callback: {
+                        onClick: function (e, treeId, node){
+                            if(node.id){
+                                updatason(node.id)
+                            }
+                        }
+                    }
+
+                };
+                // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+                var zNodes = data;
+                //执行ztree
+                var treeObj =$.fn.zTree.init($("#tree"), setting, zNodes);
+            }
+            function updatason(node){
+                Api.ajaxJson(Api.admin+"/api/sys/SysOrg/treeJson/"+node,{},function(tableData){
+                    renderTableData(tableData.rows);
+                    clickButton();
+                })
+            }
+            var pageLoad = function () {
+                Api.ajaxJson(Api.admin+"/api/sys/SysOrg/treeJson/0",{},function(tableData){
+                    renderTableData(tableData.rows);
+                    $('.i-Checks span').css('padding-left',0);
+                    clickButton();
+                });
+            };
+            pageLoad();
+            function clickButton() {
+                $('.btn-check').click(function () {
+                    var id = $(this).parents("tr").attr('data-tt-id');
+                    Bus.openDialog('查看组织机构信息', './systemSettings/orgCheckView.html?id=' + id, '800px', '600px')
+                });
+                $('.btn-change').click(function () {
+                    var id = $(this).parents("tr").attr('data-tt-id');
+                    Bus.openEditDialog('修改组织机构信息', './systemSettings/orgCheckView.html?id=' + id, '800px', '600px')
+                });
+                $('.btn-delete').click(function () {
+                    var id = $(this).parents("tr").attr('data-tt-id');
+                    deleteIt('确定要删除该机构吗', Api.admin+'/api/sys/SysOrg/del/',id)
+                });
+                $('.btn-add').click(function(){
+                    var id = $(this).parents("tr").attr('data-tt-id');
+                    Bus.openEditDialog('添加下级菜单','./systemSettings/orgCheckView.html?pid='+id,'800px','600px')
+                });
+                $('.btn-allot').click(function(){
+                    var id = $(this).parents("tr").attr('data-tt-id');//注意大小写
+                    var type = $(this).parents("tr").attr('data-tt-type');
+                    Bus.openDialog('分配用户','./systemSettings/orgAssign.html?id='+id+'&type='+type,'800px','600px');
+                });
+                $('.btn-allotApp').click(function(){
+                    var id = $(this).parents("tr").attr('data-tt-id');
+                    Bus.openDialog('分配应用','./systemSettings/orgAllotApp.html?id='+id,'800px','600px');
+                });
+            }
+            function deleteIt(mess,url,id){
+                var data = {id:id} || {};
+                top.layer.confirm(mess, {icon: 3, title:'系统提示'},function(index){
+                    Api.ajaxForm(url,data,function(result){
+                        console.log(url,data,result)
+                        if(result.success == true){
+                            var frameActive = top.TabsNav.getActiveTab().attr("name");
+                            var obj = $('#search-btn', top.window.frames[frameActive].document);
+                            if(obj.length == 0){
+                                obj = $('#refresh-btn', top.window.frames[frameActive].document);
+                                window.location.reload();
+                            }
+                            obj.trigger('click');
+                        }
+                    });
+                    top.layer.close(index);
+                });
+                return false;
+            }
+            function renderTableData(data) {
+                var tableStr = "";
+                for (var i = 0; i < data.length; i++) {
+                    var count = 'data-tt-id=' + data[i].id;
+                    if (data[i]._parentId && data[i]._parentId != '') {
+                        count += '  data-tt-parent-id=' + data[i]._parentId;
+                    }
+                    //(修改)要求公司和集团不允许分配用户
+                    if(data[i].type==1||data[i].type==0){
+                        tableStr += "<tr class='alignCenter autoWidth'   " + count + " data-tt-type='"+data[i].type+"'>"
+                            + "<td class='alignLeft autoWidth' id='" + data[i].id + "'>" + data[i].name + "</td>"
+                            + "<td>" + data[i].typeLabel + "</td>"
+                            + "<td>" + data[i].gradeLabel + "</td>"
+                            + "<td class='autoWidth' >" +
+                            "<a class='btn btn-info btn-xs btn-check'><i class='fa fa-search-plus'></i>查看</a>" +
+                            " <a class='btn btn-success btn-xs btn-change'><i class='fa icon-change'></i>修改</a>" +
+                            " <a class='btn btn-primary btn-xs btn-add'><i class='fa fa-plus'></i> 添加下级机构</a> " +
+                            "<a class='btn   btn-xs btn-allotApp'><i class='fa fa-pie-chart'></i> 分配应用</a>" +
+                            " <a class='btn btn-danger btn-xs btn-delete'><i class='fa fa-trash'></i> 删除</a>" +
+                            "</td>"
+
+                            + "</tr>";
+                    }else{
+                        tableStr += "<tr class='alignCenter autoWidth'   " + count + " data-tt-type='"+data[i].type+"'>"
+                            + "<td class='alignLeft autoWidth' id='" + data[i].id + "'>" + data[i].name + "</td>"
+                            + "<td>" + data[i].typeLabel + "</td>"
+                            + "<td>" + data[i].gradeLabel + "</td>"
+                            + "<td class='autoWidth' >" +
+                            "<a class='btn btn-info btn-xs btn-check'><i class='fa fa-search-plus'></i>查看</a>" +
+                            " <a class='btn btn-success btn-xs btn-change'><i class='fa icon-change'></i>修改</a>" +
+                            " <a class='btn btn-primary btn-xs btn-add'><i class='fa fa-plus'></i> 添加下级机构</a> " +
+                            "<a class='btn  btn-warning btn-xs btn-allot'><i class='fa fa-user'></i> 分配用户</a> " +
+                            "<a class='btn   btn-xs btn-allotApp'><i class='fa fa-pie-chart'></i> 分配应用</a>" +
+                            " <a class='btn btn-danger btn-xs btn-delete'><i class='fa fa-trash'></i> 删除</a>" +
+                            "</td>"
+
+                            + "</tr>";
+                    }
+
+                }
+
+                if (tableStr.length == 0) {
+                    var len = $("#treeTable thead tr").children("th").length;
+                    tableStr = "<tr style='text-align: center'><td colspan='" + len + "'><font color='#cd0a0a'>暂无记录</font></td></tr>";
+                }
+                $('#treeTableBody').html(tableStr);
+                require(['treeTable'],function(){
+                    $("#treeTable").treetable({expandable: true, column: 0}, true); //第二个参数表示为true时强制重新初始化树。
+                });
+                Mom.setFrameHeight()
+            }
+        },
+
+        //查看(修改)组织机构信息 && 添加下级菜单
+        formInit: function(){
+            Mom.include('myCss', '', [
+                '../css/comInnerTable.css',
+            ]);
+            // 获取机构类型
+            Bus.createSelect(Api.admin+"/api/sys/SysDict/type/orgType","#type",'value','label');
+            // 获取机构等级
+            Bus.createSelect(Api.admin+"/api/sys/SysDict/type/orgGrade","#grade",'value','label');
+            var id = Mom.getUrlParam('id');
+            var pid = Mom.getUrlParam('pid');
+            $("#id").val(id);
+            if (id!==null) {
+                /*此处后端接口  id为弹出窗口自带的id 通过浏览器方法传参得到*/
+                var url = Api.admin+"/api/sys/SysOrg/view/" + id;
+                Api.ajaxForm(url, {}, function (result) {
+                    if (result.success) {
+                        var SysOrg = result.SysOrg;
+                        Validator.renderData(SysOrg, $('#inputForm'));
+                        /*运行把ajax数据渲染到弹出窗口中*/
+                        $('#pname').val(SysOrg.primaryPerson?SysOrg.primaryPerson.name:"");
+                        $('#dname').val(SysOrg.deputyPerson?SysOrg.deputyPerson.name:"");
+                        $('#parentName').val(result.parentName);
+                    } else {
+                        Mom.layMsg(result.message);
+                    }
+                });
+            }else if(pid!==null){
+                var url = Api.admin+"/api/sys/SysOrg/view/" + pid;
+                Api.ajaxForm(url, {}, function (result) {
+                    if (result.success) {
+                        var SysOrg = result.SysOrg;
+                        $('#parentName').val(SysOrg.name);
+                        $('#parentId').val(SysOrg.id);
+                    } else {
+                        Mom.layMsg(result.message);
+                    }
+                });
+            }
+            layerInZtreeAll('#parentalert', ['300px', '424px'], './systemSettings/orgParents.html', '#parentName', '#parentId');
+            layerInPersons('#ppalert', ['800px', '600px'], './systemSettings/orgPersons.html', '#pname', '#pnameId');
+            layerInPersons('#dpalert', ['800px', '600px'], './systemSettings/orgPersons.html', '#dname', '#dnameId');
+
+            function layerInZtreeAll(btn,size,url,name,id) {
+                $(btn).on('dblclick',function () {
+                    top.layer.open({
+                        btn: ['确定', '取消'],
+                        shade: [0.4, '#000'], //0.1透明度的白色背景
+                        type: 2,
+                        title: '添加',
+                        shadeClose: true,
+                        maxmin: false, //开启最大化最小化按钮
+                        area: size,
+                        content: url,
+                        yes:function (index,layero) {
+                            var iframeWin = layero.find('iframe')[0];
+                            console.log(iframeWin.contentWindow);
+                            var selobj=iframeWin.contentWindow.getSelectVal();//在layer中运行当前弹出页内的getSelectVal方法
+                            if(selobj){
+                                $(name).val(selobj.name);
+                                $(id).val(selobj.id);
+                            }
+                            top.layer.close(index);
+                        }
+                    })
+                })
+            }
+
+            function layerInPersons(btn,size,url,name,id) {
+                $(btn).on('dblclick',function () {
+                    top.layer.open({
+                        btn: ['确定', '取消'],
+                        shade: [0.4, '#000'], //0.1透明度的白色背景
+                        type: 2,
+                        title: '添加',
+                        shadeClose: true,
+                        maxmin: true, //开启最大化最小化按钮
+                        area: size,
+                        content: url,
+                        yes: function (index, layero) {
+                            var iframeWin = layero.find('iframe')[0];
+                            var selobj = iframeWin.contentWindow.getElement();
+                            if (selobj) {
+                                $(name).val(selobj.name);
+                                $(id).val(selobj.id);
+                            }
+                            top.layer.close(index);
+                        }
+                    })
+                })
+            }
+
+        },
+
+        //选择上级机构
+        orgParent: function(){
+            Mom.include('myCss', '', [
+                '../js/plugins/ztree/css/zTreeStyle/zTreeStyle.css',
+            ]);
+            require(['ztree_all'],function(){
+                Api.ajaxJson(Api.admin+'/api/sys/SysOrg/selectOrg','json',ztreeorgZtree2);
+            });
+            //user-ztree2页面使用 ajax并返回处理节点方法
+            var zTreeObj;
+            function ztreeorgZtree2(data) {
+                var da=data.rows
+                var setting = {
+                    data: {
+                        simpleData: {
+                            enable: true,   //设置是否使用简单数据模式(Array)
+                            idKey: "id",    //设置节点唯一标识属性名称
+                            pIdKey: "pId"      //设置父节点唯一标识属性名称
+                        },
+                        key: {
+                            name: "name",//zTree 节点数据保存节点名称的属性名称
+                            title: "name" //zTree 节点数据保存节点提示信息的属性名称
+                        }
+                    }
+                };
+                var zNodes = da;
+                zTreeObj= $.fn.zTree.init($('#tree'), setting, zNodes);
+                if(zTreeObj)
+                {return getSelectVal}
+            }
+            window.getSelectVal = function(){
+                if(zTreeObj){
+                    var nodes = zTreeObj.getSelectedNodes();
+                    if(nodes.length != 1){
+                        layer.alert('只能选择一项', {
+                            icon: 2,
+                            offset: 't',
+                        })
+                    }
+                    var id = nodes[0].id;
+                    var name = nodes[0].name;
+                    var pId = nodes[0].pId;
+                    var type = nodes[0].type;
+                    var selObj = {'id':id, 'name':name, 'pId':pId, 'type':type};
+                    return selObj;
+                }
+            }
+        },
+
+        //选择负责人
+        orgPerson: function(){
+            require(['Page'],function(){
+                window.pageLoad = function () {
+                    var data = {
+                        companyId: $("#companyId").val(),
+                        loginNameParam: $('#loginName').val(),
+                        deptId: $('#officeId').val(),
+                        nameParam: $('#name').val(),
+                        treeId: $('#treeId').val()
+                    };
+                    Page.init(Api.admin+"/api/sys/SysUser/page", data, true, function (tableData) {
+                        dataout(tableData);
+                    });
+                };
+                pageLoad();
+            });
+            //选择公司
+            $('.first-input-group').click(function () {
+                Bus.openOrgSelect('type=1','#companyName', '#companyId', '请选择归属公司');
+            });
+            //选择部门
+            $('.second-input-group').click(function () {
+                var companyId=$('#companyId').val();
+                Bus.openOrgSelect('type=2&id='+companyId,'#officeName', '#officeId', '请选择部门');
+            });
+            var treeId = Mom.getUrlParam("treeId");
+            $('#treeId').val(treeId);
+            //点击重置按钮
+            $("#reset-btn").click(function () {
+                $("#companyName").val("");
+                $("#companyId").val("");
+                $('#loginName').val("");
+                $('#officeName').val("");
+                $('#name').val("");
+                Page.reset(["nameParam","deptId","loginNameParam","companyId"]);
+            });
+            //ajax请求渲染datatable数据
+            function dataout(dataTable) {
+                $('#treeTable').dataTable({
+                    "bPaginate": false,
+                    "bAutoWidth": false,
+                    "bDestroy":true,
+                    "paging": false,
+                    "bProcessing": true,
+                    "searching": false, //禁用aa原生搜索
+                    "info": false,  //底部文字
+                    "order": [],
+                    "ordering": false,
+                    "oLanguage": dataTableLang,
+                    "data":dataTable,
+                    //定义列 宽度 以及在json中的列名
+                    "aoColumns": [
+                        {"data": null,"sWidth":"10px;","defaultContent":"",'sClass':"alignCenter",
+                            "render":function(data, type, row, meta) {
+                                return data = "<input name='i-check' type='radio' id=" + row.id + " class='i-checks'>"
+                            }
+                        },
+                        {"data": "loginName", "width": "auto",'sClass':"alignCenter loginName"},
+                        {"data": "name", "width": "auto",'sClass':"alignCenter name"},
+                        {"data": "phone", "width": "auto",'sClass':"alignCenter"},
+                        {"data": "mobile", "width": "auto",'sClass':"alignCenter"}
+                    ]
+                });
+                renderIChecks();
+            }
+            //弹窗方法
+            window.getElement = function(){
+                var obj = {};
+                $("#datainner tr td .i-checks").each(function (index,item) {
+                    if($(item).is(":checked")) {
+                        var id = $(this).attr("id");
+                        var name = $(this).parents("td").next().next().text();
+                        obj.id = id;
+                        obj.name = name;
+                    }
+                });
+                return obj;
+            }
+        },
+
+    };
+
+    $(function(){
+        //机构管理首页
+        if($('#orgIndex').length > 0){
+            PageModule.listInit();
+        }
+        //查看(修改)组织机构信息 && 添加下级菜单
+        else if($('#orgCheckView').length > 0){
+            PageModule.formInit();
+        }
+        //选择上级机构
+        else if($('#orgParents').length > 0){
+            PageModule.orgParent();
+        }
+        //选择负责人
+        else if($('#orgPersons').length > 0){
+            PageModule.orgPerson();
+        }
+    });
+});

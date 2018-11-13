@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盘存字典修改</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../css/comInnerTable.css">
+    <style>
+        #val{
+            width:85%;
+        }
+        #computerBtn{
+            height: 34px;
+        }
+        select{
+            width: 100%;
+            border-radius: 0;
+        }
+        #names{
+            display: none;
+        }
+         #types{
+             /*display: none;*/
+         }
+    </style>
+</head>
+<body id="planDicCheckView" class="wrapper-white">
+<form id="inputForm" class="form-horizontal" method="post" novalidate="novalidate">
+    <input id="id" name="id" type="hidden" value="">
+    <table class="table form-table">
+        <tr>
+            <td class="width-15 active">上级指标:</td>
+            <td class="width-35">
+                <input id="formula" name="formula" class="formula" type="hidden" value="">
+                <input id="parentIdH" name="parent.id" class="form-control" type="hidden" value="">
+                <input id="_parentId" readonly="readonly" name="parentName" type="text" value=""
+                       class="form-control">
+            </td>
+            <td class="width-15 active require">指标名称:</td>
+            <td class="width-35">
+                <input id="name" name="name" type="text" value="" class="form-control " style=""  require="true">
+                <select name="name" id="names"></select>
+            </td>
+        </tr>
+        <tr>
+            <td class="width-15 active require">指标代码:</td>
+            <td class="width-35">
+                <input id="code" name="code" type="text" value="" require="true" class="form-control " style="">
+            </td>
+            <td class="width-15 active">单位:</td>
+            <td class="width-35">
+                <input id="unit" name="unit" type="text" value=""  class="form-control " style="" >
+            </td>
+        </tr>
+        <tr>
+            <td class="active">指标值:</td>
+            <td colspan="3">
+                <textarea id="val" name="val" type="text" value="" rows="2" class="form-control pull-left"></textarea>
+                <button type="button" id="computerBtn" class="btn btn-primary pull-right">公式</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="active">指标类型:</td>
+            <td>
+                <select id="types" name="types" class="form-control select2">
+                    <option value="">请选择</option>
+                    <option value="row">行</option>
+                    <option value="column">列</option>
+                </select>
+            </td>
+            <td class="active">是否启用:</td>
+            <td>
+                <select id="enable" name="enable"  class="form-control">
+                    <option value="1">启用</option>
+                    <option value="2">禁用</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</form>
+<script data-main="/js/module/inventoryTaking/dicTree" src="/js/zlib/require.js"></script>
+</body>
+</html>

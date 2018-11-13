@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>维护属性值</title>
+</head>
+
+<body id="proPreserveValue" class="hideScroll">
+<div class="wrapper-inner ">
+    <div class="ibox">
+        <div class="ibox-content">
+            <div id="content clearfix">
+                <!--左侧内容-->
+                <div id="left"  style="background-color: rgb(231, 234, 236);  width: 210px; min-height: 382px;margin:0;" class="leftBox pull-left">
+                    <a onclick="window.location.reload();" class="pull-right">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                    <div id="tree" class="ztree leftBox-content" style="height: 100%;"></div>
+                </div>
+                <!--右侧内容-->
+                <div id="right" class=" animated fadeInRight"  style="padding:0;">
+                    <iframe id="officeContent" name="officeContent"  width="100%" height="100%" frameborder="0">
+                        <input type="text" hidden="hidden" value id="valuero">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script data-main="/js/module/systemSettings/preserveValue" src="/js/zlib/require.js"></script>
+</body>
+</html>

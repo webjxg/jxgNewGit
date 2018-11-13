@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仓库物料配置</title>
+    <style>
+        .factory{
+            width: 100%;
+            height: 250px;
+            border: 1px dashed #e2e2e2;
+            border-radius: 7px;
+            margin: 5px 0 5px 0;
+            padding: 0 10px 10px;
+            overflow: hidden;
+        }
+        .factory-top{
+            position: relative;
+            padding: 10px;
+        }
+        .major{
+            width: 100%;
+            height: 540px;
+            border: 1px dashed #e2e2e2;
+            border-radius: 7px;
+            margin: 5px 0 5px 0;
+            padding: 0 5px;
+        }
+        .pull-left,.pull-right{
+            width: 47.5%;
+        }
+        .title{
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .apsType-linkage li{
+            display: inline-block;
+        }
+        .top-left{
+            width: 100%;
+            padding-top: 9px;
+        }
+        .top-right{
+            width: 12%;
+        }
+        select,input{
+            font-size: 10px;
+            width: 100px !important;
+        }
+        .material .top-left{
+            width: 100%;
+        }
+        .material .top-right{
+            width: 28%;
+        }
+        .accessory .top-left{
+            width: 100%;
+        }
+        .accessory .top-right{
+            width: 28%;
+        }
+        .accessory select,input{
+            width: 90px !important;
+        }
+        .material{
+            overflow: hidden;
+        }
+        .material select,input{
+            width: 90px !important;
+        }
+        .hide{
+            display: none;
+        }
+        .btnInput{
+            float: left;
+            width: 40px;
+            font-size: 10px;
+            margin-top: 375px;
+        }
+        .btnInput .btn{
+            width: 80% !important;
+            margin: 5px 0;
+        }
+        .btnInput .btn:hover{
+            color: white;
+            background-color: #1ab394;
+        }
+        .active{
+            color: red;
+        }
+        .upDown{
+            /*float: left;*/
+            /*width: 10%;*/
+            /*margin-top: 75px;*/
+            position: absolute;
+            top: 100px;
+            right: 11px;
+        }
+        .upDown i{
+            font-size: 20px;
+            color: #e3e3e3;
+        }
+        .upDown i:first-child{
+            margin-bottom: 20px;
+        }
+
+        .allocated{
+            float: left;
+            width: 90%;
+        }
+        .form-inline{
+            margin: 0;
+            display: block;
+        }
+        .form-group{
+            display: block !important;
+        }
+        .warehouse,.allocated,.advocate{
+            border-radius: 5px !important;
+            border: 1px solid #e3e3e3 !important;
+            overflow-y: auto;
+
+        }
+        .allocated{
+            width: 95%;
+        }
+        .warehouse li,.allocated li,.advocate li{
+            padding: 5px;
+            border-bottom: 1px solid #e3e3e3 !important;
+        }
+        .warehouse li:nth-child(odd),.allocated li:nth-child(odd),.advocate li:nth-child(odd){
+            background-color: #f5f5f6;
+        }
+        .warehouse{
+            height: 180px;
+        }
+        .allocated{
+            height: 225px;
+        }
+        .advocate{
+            height: 400px;
+        }
+        .allocated-right{
+            float: right;
+        }
+        .allocated-right i{
+            margin-right: 5px;
+        }
+        .fa-dot-circle-o:before,.fa-circle-o:before{
+            margin-right: 5px;
+        }
+        .upDown i:hover{
+            color: #1ab394;
+        }
+        .btn-save{
+            float: right; !important;
+        }
+    </style>
+</head>
+<body id="tankMaterialConfiguration" class="wrapper-gray">
+<div class="wrapper-white">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>仓库物料配置</h5>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div class="toolbar-btns clearfix">
+            <div class="pull-left">
+                <p class="title">仓库</p>
+                <div class="factory">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="pull-left top-left">
+                                <div id="searchForm" class="form-inline">
+                                    <div class="form-group">
+                                        <ul class="apsType-linkage">
+                                            <li>
+                                                MOM工厂:
+                                                <select name="fctrList" id="fctrList">
+                                                    <option value="">-- 请选择 --</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                仓库类型:
+                                                <select name="areaTankList" id="areaTankList">
+                                                    <option value="">-- 请选择 --</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                仓库名称:
+                                                <input type="text" id="areaName" name="name" class="form-control" value="">
+                                            </li>
+                                            <li style="float: right;">
+                                                <button class="btn btn-search  bg-ffa82d btn-white btn-ingredient" id="tank-search"  type="button">
+                                                    <i class="fa fa-search"></i>
+                                                    查询</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <ul class="warehouse">
+                        </ul>
+                    </div>
+                </div>
+                <div class="updata">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="pull-left">
+                                <span class="title">已经分配罐物料</span>
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-save  btn-bgf29" style="display: inline-block;">
+                                    <i class="fa fa-save"></i>
+                                    保存</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="factory factory-top">
+                    <ul class="allocated">
+                    </ul>
+                    <div class="upDown">
+                        <div>
+                            <i class="fa fa-angle-double-up" id="btn-up"></i>
+                        </div>
+                        <div>
+                            <i class="fa fa-angle-double-down" id="btn-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btnInput">
+                <button class="btn btn-left"><</button>
+                <button class="btn btn-right">></button>
+            </div>
+            <div class="pull-right">
+                <p class="title">物料</p>
+                <div class="major">
+                    <!--主料-->
+                    <div class="material">
+                        <div class="row">
+                            <div class="col-sm-12 mgb-15">
+                                <div class="pull-left top-left">
+                                    <div id="searchForm1" class="form-inline">
+                                        <div class="form-group">
+                                            <ul class="apsType-linkage">
+                                                <li>
+                                                    MOM工厂:
+                                                    <select name="fctrList" id="fctrList2">
+                                                        <option value="">-- 请选择 --</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    物料类型:
+                                                    <select name="mtrlTypeList" id="mtrlTypeList">
+                                                        <option value="">-- 请选择 --</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    物料名称:
+                                                    <input type="text" name="name" id="materialType" class="form-control" value="">
+                                                </li>
+                                                <li style="float: right;">
+                                                    <button class="btn btn-search  bg-ffa82d btn-white btn-ingredient" id="btn-ingredients"  type="button">
+                                                        <i class="fa fa-search"></i>
+                                                        辅料配置</button>
+                                                    <button class="btn btn-search  bg-ffa82d btn-white btn-ingredient" id="material-search" type="button">
+                                                        <i class="fa fa-search"></i>
+                                                        查询</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div >
+                                    <ul class="advocate">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--辅料料-->
+                    <div class="accessory hide">
+                        <div class="row">
+                            <div class="col-sm-12 mgb-15">
+                                <div class="pull-left top-left">
+                                    <div id="searchForm1" class="form-inline">
+                                        <div class="form-group">
+                                            <ul class="apsType-linkage">
+                                                <li>
+                                                    MOM工厂:
+                                                    <select name="fctrList" id="fctrList2">
+                                                        <option value="">-- 请选择 --</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    物料类型:
+                                                    <select name="mtrlTypeList" id="mtrlTypeList">
+                                                        <option value="">-- 请选择 --</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    物料名称:
+                                                    <input type="text" name="name" class="form-control" value="">
+                                                </li>
+                                                <li style="float: right;">
+                                                    <button class="btn btn-search  bg-ffa82d btn-white btn-ingredient" id="btn-active"  type="button">
+                                                        <i class="fa fa-search"></i>
+                                                        主料配置</button>
+                                                    <button class="btn btn-search  bg-ffa82d btn-white btn-ingredient" id="material-search" type="button">
+                                                        <i class="fa fa-search"></i>
+                                                        查询</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div >
+                                    <ul class="complement">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script data-main="/js/module/material/factoryModels/materialAllocation" src="/js/zlib/require.js"></script>
+</html>

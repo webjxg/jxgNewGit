@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>菜单管理</title>
+    <style>
+        input[type='number']{
+            width: 70px;
+            height: 25px;
+        }
+
+        .datagrid-btable > tbody > tr > td, .datagrid-htable td {
+            padding: 0 0;
+        }
+
+        .btn{
+            margin: 5px 0;
+        }
+
+        .edit{
+            margin: 0 0 10px 0;
+        }
+        .panel-body{
+            border:1px solid #ccc;
+            overflow: auto;
+        }
+        .datagrid-header .datagrid-cell span{
+            font-size: 16px;
+            line-height: 45px;
+        }
+        .datagrid-header{
+            height: 45px;
+        }
+        .datagrid-htable{
+            height: 45px;
+        }
+        .datagrid-header-row .datagrid-cell {
+            text-align: center !important;
+        }
+
+        div{
+            overflow: hidden;
+            white-space: nowrap !important;
+            text-overflow: ellipsis;
+        }
+        .tree-icon{
+            display: none;
+        }
+
+    </style>
+</head>
+<!--内容-->
+<body id="menu-content">
+
+<div class="wrapper wrapper-content">
+    <div class="ibox">
+        <!--头部-->
+        <div class="ibox-title">
+            <h5>菜单管理</h5>
+        </div>
+        <!--内容区-->
+        <div class="ibox-content">
+            <!--按钮组-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="pull-left">
+                        <button class="btn btn-white btn-sm " id = "add-btn" onclick="Bus.openEditDialog('新增菜单','systemSettings/menuInner.html','800px','500px')"
+                                title="添加"><i class="fa fa-plus"></i> 添加
+                        </button>
+                        <button class="btn btn-white btn-sm" id = "edit-btn"
+                                title="修改"><!--onclick="#"--><i class="fa fa-file-text-o"></i> 修改
+                        </button>
+                        <button class="btn btn-white btn-sm"  id = "delete-btn"  onclick="Bus.delCheckTable('要删除该菜单及所有子菜单项吗？',Api.admin+'/api/sys/SysMenu/ajaxDel/','#treeTable')"><i class="fa fa-trash-o"></i>删除
+
+                        </button>
+                        <button  class="btn btn-white btn-sm" id="updateSort-btn" title="保存排序"><i class="fa fa-save"></i> 保存排序
+                        </button>
+                        <button class="btn btn-white btn-sm " id="refresh-btn" title="刷新" onclick="window.location.reload()"><i class="glyphicon glyphicon-repeat"></i> 刷新
+                        </button>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-white btn-sm " id="sync-btn"
+                                title="同步到属性"><i class="glyphicon glyphicon-refresh"></i> 同步到属性
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--表格区-->
+            <form id="listFrom" method="post">
+
+                <table id="tt" style="width:100%; max-height:550px"></table>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script data-main="/js/module/systemSettings/menu" src="/js/zlib/require.js"></script>
+</body>
+</html>

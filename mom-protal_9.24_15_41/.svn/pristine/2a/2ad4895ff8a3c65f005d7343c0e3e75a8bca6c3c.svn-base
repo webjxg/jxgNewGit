@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配矿字典</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../js/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../js/plugins/treetable/css/jquery.treetable.css">
+    <link rel="stylesheet" href="../../js/plugins/treetable/css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/customDataTable.css">
+    <link rel="stylesheet" href="../../css/aps.css">
+
+
+</head>
+<style>
+    #left{
+        margin: 20px 0;
+    }
+    .ibox-content{
+        padding-top: 0;
+    }
+    .datagrid-btable > tbody > tr > td, .datagrid-htable td {
+        padding: 0 0;
+    }
+    .btn{
+        margin: 5px 0;
+    }
+    .edit{
+        margin: 0 0 10px 0;
+    }
+    .panel-body{
+        border:1px solid #ccc;
+        overflow: auto;
+    }
+    .datagrid-header .datagrid-cell span{
+        font-size: 16px;
+        line-height: 50px;
+    }
+    .datagrid-header{
+        height: 50px;
+    }
+    .datagrid-htable{
+        height: 50px;
+    }
+    .datagrid-header-row .datagrid-cell {
+        text-align: center !important;
+    }
+    div{
+        overflow: hidden;
+        white-space: nowrap !important;
+        text-overflow: ellipsis;
+    }
+    .tree-icon{
+        display: none;
+    }
+</style>
+<body id="dicTree" class="wrapper-white">
+    <i id="btnMenu" class="icon-th-list" style="cursor:pointer;float:right;margin:10px;"></i>
+    <div class="ibox">
+        <div>
+            <h1 class="titName">字典</h1>
+        </div>
+        <div class="ibox-content">
+            <div id="content" class="row">
+                <!--左侧内容-->
+                <div id="left" style="background-color: rgb(231, 234, 236); height: 100%;" class="leftBox pull-left">
+                    <a onclick="window.location.reload();" class="pull-right">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                    <div id="tree" class="ztree leftBox-content" style="height: 100%;"></div>
+                </div>
+                <!--右侧内容-->
+                <div id="right" class="animated fadeInRight" >
+                    <!--按钮条-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="pull-left">
+                                <button class="btn btn-white btn-sm" id="addBtn"   data-placement="left"
+                                        onclick="Bus.openEditDialog('添加指标信息', './inventoryTaking/planDicCheckView.html', '800px', '300px')"  title="添加"><i class="fa fa-plus"></i> 添加
+                                </button>
+                                <button class="btn btn-white btn-sm " id="refresh-btn" data-toggle="tooltip" data-placement="left"
+                                        onclick="window.location.reload()" title="刷新"><i class="glyphicon glyphicon-repeat"></i> 刷新
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="tt"  style="width:100%; max-height:500px"></table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-main="/js/module/inventoryTaking/dicTree.js" src="/js/zlib/require.js"></script>
+</body>
+</html>

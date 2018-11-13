@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>许可管理--授权数据</title>
+    <style>
+        .permitAuthTit span{margin:0 8px;font-size:16px;}
+        #tree{margin-left:30px;height:calc(100% - 40px);}
+        .permitAuth{width:100%;padding:0 15px;height:calc(100% - 36px);}
+        .permitAuth-l{width:30%;float:left;height:100%;}
+        .permitAuth-r{width:65%;float:right;}
+        .form-control{width: 100%;}
+    </style>
+</head>
+<body id="permitAuthData" class="wrapper-white">
+<div class="permitAuthTit text-center mgb-10"></div>
+<div class="clearfix permitAuth">
+    <div class="permitAuth-l">
+        <form id="inputForm"  method="post" action="$Api.admin$/api/sys/SysPermission/ajaxSaveAuthData" novalidate="novalidate">
+            <input id="permissionId" type="hidden" value="" name="permissionId"  >
+            <input id="objectId" type="hidden" value="" name="objectId" >
+            <input id="propvals" type="hidden" value="" name="propvals" >
+            <select name="propId" id="permitAuthZtree" required class="form-control">
+                <option value = ''>请选择</option>
+            </select>
+        </form>
+        <ul id="tree" class="ztree"></ul>
+    </div>
+    <div class="permitAuth-r">
+        <table id = "permitAuthTab" class="table form-table">
+            <tbody>
+                <tr>
+                    <td class="width-15 active">操作:</td>
+                    <td class="width-35">
+                        <select id="operationId" name="sysOperation.id" disabled  class="form-control" required></select>
+                    </td>
+                    <td class="width-15 active">鉴权类:</td>
+                    <td class="width-35">
+                        <select name="sysAuthClass.id" id="authClass" disabled  class="form-control "  required></select>
+                    </td>
+                </tr>
+            <tr>
+                <td class="active">许可名称:</td>
+                <td>
+                    <input id="name" name="name" class="form-control " disabled  required  type="text" value="" maxlength="50" aria-required="true">
+                </td>
+                <td class="active">许可编码:</td>
+                <td>
+                    <input id="code" name="code" class="form-control " disabled  required  type="text" value="" maxlength="50" aria-required="true">
+                </td>
+            </tr>
+            <tr>
+                <td class=" active">描述:</td>
+                <td>
+                    <input id="des" name="des" class="form-control" type="text" disabled value="" maxlength="50" >
+                </td>
+                <td class=" active">排序:</td>
+                <td >
+                    <input id="sort" name="sort" class="form-control" disabled type="text" value="" maxlength="11" >
+                </td>
+            </tr>
+            <tr>
+                <td class=" active">是否可用: </td>
+                <td >
+                    <select name="enable" id="enable" class="form-control  " disabled >
+                        <option value="">请选择</option>
+                        <option value="1">启用</option>
+                        <option value="0">禁用</option>
+                    </select>
+                </td>
+                <td class=" active">备注:</td>
+                <td >
+                    <input id="remark" name="remark" class="form-control" disabled type="text" value="" >
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script data-main="/js/module/systemSettings/permit" src="/js/zlib/require.js"></script>
+</body>
+</html>

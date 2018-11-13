@@ -1,0 +1,38 @@
+require(['/js/zlib/app.js'], function (App) {
+    //引入用户登录校验
+    require(['checkUser']);
+
+    var PageModule = {
+        invMListInit: function () {
+            require(['datetimepicker'], function () {
+                //时间选择插件
+                $("#startTime,#endTime").val("").datetimepicker({
+                    bootcssVer: 3,
+                    format: "yyyy-mm-dd",  //保留到日
+                    showMeridian: false,     //显示上、下午
+                    language: "zh-CN",   //中文显示
+                    minView: "3",    //月视图
+                    autoclose: true,  //选择时间后自动隐藏
+                    clearBtn: true,
+                    todayBtn: true
+
+                });
+                //判断日期大小
+                $("#endTime,#startTime").on('change', function () {
+                    if ($('#endTime').val() < $('#startTime').val() && $('#endTime').val() != '') {
+                        Mom.layMsg('结束时间应大于起始时间，请重新选择');
+                        $('#endTime').val('')
+                    }
+                });
+            })
+        }
+    };
+
+    $(function () {
+        //参数配置列表
+        if ($('#invManagementList').length > 0) {
+            PageModule.invMListInit()
+        }
+    });
+
+});

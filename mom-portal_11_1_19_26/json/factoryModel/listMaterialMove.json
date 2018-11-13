@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "retCode": "1000",
+  "message": "操作成功",
+  "count": 3,
+  "rows": [
+    {
+      "id": "1",
+      "getGiveType": "料线收料线",
+      "giveName": "EB残油产出线",
+      "getName":"RFO607储槽/罐",
+      "startDate":"2018-09-06 20:00:00",
+      "endDate":"2018-09-06 21:00:00",
+      "createBy":"管理员",
+      "createDate":"2018-09-06 20:00:00",
+      "cloBy":"管理员",
+      "cloDate":"2018-09-06 21:00:00"
+    },
+    {
+      "id": "2",
+      "getGiveType": "料线收进厂点",
+      "giveName": "EB残油产出线",
+      "getName":"RFO607储槽/罐",
+      "startDate":"2018-09-06 22:00:00",
+      "endDate":"2018-09-06 23:00:00",
+      "createBy":"管理员",
+      "createDate":"2018-09-06 20:00:00",
+      "cloBy":"管理员",
+      "cloDate":"2018-09-06 23:00:00"
+    },
+    {
+      "id": "3",
+      "getGiveType": "料线付出厂点",
+      "giveName": "EB残油产出线",
+      "getName":"RFO607储槽/罐",
+      "startDate":"2018-09-06 20:23:00",
+      "endDate":"2018-09-06 22:23:00",
+      "createBy":"管理员",
+      "createDate":"2018-09-06 20:00:00",
+      "cloBy":"管理员",
+      "cloDate":"2018-09-06 24:00:00"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width,initial-scale=1.0">
+    <title>年计划查看</title>
+    <link rel="stylesheet" href="../../css/aps.css">
+</head>
+<body id="yearPlanView">
+<div  class="wrapper wrapper-inner ibox-content">
+    <div class="ibox">
+        <div class="titName">
+            复晟铝业<span class="Planyears"></span><span>年生产经营计划</span>
+            <div class="btn btn-export pull-right btn-white"><i class="fa fa-file-word-o" aria-hidden="true"></i> 导出</div>
+        </div>
+        <div class="ibox-content">
+            <div class="datagridsContent"></div>
+        </div>
+    </div>
+</div>
+<script data-main="/js/module/producePlan/yearPlan" src="/js/zlib/require.js"></script>
+</body>
+</html>

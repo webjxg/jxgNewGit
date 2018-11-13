@@ -1,0 +1,54 @@
+{
+  "message": "操作成功",
+  "page": {
+    "count": "0",
+    "endRowNum": "1",
+    "isFirstPage": "1",
+    "isLastPage": "1",
+    "orderBy": "1",
+    "pageCount": "1",
+    "pageNo": "1",
+    "pageSize": "20",
+    "rows": [
+      {
+        "id": "0000001",
+        "areaNo":"123",
+        "areaCode":"123",
+        "areaName":"123",
+        "areaAlias":"123",
+        "wspId":"123",
+        "stockType":"123",
+        "useFlag":"1",
+        "displayOrder":"123",
+        "remake":"123"
+      },
+      {
+        "id": "0000002",
+        "areaNo":"123",
+        "areaCode":"123",
+        "areaName":"123",
+        "areaAlias":"123",
+        "wspId":"123",
+        "stockType":"123",
+        "useFlag":"1",
+        "displayOrder":"123",
+        "remake":"123"
+      },
+      {
+        "id": "0000003",
+        "areaNo":"123",
+        "areaCode":"123",
+        "areaName":"123",
+        "areaAlias":"123",
+        "wspId":"123",
+        "stockType":"123",
+        "useFlag":"1",
+        "displayOrder":"123",
+        "remake":"123"
+      }
+    ],
+    "startRowNum": "1"
+  },
+  "retCode": "1",
+  "success": "true"
+}

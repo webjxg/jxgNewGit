@@ -1,0 +1,199 @@
+require(['/js/zlib/app.js'], function(App) {
+    //引入用户登录校验
+    require(['checkUser']);
+
+    var PageModule = {
+        listInit: function(){
+            require(['treeTable'],function(){
+                $("#updateSort-btn").click(function(){   //排序按钮
+                    var ids="",sorts="";
+                    $("input[name='sort']").each(function(ind,item){
+                        var id = $(item).parents("tr").find('.i-checks').attr("id");
+                        var itemDVal= $(item).attr("data-val");
+                        var itemVal = $(item).val();
+                        if(itemDVal !== itemVal){
+                            ids+= ","+id;
+                            sorts+= ","+itemVal;
+                        }
+                    });
+                    if(ids.length>0){
+                        ids = ids.substring(1);
+                        sorts = sorts.substring(1);
+                        var data = {
+                            ids: ids,
+                            sorts: sorts
+                        };
+                        Api.ajaxForm(Api.admin+"/api/sys/SysMenu/ajaxSort",data,function(result){
+                            if(result.success){
+                                pageLoad();
+                            }else{
+                                Mom.layAlert(result.message);
+                            }
+                        })
+                    }else{
+                        Mom.layMsg("没有修改任何排序！")
+                    }
+                });
+                //同步属性
+                $("#sync-btn").click(function(){
+                    Api.ajaxForm(Api.admin+"/api/sys/SysMenu/ajaxSys",{},function(result){
+                        Mom.layAlert(result.message);
+                    })
+                });
+                //点击重置按钮
+                $("#reset-btn").click(function(){
+                    $("#type option:first").prop("selected", 'selected');
+                    $('#description').val("");
+                    pageLoad();
+                });
+
+                var pageLoad = function (){
+                    Api.ajaxJson(Api.admin+"/api/sys/SysMenu/getTreeGraidJson",{},function(tableData){
+                        renderTableData(tableData.rows);
+                        $('.btn-check').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openDialog('查看菜单','systemSettings/menuInner.html?id='+id,'800px','500px')
+                        });
+                        $('.btn-change').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('修改菜单','systemSettings/menuInner.html?id='+id,'800px','500px')
+                        });
+                        $('.btn-delete').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.deleteItem('要删除该菜单及所有子菜单项吗',Api.admin+'/api/sys/SysMenu/ajaxDel',id)
+                        });
+                        $('.btn-add').click(function(){
+                            var id = $(this).parents("tr").find('.i-checks').attr('id');
+                            Bus.openEditDialog('添加下级菜单','systemSettings/menuInner.html?pid='+id,'800px','500px')
+                        });
+                    });
+                };
+                $("#refresh-btn").click(function(){
+                    pageLoad();
+                });
+                function renderTableData(data){
+                    var tableStr = "";
+                    for ( var i = 0; i < data.length; i++) {
+                        var count = 'data-tt-id='+data[i].id;
+                        if(data[i]._parentId && data[i]._parentId != '') {
+                            count += ' data-tt-parent-id='+data[i]._parentId;
+                        }
+                        tableStr += "<tr  "+count+" >"
+                            +"<td style='text-align: center;'><input type='checkbox' class='i-checks' id='"+data[i].id+"'></td>"
+                            +"<td class='alignCenter'>"+data[i].name+"</td>"
+                            +"<td class='alignCenter'>"+data[i].href+"</td>"
+                            +"<td style='width:10%;'><input type='number' name='sort' value='"+data[i].sort+"' data-val='"+data[i].sort+"' class='form-control' style='width:100px ;padding:1px 6px;height:26px;line-height: 24px;margin:0 auto;'></td>"
+                            +"<td style='text-align: center;'>"+(data[i].is_show =='1'?'是':'否' )+"</td>"
+                            +"<td>"+data[i].module+"</td>"
+                            +"<td class='autoWidth' ><a href='#' class='btn btn-info btn-xs btn-check'><i class='fa fa-search-plus'></i>查看</a>"+" <a href='#' class='btn btn-success btn-xs btn-change'><i class='fa icon-change'></i>修改</a>"+"<a href='#' class='btn btn-danger btn-xs btn-delete'><i class='fa fa-trash'></i> 删除</a>"+"  <a href='#' class='btn btn-primary btn-xs btn-add'><i class='fa fa-th-large'></i> 添加下级菜单</a></td>"
+                            +"</tr>";
+                    }
+                    if(tableStr.length==0){
+                        var len = $("#treeTable thead tr").children("th").length;
+                        tableStr ="<tr style='text-align: center'><td colspan='"+len+"'><font color='#cd0a0a'>暂无记录</font></td></tr>";
+                    }
+                    $('#treeTableBody').html(tableStr);
+                    $("#treeTable").treetable({expandable:true,column:1 },true);  //第二个参数表示为true时强制重新初始化树。
+                    renderIChecks();  //全选多选
+                    $("#treeTable").removeClass(".treetable")
+                }
+
+                pageLoad();
+            });
+
+        },
+
+        menuInner: function(){
+            Mom.include('myCss', '', [
+                '../css/comInnerTable.css',
+            ]);
+            var id =Mom.getUrlParam('id')||'',
+                pid = Mom.getUrlParam('pid') || '',
+                data = {
+                    "id":id,
+                    "parent":{
+                        "id":pid
+                    }
+                };
+            data = JSON.stringify(data);
+            $("#value").focus();
+            if( id != "" || pid != "" ){
+                var url = Api.admin+"/api/sys/SysMenu/form";
+                Api.ajaxJson(url,data,function(result){
+                    if(result.success){
+                        var SysMenu = result.SysMenu;
+                        Validator.renderData(SysMenu,$('#inputForm'));
+                        $("#menuId").val(SysMenu.parentId);
+                        $("#menuName").val(result.parentName);
+                        $("#iconIconLabel").text(SysMenu.icon?SysMenu.icon:"无");
+                    }else{
+                        Mom.layMsg(result.message);
+                    }
+                });
+            }
+            $("#menuButton").click(function(){
+                // 多选的情况下multiple = true,否则为false;
+                var url = "systemSettings/selectTree.html?multiple=false&defaultVal="+$("#menuId").val();
+                url += "&dataUrl="+Api.admin+"/api/sys/SysMenu/openTree";
+                Bus.openDialog("选择上级菜单",url,"300px","400px",function(index, layero){
+                    var iframeWin = layero.find('iframe')[0];
+                    var selArr=iframeWin.contentWindow.getCheckVal();
+                    if(selArr){
+                        var name = "",id ="";
+                        for(var i = 0;i<selArr.length;i++){
+                            name += ","+selArr[i].name;
+                            id += ","+selArr[i].id;
+                        }
+                        if(id.length>0){
+                            $("#menuName").val(name.substr(1));
+                            $("#menuId").val(id.substr(1));
+                        }
+
+                    }
+                });
+                // renderIChecks();
+            });
+            // 选择图标icon
+            $("#iconButton").click(function(){
+                var selVal = $('#icon').val();
+                top.layer.open({
+                    type: 2,
+                    maxmin: false,
+                    title:"选择图标",
+                    area: ['700px',  $(top.document).height()-180+"px"],
+                    content: '../systemSettings/iconselect.html?selVal='+selVal,
+                    btn: ['确定', '关闭'],
+                    yes: function(index, layero){ //或者使用btn1
+                        var icon = layero.find("iframe")[0].contentWindow.$("#icon").val();
+                        $("#iconIcon").attr("class", "fa "+icon);
+                        $("#iconIconLabel").text(icon);
+                        $("#icon").val(icon);
+                        top.layer.close(index);
+                    },cancel: function(index){ //或者使用btn2
+
+                    }
+                });
+            });
+
+            $("#iconclear").click(function(){
+                $("#iconIcon").attr("class", "icon- hide");
+                $("#iconIconLabel").text("无");
+                $("#icon").val("");
+            });
+        }
+    };
+
+    $(function(){
+        //菜单管理列表
+        if($('#menu-content').length > 0){
+            PageModule.listInit();
+        }
+        //菜单子页(新增，修改，查看)
+        else if($('#menuInner').length > 0){
+            PageModule.menuInner();
+        }
+
+
+    });
+
+});

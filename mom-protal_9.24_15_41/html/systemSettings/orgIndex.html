@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>机构管理</title>
+    <style>
+        .datagrid-btable > tbody > tr > td, .datagrid-htable td {
+             padding: 0 0;
+        }
+
+        .btn{
+            margin: 5px 0;
+        }
+
+        .edit{
+            margin: 0 0 10px 0;
+        }
+        .panel-body{
+            border:1px solid #ccc;
+            overflow: auto;
+        }
+        .datagrid-header .datagrid-cell span{
+            font-size: 16px;
+            line-height: 45px;
+        }
+        .datagrid-header{
+            height: 45px;
+        }
+        .datagrid-htable{
+            height: 45px;
+        }
+
+        .datagrid-header-row .datagrid-cell {
+            text-align: center !important;
+        }
+
+        div{
+            overflow: hidden;
+            white-space: nowrap !important;
+            text-overflow: ellipsis;
+        }
+        .tree-icon{
+            display: none;
+        }
+
+    </style>
+</head>
+<body id="orgIndex" class="wrapper-gray">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5 class="titName">机构管理</h5>
+            <button class="btn btn-white btn-sm hidden" id="refresh-btn" onclick="window.location.reload()"
+                    title="刷新"><i class="glyphicon glyphicon-repeat"></i> 刷新
+            </button>
+        </div>
+        <div class="ibox-content">
+            <div id="content" class="row">
+                <!--左侧内容-->
+                <div id="left" style="background-color: rgb(231, 234, 236);  width: 210px; height: 100%;" class="leftBox pull-left">
+                    <a onclick="window.location.reload();" class="pull-right">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                    <div id="tree" class="ztree leftBox-content" style="height: 100%;"></div>
+                </div>
+                <!--右侧内容-->
+                <div id="right" class="animated fadeInRight" >
+                    <!--按钮条-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="pull-left">
+                                <button class="btn btn-white btn-sm" onclick="Bus.openEditDialog('新增组织机构','./systemSettings/orgCheckView.html','800px','500px')" title="添加"><i class="fa fa-plus"></i> 添加
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="tt"  style="width:100%; max-height:550px"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-main="/js/module/systemSettings/orgIndex" src="/js/zlib/require.js"></script>
+</body>
+</html>

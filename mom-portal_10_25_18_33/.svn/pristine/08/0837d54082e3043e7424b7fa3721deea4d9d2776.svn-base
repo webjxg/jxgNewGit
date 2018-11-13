@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>角色管理--分配用户</title>
+    <style>
+        .container-fluid{padding:0;}
+        .container-fluid span{margin:0 5px;}
+    </style>
+</head>
+<body id="roleAssign">
+<div class="ibox">
+    <div class="ibox-title">
+        <div class="container-fluid role-info"></div>
+        <form id="assignRoleForm" action="$Api.admin$/api/sys/SysRole/saveUserRole" method="post" class="hide">
+            <input type="hidden" name="roleId" id = "roleId" value="">
+            <input id="idsArr" type="hidden" name="userIds" value="">
+        </form>
+        <div class="toolbar-btns">
+            <button id="assignButton" type="button" class="btn btn-add " title="添加人员"><i class="fa fa-plus"></i> 添加人员</button>
+            <button class="btn btn-delete" id="delete-btn" ><i class="fa fa-trash-o"> </i>删除
+            </button>
+            <button class="btn btn-white  hidden" id="refresh-btn" title="刷新"><i class="glyphicon glyphicon-repeat"></i> 刷新
+            </button>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <table id="treeTable" class="table table-striped table-bordered table-hover table-condensed dataTables-example dataTable tree_table">
+            <thead>
+            <tr>
+                <th width="60px"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"></th>
+                <th>登录名</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>手机</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <!--表内容-->
+            <tbody id="datainner">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script data-main="/js/module/systemSettings/role" src="/js/zlib/require.js"></script>
+</body>
+</html>

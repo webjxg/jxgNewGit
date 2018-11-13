@@ -1,0 +1,299 @@
+{
+  "rows": [
+    {
+      "primaryTable": [
+        {
+          "itemName": "槽/罐检尺",
+          "Name": "槽/罐检尺列表",
+          "colNames": [],
+          "colModel": []
+        }
+      ],
+      "seedTable": [
+        {
+          "itemName": "槽/罐检尺",
+          "Name": "槽/罐检尺信息",
+          "colNames": [],
+          "colModel": []
+        }
+      ]
+    },
+    {
+      "primaryTable": [
+        {
+          "itemName": "物料移动",
+          "Name": "罐列表物料移动",
+          "colNames": [
+            "id",
+            "槽/罐名称",
+            "检尺时间",
+            "检尺类型",
+            "物料",
+            "别名",
+            "质量状态",
+            "槽/罐量",
+            "槽/罐高",
+            "温度",
+            "密度",
+            "液/固质量",
+            "收付",
+            "提交状态",
+            "气相密度",
+            "气相体积",
+            "气相质量",
+            "气相温度",
+            "含水量",
+            "毛计量体积"
+          ],
+          "colModel": [
+            {
+              "name": "id",
+              "label": "id",
+              "align": "center",
+              "hidden": true
+            },
+            {
+              "name": "name",
+              "label": "name",
+              "align": "center"
+            },
+            {
+              "name": "gaugeTime",
+              "label": "gaugeTime",
+              "align": "center"
+            },
+            {
+              "name": "gaugeType",
+              "label": "gaugeType",
+              "align": "center"
+            },
+            {
+              "name": "materialName",
+              "label": "materialName",
+              "align": "center"
+            },
+            {
+              "name": "aliasName",
+              "label": "aliasName",
+              "align": "center"
+            },
+            {
+              "name": "qualityState",
+              "label": "qualityState",
+              "align": "center"
+            },
+            {
+              "name": "potquality",
+              "label": "potquality",
+              "align": "center"
+            },
+            {
+              "name": "potHeight",
+              "label": "potHeight",
+              "align": "center"
+            },
+            {
+              "name": "temperature",
+              "label": "temperature",
+              "align": "center"
+            },
+            {
+              "name": "density",
+              "label": "density",
+              "align": "center"
+            },
+            {
+              "name": "liquidSolidMass",
+              "label": "liquidSolidMass",
+              "align": "center"
+            },
+            {
+              "name": "receiptPayment",
+              "label": "receiptPayment",
+              "align": "center"
+            },
+            {
+              "name": "subState",
+              "label": "subState",
+              "align": "center"
+            },
+            {
+              "name": "gaseousPDensity",
+              "label": "gaseousPDensity",
+              "align": "center"
+            },
+            {
+              "name": "gaseousPVolume",
+              "label": "gaseousPVolume",
+              "align": "center"
+            },
+            {
+              "name": "gaseousPQuality",
+              "label": "gaseousPQuality",
+              "align": "center"
+            },
+            {
+              "name": "gaseousPTemperature",
+              "label": "gaseousPTemperature",
+              "align": "center"
+            },
+            {
+              "name": "waterContent",
+              "label": "waterContent",
+              "align": "center"
+            },
+            {
+              "name": "grossMeasurementVolume",
+              "label": "grossMeasurementVolume",
+              "align": "center"
+            }
+          ]
+        }
+      ],
+      "seedTable": [
+        {
+          "itemName": "移动列表",
+          "Name": "物料移动列表",
+          "colNames": [
+            "id",
+            "类型",
+            "移动类型",
+            "付方节点",
+            "收方节点",
+            "收付开始时间",
+            "收付结束时间",
+            "付方物料",
+            "收方物料",
+            "付方提交状态",
+            "收方提交状态",
+            "付方前检尺",
+            "付方后检尺",
+            "收方前检尺",
+            "收方后检尺",
+            "创建人",
+            "创建时间",
+            "关闭人",
+            "关闭时间"
+          ],
+          "colModel": [
+            {
+              "name": "id",
+              "label": "id",
+              "align": "center",
+              "hidden": true
+            },
+            {
+              "name": "moveType",
+              "label": "moveType",
+              "align": "center",
+              "hidden": true
+            },
+            {
+              "name": "moveName",
+              "label": "moveName",
+              "align": "center"
+            },
+            {
+              "name": "payNode",
+              "label": "payNode",
+              "align": "center"
+            },
+            {
+              "name": "getNode",
+              "label": "getNode",
+              "align": "center"
+            },
+            {
+              "name": "startTime",
+              "label": "startTime",
+              "align": "center"
+            },
+            {
+              "name": "endTime",
+              "label": "endTime",
+              "align": "center"
+            },
+            {
+              "name": "payMaterial",
+              "label": "payMaterial",
+              "align": "center"
+            },
+            {
+              "name": "getMaterial",
+              "label": "getMaterial",
+              "align": "center"
+            },
+            {
+              "name": "paySubState",
+              "label": "paySubState",
+              "align": "center"
+            },
+            {
+              "name": "getSubState",
+              "label": "getSubState",
+              "align": "center"
+            },
+            {
+              "name": "payAgoGauge",
+              "label": "pagAgoGauge",
+              "align": "center"
+            },
+            {
+              "name": "payLaterGauge",
+              "label": "payLaterGauge",
+              "align": "center"
+            },
+            {
+              "name": "getAgoGauge",
+              "label": "getAgoGauge",
+              "align": "center"
+            },
+            {
+              "name": "getLaterGauge",
+              "label": "getLaterGauge",
+              "align": "center"
+            },
+            {
+              "name": "createBy",
+              "label": "createBy",
+              "align": "center"
+            },
+            {
+              "name": "createTime",
+              "label": "createTime",
+              "align": "center"
+            },
+            {
+              "name": "closeBy",
+              "label": "closeBy",
+              "align": "center"
+            },
+            {
+              "name": "closeTime",
+              "label": "closeTime",
+              "align": "center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "primaryTable": [
+        {
+          "itemName": "封账提交",
+          "Name": "封账提交列表",
+          "colNames": [],
+          "colModel": []
+        }
+      ],
+      "seedTable": [
+        {
+          "itemName": "封账提交",
+          "Name": "封账提交信息",
+          "colNames": [],
+          "colModel": []
+        }
+      ]
+    }
+  ]
+}

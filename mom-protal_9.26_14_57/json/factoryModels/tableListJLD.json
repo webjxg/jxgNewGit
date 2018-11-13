@@ -1,0 +1,55 @@
+{
+  "message": "操作成功",
+  "page": {
+    "count": "0",
+    "endRowNum": "1",
+    "isFirstPage": "1",
+    "isLastPage": "1",
+    "orderBy": "1",
+    "pageCount": "1",
+    "pageNo": "1",
+    "pageSize": "20",
+    "rows": [
+      {
+        "id": "0000001",
+        "nodeNo": "0",
+        "nodeCode": "0",
+        "nodename": "0",
+        "nodeAlias": "0",
+        "areaAlias": "0",
+        "pres": "0",
+        "useFlag": "1",
+        "displayOrder": "0",
+        "remake": "0"
+      },
+      {
+        "id": "0000002",
+        "nodeNo": "0",
+        "nodeCode": "0",
+        "nodename": "0",
+        "nodeAlias": "0",
+        "areaAlias": "0",
+        "pres": "0",
+        "useFlag": "0",
+        "displayOrder": "0",
+        "remake": "0"
+      },
+      {
+        "id": "0000003",
+        "nodeNo": "0",
+        "nodeCode": "0",
+        "nodename": "0",
+        "nodeAlias": "0",
+        "areaAlias": "0",
+        "pres": "0",
+        "useFlag": "1",
+        "displayOrder": "0",
+        "remake": "0"
+      }
+    ],
+    "startRowNum": "1"
+  },
+  "retCode": "1",
+  "success": "true"
+}
+

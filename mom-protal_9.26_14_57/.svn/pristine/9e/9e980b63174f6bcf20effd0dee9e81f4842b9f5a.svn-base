@@ -1,0 +1,8 @@
+define(['/js/plugins/jqGrid/js/grid.locale-cn.js'],function(require){
+    Mom.include('jqGrid_css','/js/plugins/jqGrid/css/',[
+        'themes/start/jquery-ui-1.8.20.custom.css',
+        'ui.jqgrid.css',
+        'jqGrid_my.css'
+    ]);
+    // $.parser.parse();
+});

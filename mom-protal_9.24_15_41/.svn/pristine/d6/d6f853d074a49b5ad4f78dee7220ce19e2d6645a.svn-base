@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>IconFont</title>
+    <link rel="stylesheet" href="../../js/plugins/iconfont-forworkbreach/iconfont.css">
+    <style>
+        ul{
+            width: 90%;
+            display: block;
+            float: left;
+            padding-left: 40px;
+        }
+        .title{
+            padding-left:40px;
+        }
+
+        span,ul>span{
+            display: block;
+        }
+        li {
+            list-style: none;
+            width: 12%;
+            float: left;
+            border: 2px solid #3ab394;
+            border-radius: 10px;
+            height: 62px;
+            margin:15px;
+            cursor: pointer;
+        }
+        li:hover {
+            border: 2px solid #4efcd0;
+        }
+        li.active{
+            border: 2px solid #4efcd0;
+        }
+        li.active>i,li.active>div,li:hover>div,li:hover>i{
+            color: #4efcd0
+        }
+
+        li div {
+            text-align: center;
+            color:#3ab394;
+            font-size: 12px;
+        }
+
+        i.iconfont {
+            color:#3ab394;
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin: 4px auto;
+            font-size: 28px;
+        }
+
+        .markdown > ul li, .markdown blockquote ul > li {
+            margin-left: 0;
+        }
+
+    </style>
+
+
+</head>
+<body id="fontInit">
+<div class="main markdown">
+    <span class="title"></span>
+    <ul class="number icon_lists clear">
+
+    </ul>
+    <ul class="plan icon_lists clear">
+        <span>生产计划</span>
+
+    </ul>
+    <ul class="dis icon_lists clear">
+        <span>生产调度</span>
+
+    </ul>
+    <ul class="ope icon_lists clear">
+        <span>操作管理</span>
+    </ul>
+</div>
+<script data-main="/js/module/privatelyOwned/mMUpdate" src="/js/zlib/require.js"></script>
+</body>
+</html>
